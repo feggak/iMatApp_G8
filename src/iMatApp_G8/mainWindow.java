@@ -31,6 +31,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.UIManager;
 import javax.swing.JTree;
+import javax.swing.JSeparator;
 
 public class mainWindow extends JFrame {
 
@@ -153,7 +154,7 @@ public class mainWindow extends JFrame {
 		btnLoggaIn.setMargin(new Insets(0, 0, 0, 0));
 		btnLoggaIn.setLocation(new Point(100, 1));
 		btnLoggaIn.setIconTextGap(0);
-		btnLoggaIn.setFont(new Font("Helvetica", Font.PLAIN, 20));
+		btnLoggaIn.setFont(new Font("Helvetica", Font.PLAIN, 18));
 		btnLoggaIn.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		btnLoggaIn.setBackground(Color.YELLOW);
 		btnLoggaIn.setAlignmentY(0.0f);
@@ -167,7 +168,7 @@ public class mainWindow extends JFrame {
 		btnTillKassan.setMargin(new Insets(0, 0, 0, 0));
 		btnTillKassan.setLocation(new Point(100, 1));
 		btnTillKassan.setIconTextGap(0);
-		btnTillKassan.setFont(new Font("Helvetica", Font.PLAIN, 20));
+		btnTillKassan.setFont(new Font("Helvetica", Font.PLAIN, 18));
 		btnTillKassan.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		btnTillKassan.setBackground(new Color(255, 255, 0));
 		btnTillKassan.setAlignmentY(0.0f);
@@ -182,22 +183,56 @@ public class mainWindow extends JFrame {
 		btnKundvagn.setMargin(new Insets(0, 0, 0, 0));
 		btnKundvagn.setLocation(new Point(100, 1));
 		btnKundvagn.setIconTextGap(0);
-		btnKundvagn.setFont(new Font("Helvetica", Font.PLAIN, 20));
+		btnKundvagn.setFont(new Font("Helvetica", Font.PLAIN, 18));
 		btnKundvagn.setBorder(new CompoundBorder(new MatteBorder(0, 1, 0, 1, (Color) new Color(0, 0, 0)), new EmptyBorder(0, 10, 0, 0)));
 		btnKundvagn.setBackground(new Color(50, 205, 50));
 		btnKundvagn.setAlignmentY(0.0f);
 		btnKundvagn.setBounds(729, 1, 150, 46);
 		topPanel.add(btnKundvagn);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
-		panel.setBorder(new MatteBorder(0, 0, 0, 1, (Color) new Color(0, 0, 0)));
-		panel.setPreferredSize(new Dimension(220, 10));
-		panel.setAlignmentY(Component.TOP_ALIGNMENT);
-		panel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		contentPane.add(panel, BorderLayout.WEST);
+		JPanel leftCategoryPanel = new JPanel();
+		leftCategoryPanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		leftCategoryPanel.setBackground(new Color(255, 255, 255));
+		leftCategoryPanel.setBorder(new MatteBorder(0, 0, 0, 1, (Color) new Color(0, 0, 0)));
+		leftCategoryPanel.setPreferredSize(new Dimension(220, 10));
+		leftCategoryPanel.setAlignmentY(Component.TOP_ALIGNMENT);
+		leftCategoryPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		contentPane.add(leftCategoryPanel, BorderLayout.WEST);
+		leftCategoryPanel.setLayout(new MigLayout("", "[190px]", "[18px][][][][]"));
 		
-		JTree tree = new JTree();
-		panel.add(tree);
+		JLabel lblNewLabel = new JLabel("Kampanjer");
+		lblNewLabel.setHorizontalTextPosition(SwingConstants.LEFT);
+		lblNewLabel.setAlignmentY(Component.TOP_ALIGNMENT);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel.setFont(new Font("Helvetica", Font.PLAIN, 14));
+		leftCategoryPanel.add(lblNewLabel, "cell 0 0,alignx left,aligny center");
+		
+		JLabel lblVisaAllaVaror = new JLabel("Visa alla varor");
+		lblVisaAllaVaror.setHorizontalTextPosition(SwingConstants.LEFT);
+		lblVisaAllaVaror.setHorizontalAlignment(SwingConstants.LEFT);
+		lblVisaAllaVaror.setFont(new Font("Helvetica", Font.PLAIN, 14));
+		lblVisaAllaVaror.setAlignmentY(0.0f);
+		leftCategoryPanel.add(lblVisaAllaVaror, "cell 0 1,aligny center");
+		
+		JSeparator separator = new JSeparator();
+		separator.setAlignmentY(Component.TOP_ALIGNMENT);
+		separator.setAlignmentX(Component.LEFT_ALIGNMENT);
+		separator.setForeground(new Color(128, 128, 128));
+		separator.setPreferredSize(new Dimension(192, 12));
+		leftCategoryPanel.add(separator, "cell 0 2,alignx left");
+		
+		JLabel lblFruktGrnt = new JLabel("Frukt & Grönt");
+		lblFruktGrnt.setHorizontalTextPosition(SwingConstants.LEFT);
+		lblFruktGrnt.setHorizontalAlignment(SwingConstants.LEFT);
+		lblFruktGrnt.setFont(new Font("Helvetica", Font.PLAIN, 14));
+		lblFruktGrnt.setAlignmentY(0.0f);
+		leftCategoryPanel.add(lblFruktGrnt, "cell 0 3");
+		
+		JLabel lblBrd = new JLabel("Bröd");
+		lblBrd.setHorizontalTextPosition(SwingConstants.LEFT);
+		lblBrd.setHorizontalAlignment(SwingConstants.LEFT);
+		lblBrd.setFont(new Font("Helvetica", Font.PLAIN, 14));
+		lblBrd.setAlignmentY(0.0f);
+		leftCategoryPanel.add(lblBrd, "cell 0 4");
 	}
 }
