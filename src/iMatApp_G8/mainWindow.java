@@ -33,6 +33,7 @@ import javax.swing.UIManager;
 import javax.swing.JTree;
 import javax.swing.JSeparator;
 import java.awt.Rectangle;
+import java.awt.SystemColor;
 
 public class MainWindow extends JFrame {
 
@@ -193,7 +194,7 @@ public class MainWindow extends JFrame {
 		
 		JPanel leftCategoryPanel = new JPanel();
 		leftCategoryPanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		leftCategoryPanel.setBackground(new Color(255, 255, 255));
+		leftCategoryPanel.setBackground(SystemColor.window);
 		leftCategoryPanel.setBorder(new MatteBorder(0, 0, 0, 1, (Color) new Color(0, 0, 0)));
 		leftCategoryPanel.setPreferredSize(new Dimension(220, 10));
 		leftCategoryPanel.setAlignmentY(Component.TOP_ALIGNMENT);
