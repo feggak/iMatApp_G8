@@ -32,8 +32,9 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.UIManager;
 import javax.swing.JTree;
 import javax.swing.JSeparator;
+import java.awt.Rectangle;
 
-public class mainWindow extends JFrame {
+public class MainWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtSearch;
@@ -45,7 +46,7 @@ public class mainWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					mainWindow frame = new mainWindow();
+					MainWindow frame = new MainWindow();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,10 +58,10 @@ public class mainWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public mainWindow() {
+	public MainWindow() {
 		setTitle("iMat");
-		setMaximumSize(new Dimension(1000, 1000));
-		setMinimumSize(new Dimension(1000, 620));
+		setMaximumSize(new Dimension(1050, 1000));
+		setMinimumSize(new Dimension(1050, 620));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
@@ -94,7 +95,7 @@ public class mainWindow extends JFrame {
 		topPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		topPanel.setPreferredSize(new Dimension(10, 48));
 		topPanel.setBorder(new MatteBorder(1, 0, 1, 0, (Color) new Color(0, 0, 0)));
-		topPanel.setBackground(new Color(50, 205, 50));
+		topPanel.setBackground(new Color(255, 59, 33));
 		topPanel.setForeground(Color.WHITE);
 		topPanel.setMinimumSize(new Dimension(960, 30));
 		contentPane.add(topPanel, BorderLayout.NORTH);
@@ -111,7 +112,7 @@ public class mainWindow extends JFrame {
 		btnNewButton.setMargin(new Insets(0, 0, 0, 0));
 		btnNewButton.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnNewButton.setPreferredSize(new Dimension(80, 46));
-		btnNewButton.setBackground(new Color(34, 139, 34));
+		btnNewButton.setBackground(new Color(255, 59, 33));
 		btnNewButton.setBorder(new MatteBorder(0, 0, 0, 1, (Color) new Color(0, 0, 0)));
 		topPanel.add(btnNewButton);
 		
@@ -126,7 +127,7 @@ public class mainWindow extends JFrame {
 		btnRecept.setIconTextGap(0);
 		btnRecept.setFont(new Font("Helvetica", Font.PLAIN, 22));
 		btnRecept.setBorder(new MatteBorder(0, 0, 0, 1, (Color) new Color(0, 0, 0)));
-		btnRecept.setBackground(new Color(50, 205, 50));
+		btnRecept.setBackground(new Color(255, 59, 33));
 		btnRecept.setAlignmentY(0.0f);
 		topPanel.add(btnRecept);
 		
@@ -143,7 +144,7 @@ public class mainWindow extends JFrame {
 		txtSearch.setBorder(new CompoundBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)), new EmptyBorder(0, 7, 0, 0)));
 		txtSearch.setMinimumSize(new Dimension(14, 36));
 		txtSearch.setPreferredSize(new Dimension(14, 36));
-		txtSearch.setBounds(226, 7, 381, 34);
+		txtSearch.setBounds(226, 7, 461, 34);
 		topPanel.add(txtSearch);
 		txtSearch.setColumns(1);
 		
@@ -155,10 +156,10 @@ public class mainWindow extends JFrame {
 		btnLoggaIn.setLocation(new Point(100, 1));
 		btnLoggaIn.setIconTextGap(0);
 		btnLoggaIn.setFont(new Font("Helvetica", Font.PLAIN, 18));
-		btnLoggaIn.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		btnLoggaIn.setBackground(Color.YELLOW);
+		btnLoggaIn.setBorder(null);
+		btnLoggaIn.setBackground(new Color(255, 133, 117));
 		btnLoggaIn.setAlignmentY(0.0f);
-		btnLoggaIn.setBounds(613, 7, 110, 34);
+		btnLoggaIn.setBounds(693, 7, 110, 34);
 		topPanel.add(btnLoggaIn);
 		
 		JButton btnTillKassan = new JButton("Till kassan");
@@ -169,10 +170,10 @@ public class mainWindow extends JFrame {
 		btnTillKassan.setLocation(new Point(100, 1));
 		btnTillKassan.setIconTextGap(0);
 		btnTillKassan.setFont(new Font("Helvetica", Font.PLAIN, 18));
-		btnTillKassan.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		btnTillKassan.setBackground(new Color(255, 255, 0));
+		btnTillKassan.setBorder(null);
+		btnTillKassan.setBackground(new Color(255, 133, 117));
 		btnTillKassan.setAlignmentY(0.0f);
-		btnTillKassan.setBounds(885, 7, 110, 34);
+		btnTillKassan.setBounds(965, 7, 110, 34);
 		topPanel.add(btnTillKassan);
 		
 		JButton btnKundvagn = new JButton("Kundvagn");
@@ -185,9 +186,9 @@ public class mainWindow extends JFrame {
 		btnKundvagn.setIconTextGap(0);
 		btnKundvagn.setFont(new Font("Helvetica", Font.PLAIN, 18));
 		btnKundvagn.setBorder(new CompoundBorder(new MatteBorder(0, 1, 0, 1, (Color) new Color(0, 0, 0)), new EmptyBorder(0, 10, 0, 0)));
-		btnKundvagn.setBackground(new Color(50, 205, 50));
+		btnKundvagn.setBackground(new Color(255, 59, 33));
 		btnKundvagn.setAlignmentY(0.0f);
-		btnKundvagn.setBounds(729, 1, 150, 46);
+		btnKundvagn.setBounds(809, 1, 150, 46);
 		topPanel.add(btnKundvagn);
 		
 		JPanel leftCategoryPanel = new JPanel();
@@ -234,5 +235,8 @@ public class mainWindow extends JFrame {
 		lblBrd.setFont(new Font("Helvetica", Font.PLAIN, 14));
 		lblBrd.setAlignmentY(0.0f);
 		leftCategoryPanel.add(lblBrd, "cell 0 4");
+		
+		JPanel panel = new StoreStartView();
+		contentPane.add(panel, BorderLayout.CENTER);
 	}
 }
