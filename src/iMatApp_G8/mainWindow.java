@@ -236,7 +236,7 @@ public class MainWindow extends JFrame {
 		lblBrd.setAlignmentY(0.0f);
 		leftCategoryPanel.add(lblBrd, "cell 0 4");
 		
-		JPanel panel = new StoreStartView();
+		JPanel panel = new StoreView();
 		contentPane.add(panel, BorderLayout.CENTER);
 	}
 }
