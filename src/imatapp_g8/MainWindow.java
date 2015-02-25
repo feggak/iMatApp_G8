@@ -39,8 +39,8 @@ public class MainWindow extends javax.swing.JFrame {
         checkoutBtn = new javax.swing.JButton();
         cartBtn = new javax.swing.JButton();
         loginBtn = new javax.swing.JButton();
-        mainPanel = new javax.swing.JPanel();
-        categoryPanel = new imatapp_g8.CategoryPanel();
+        categoryPanel1 = new imatapp_g8.CategoryPanel();
+        shopPanel2 = new imatapp_g8.ShopPanel();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -194,35 +194,9 @@ public class MainWindow extends javax.swing.JFrame {
 
         getContentPane().add(topPanel, java.awt.BorderLayout.PAGE_START);
 
-        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
-        mainPanel.setAlignmentX(0.0F);
-        mainPanel.setAlignmentY(0.0F);
-
-        javax.swing.GroupLayout categoryPanelLayout = new javax.swing.GroupLayout(categoryPanel);
-        categoryPanel.setLayout(categoryPanelLayout);
-        categoryPanelLayout.setHorizontalGroup(
-            categoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
-        );
-        categoryPanelLayout.setVerticalGroup(
-            categoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 552, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
-        mainPanel.setLayout(mainPanelLayout);
-        mainPanelLayout.setHorizontalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addComponent(categoryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(830, Short.MAX_VALUE))
-        );
-        mainPanelLayout.setVerticalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(categoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(mainPanel, java.awt.BorderLayout.CENTER);
+        categoryPanel1.setPreferredSize(new java.awt.Dimension(220, 550));
+        getContentPane().add(categoryPanel1, java.awt.BorderLayout.WEST);
+        getContentPane().add(shopPanel2, java.awt.BorderLayout.CENTER);
 
         jMenu1.setText("File");
         menuBar.add(jMenu1);
@@ -276,16 +250,16 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel cartIcon;
     private javax.swing.JLabel cartInfoLabel;
     private javax.swing.JLabel cartLabel;
-    private imatapp_g8.CategoryPanel categoryPanel;
+    private imatapp_g8.CategoryPanel categoryPanel1;
     private javax.swing.JButton checkoutBtn;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JButton loginBtn;
-    private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JButton recipeBtn;
     private javax.swing.JTextField searchField;
     private javax.swing.JLabel searchIcon;
+    private imatapp_g8.ShopPanel shopPanel2;
     private javax.swing.JButton storeBtn;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables

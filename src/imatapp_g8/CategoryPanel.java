@@ -29,6 +29,7 @@ public class CategoryPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(0, 0, 0)));
         setMinimumSize(new java.awt.Dimension(220, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
