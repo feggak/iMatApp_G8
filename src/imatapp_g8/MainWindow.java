@@ -39,17 +39,17 @@ public class MainWindow extends javax.swing.JFrame {
         checkoutBtn = new javax.swing.JButton();
         cartBtn = new javax.swing.JButton();
         loginBtn = new javax.swing.JButton();
-        categoryPanel1 = new imatapp_g8.CategoryPanel();
-        shopPanel2 = new imatapp_g8.ShopPanel();
+        categoryPanel = new imatapp_g8.CategoryPanel();
+        shopPanel = new imatapp_g8.ShopPanel();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iMat");
-        setMaximumSize(new java.awt.Dimension(1050, 1000));
-        setMinimumSize(new java.awt.Dimension(1050, 620));
-        setPreferredSize(new java.awt.Dimension(1050, 620));
+        setMaximumSize(new java.awt.Dimension(1150, 1000));
+        setMinimumSize(new java.awt.Dimension(1150, 720));
+        setPreferredSize(new java.awt.Dimension(1150, 720));
 
         topPanel.setBackground(new java.awt.Color(226, 87, 76));
         topPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -73,6 +73,7 @@ public class MainWindow extends javax.swing.JFrame {
         storeBtn.setPreferredSize(new java.awt.Dimension(110, 46));
         storeBtn.setRequestFocusEnabled(false);
         storeBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/red_icon_rollover.png"))); // NOI18N
+        storeBtn.setSelected(true);
         storeBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/red_icon_selected.png"))); // NOI18N
         topPanel.add(storeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 46));
 
@@ -98,33 +99,33 @@ public class MainWindow extends javax.swing.JFrame {
 
         searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
         searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        topPanel.add(searchIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(615, 7, 32, 32));
+        topPanel.add(searchIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 7, 32, 32));
 
         searchField.setText("Sök...");
         searchField.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.MatteBorder(null), javax.swing.BorderFactory.createEmptyBorder(1, 8, 1, 8)));
-        topPanel.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 7, 420, 32));
+        topPanel.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 7, 520, 32));
 
         cartIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cart2.png"))); // NOI18N
         cartIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        topPanel.add(cartIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, 33, 34));
+        topPanel.add(cartIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(883, 6, 33, 34));
 
         cartLabel.setFont(new java.awt.Font("Myriad Pro", 0, 15)); // NOI18N
         cartLabel.setForeground(new java.awt.Color(255, 255, 255));
         cartLabel.setText("12 varor");
         cartLabel.setAlignmentY(0.0F);
         cartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        topPanel.add(cartLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(824, 7, 60, -1));
+        topPanel.add(cartLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(924, 7, 60, -1));
 
         cartInfoLabel.setFont(new java.awt.Font("Myriad Pro", 0, 15)); // NOI18N
         cartInfoLabel.setForeground(new java.awt.Color(255, 255, 255));
         cartInfoLabel.setText("123 kr");
         cartInfoLabel.setAlignmentY(0.0F);
         cartInfoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        topPanel.add(cartInfoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(824, 25, 60, -1));
+        topPanel.add(cartInfoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(924, 25, 60, -1));
 
         arrowIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         arrowIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        topPanel.add(arrowIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 10, 29, 28));
+        topPanel.add(arrowIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 10, 29, 28));
 
         checkoutBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 17)); // NOI18N
         checkoutBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -147,7 +148,7 @@ public class MainWindow extends javax.swing.JFrame {
         checkoutBtn.setRequestFocusEnabled(false);
         checkoutBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_rollover.png"))); // NOI18N
         checkoutBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_selected.png"))); // NOI18N
-        topPanel.add(checkoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(928, 6, 118, 36));
+        topPanel.add(checkoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1028, 6, 118, 36));
 
         cartBtn.setFont(new java.awt.Font("Open Sans Semibold", 0, 20)); // NOI18N
         cartBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,7 +168,7 @@ public class MainWindow extends javax.swing.JFrame {
         cartBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/red2_icon_rollover.png"))); // NOI18N
         cartBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/red2_icon_selected.png"))); // NOI18N
         cartBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        topPanel.add(cartBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(774, 0, 276, 46));
+        topPanel.add(cartBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(874, 0, 276, 46));
 
         loginBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 17)); // NOI18N
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -190,13 +191,15 @@ public class MainWindow extends javax.swing.JFrame {
         loginBtn.setRequestFocusEnabled(false);
         loginBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_rollover.png"))); // NOI18N
         loginBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_selected.png"))); // NOI18N
-        topPanel.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 6, 118, 36));
+        topPanel.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(752, 6, 118, 36));
 
         getContentPane().add(topPanel, java.awt.BorderLayout.PAGE_START);
 
-        categoryPanel1.setPreferredSize(new java.awt.Dimension(220, 550));
-        getContentPane().add(categoryPanel1, java.awt.BorderLayout.WEST);
-        getContentPane().add(shopPanel2, java.awt.BorderLayout.CENTER);
+        categoryPanel.setPreferredSize(new java.awt.Dimension(220, 550));
+        getContentPane().add(categoryPanel, java.awt.BorderLayout.WEST);
+
+        shopPanel.setPreferredSize(new java.awt.Dimension(930, 730));
+        getContentPane().add(shopPanel, java.awt.BorderLayout.CENTER);
 
         jMenu1.setText("File");
         menuBar.add(jMenu1);
@@ -250,7 +253,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel cartIcon;
     private javax.swing.JLabel cartInfoLabel;
     private javax.swing.JLabel cartLabel;
-    private imatapp_g8.CategoryPanel categoryPanel1;
+    private imatapp_g8.CategoryPanel categoryPanel;
     private javax.swing.JButton checkoutBtn;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -259,7 +262,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton recipeBtn;
     private javax.swing.JTextField searchField;
     private javax.swing.JLabel searchIcon;
-    private imatapp_g8.ShopPanel shopPanel2;
+    private imatapp_g8.ShopPanel shopPanel;
     private javax.swing.JButton storeBtn;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables

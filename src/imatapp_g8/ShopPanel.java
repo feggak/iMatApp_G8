@@ -31,22 +31,23 @@ public class ShopPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(830, 32767));
-        setMinimumSize(new java.awt.Dimension(830, 550));
-        setPreferredSize(new java.awt.Dimension(830, 550));
+        setMinimumSize(new java.awt.Dimension(830, 650));
+        setPreferredSize(new java.awt.Dimension(830, 650));
 
         shopBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/banner.png"))); // NOI18N
+        shopBanner.setPreferredSize(new java.awt.Dimension(930, 200));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(shopBanner)
+            .addComponent(shopBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(shopBanner)
-                .addGap(0, 380, Short.MAX_VALUE))
+                .addComponent(shopBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 450, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
