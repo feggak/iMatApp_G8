@@ -60,9 +60,8 @@ public class MainWindow extends javax.swing.JFrame {
         storeBtn.setForeground(new java.awt.Color(255, 255, 255));
         storeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/red_icon.png"))); // NOI18N
         storeBtn.setAlignmentY(0.0F);
-        storeBtn.setBorder(null);
         storeBtn.setContentAreaFilled(false);
-        storeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        storeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         storeBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         storeBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         storeBtn.setIconTextGap(0);
@@ -84,7 +83,7 @@ public class MainWindow extends javax.swing.JFrame {
         recipeBtn.setAlignmentY(0.0F);
         recipeBtn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(0, 0, 0)));
         recipeBtn.setContentAreaFilled(false);
-        recipeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        recipeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         recipeBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         recipeBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         recipeBtn.setIconTextGap(0);
@@ -98,7 +97,7 @@ public class MainWindow extends javax.swing.JFrame {
         topPanel.add(recipeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 110, 46));
 
         searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
-        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         topPanel.add(searchIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 7, 32, 32));
 
         searchField.setText("Sök...");
@@ -106,25 +105,25 @@ public class MainWindow extends javax.swing.JFrame {
         topPanel.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 7, 520, 32));
 
         cartIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cart2.png"))); // NOI18N
-        cartIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cartIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         topPanel.add(cartIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(883, 6, 33, 34));
 
         cartLabel.setFont(new java.awt.Font("Myriad Pro", 0, 15)); // NOI18N
         cartLabel.setForeground(new java.awt.Color(255, 255, 255));
         cartLabel.setText("12 varor");
         cartLabel.setAlignmentY(0.0F);
-        cartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         topPanel.add(cartLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(924, 7, 60, -1));
 
         cartInfoLabel.setFont(new java.awt.Font("Myriad Pro", 0, 15)); // NOI18N
         cartInfoLabel.setForeground(new java.awt.Color(255, 255, 255));
         cartInfoLabel.setText("123 kr");
         cartInfoLabel.setAlignmentY(0.0F);
-        cartInfoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cartInfoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         topPanel.add(cartInfoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(924, 25, 60, -1));
 
         arrowIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
-        arrowIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        arrowIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         topPanel.add(arrowIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 10, 29, 28));
 
         checkoutBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 17)); // NOI18N
@@ -135,7 +134,7 @@ public class MainWindow extends javax.swing.JFrame {
         checkoutBtn.setBorder(null);
         checkoutBtn.setBorderPainted(false);
         checkoutBtn.setContentAreaFilled(false);
-        checkoutBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        checkoutBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         checkoutBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         checkoutBtn.setDefaultCapable(false);
         checkoutBtn.setFocusPainted(false);
@@ -156,7 +155,7 @@ public class MainWindow extends javax.swing.JFrame {
         cartBtn.setAlignmentY(0.0F);
         cartBtn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(0, 0, 0)));
         cartBtn.setContentAreaFilled(false);
-        cartBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cartBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cartBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         cartBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         cartBtn.setIconTextGap(0);
@@ -178,7 +177,7 @@ public class MainWindow extends javax.swing.JFrame {
         loginBtn.setBorder(null);
         loginBtn.setBorderPainted(false);
         loginBtn.setContentAreaFilled(false);
-        loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         loginBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         loginBtn.setDefaultCapable(false);
         loginBtn.setFocusPainted(false);
