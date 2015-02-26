@@ -13,7 +13,9 @@ import se.chalmers.ait.dat215.project.*;
  */
 public class MainWindow extends javax.swing.JFrame {
     
+    /////////////////////////////////FÖR TEST-ÄNDAMÅL
     IMatDataHandler imdh = IMatDataHandler.getInstance();
+    /////////////////////////////////FÖR TEST-ÄNDAMÅL
     
     /**
      * Creates new form MainWindow
@@ -222,10 +224,14 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void recipeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recipeBtnActionPerformed
+        
+        /////////////////////////////////FÖR TEST-ÄNDAMÅL
         this.remove(shopPanel);
-        DetailedPanel detailedPanel = new DetailedPanel(imdh.getProduct(5));
+        DetailedPanel detailedPanel = new DetailedPanel(imdh.getProduct(50));
         //detailedPanel.setPreferredSize(new java.awt.Dimension(930, 730));
         getContentPane().add(detailedPanel, java.awt.BorderLayout.CENTER);
+        /////////////////////////////////FÖR TEST-ÄNDAMÅL
+        
     }//GEN-LAST:event_recipeBtnActionPerformed
 
     /**

@@ -13,8 +13,11 @@ import se.chalmers.ait.dat215.project.*;
  */
 public class DetailedPanel extends javax.swing.JPanel {
     
+    /////////////////////////////////FÖR TEST-ÄNDAMÅL
     IMatDataHandler imdh = IMatDataHandler.getInstance();
-
+    /////////////////////////////////FÖR TEST-ÄNDAMÅL
+    
+    
     /**
      * Creates new form DetailedPanel
      */
@@ -23,8 +26,15 @@ public class DetailedPanel extends javax.swing.JPanel {
     }
     
     public DetailedPanel(Product prod) {
+        
+        /////////////////////////////////FÖR TEST-ÄNDAMÅL
         initComponents();
         jLabel1.setIcon(imdh.getImageIcon(prod, 300, 300));
+        jLabel2.setText(prod.getName());
+        jTextArea1.setText("Det här är " + prod.getName() + " och tillhör kategorin " + prod.getCategory());
+        jLabel3.setText("Pris: " + prod.getPrice() + " " + prod.getUnit());
+        jLabel6.setText("Jmf pris: " + prod.getPrice() + " " + prod.getUnit());
+        /////////////////////////////////FÖR TEST-ÄNDAMÅL
     }
 
     /**
@@ -67,6 +77,7 @@ public class DetailedPanel extends javax.swing.JPanel {
 
         jScrollPane1.setBorder(null);
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
