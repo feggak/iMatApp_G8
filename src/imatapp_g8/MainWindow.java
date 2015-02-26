@@ -5,12 +5,16 @@
  */
 package imatapp_g8;
 
+import se.chalmers.ait.dat215.project.*;
+
 /**
  *
  * @author frellAn
  */
 public class MainWindow extends javax.swing.JFrame {
-
+    
+    IMatDataHandler imdh = IMatDataHandler.getInstance();
+    
     /**
      * Creates new form MainWindow
      */
@@ -95,6 +99,11 @@ public class MainWindow extends javax.swing.JFrame {
         recipeBtn.setRequestFocusEnabled(false);
         recipeBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/red_icon_rollover.png"))); // NOI18N
         recipeBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/red_icon_selected.png"))); // NOI18N
+        recipeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recipeBtnActionPerformed(evt);
+            }
+        });
         topPanel.add(recipeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 110, 46));
 
         searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
@@ -211,6 +220,13 @@ public class MainWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void recipeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recipeBtnActionPerformed
+        this.remove(shopPanel);
+        DetailedPanel detailedPanel = new DetailedPanel(imdh.getProduct(5));
+        //detailedPanel.setPreferredSize(new java.awt.Dimension(930, 730));
+        getContentPane().add(detailedPanel, java.awt.BorderLayout.CENTER);
+    }//GEN-LAST:event_recipeBtnActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,17 +5,26 @@
  */
 package imatapp_g8;
 
+import se.chalmers.ait.dat215.project.*;
+
 /**
  *
  * @author Michel
  */
 public class DetailedPanel extends javax.swing.JPanel {
+    
+    IMatDataHandler imdh = IMatDataHandler.getInstance();
 
     /**
      * Creates new form DetailedPanel
      */
     public DetailedPanel() {
         initComponents();
+    }
+    
+    public DetailedPanel(Product prod) {
+        initComponents();
+        jLabel1.setIcon(imdh.getImageIcon(prod, 300, 300));
     }
 
     /**
