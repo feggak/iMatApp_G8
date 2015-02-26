@@ -47,9 +47,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iMat");
-        setMaximumSize(new java.awt.Dimension(1150, 1000));
         setMinimumSize(new java.awt.Dimension(1150, 720));
-        setPreferredSize(new java.awt.Dimension(1150, 720));
 
         topPanel.setBackground(new java.awt.Color(226, 87, 76));
         topPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
