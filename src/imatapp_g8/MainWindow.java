@@ -22,6 +22,7 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         db = IMatDataHandler.getInstance();
         initComponents();
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/appicon.png")).getImage());
     }
 
     /**
@@ -46,7 +47,7 @@ public class MainWindow extends javax.swing.JFrame {
         cartBtn = new javax.swing.JButton();
         loginBtn = new javax.swing.JButton();
         categoryPanel = new imatapp_g8.CategoryPanel();
-        shopPanel = new imatapp_g8.ShopPanel();
+        shopPanel1 = new imatapp_g8.ShopPanel();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -54,9 +55,10 @@ public class MainWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iMat");
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(1150, 1000));
-        setMinimumSize(new java.awt.Dimension(1150, 750));
-        setPreferredSize(new java.awt.Dimension(1150, 780));
+        setMaximumSize(new java.awt.Dimension(1156, 1000));
+        setMinimumSize(new java.awt.Dimension(1156, 750));
+        setPreferredSize(new java.awt.Dimension(1156, 780));
+        setResizable(false);
 
         topPanel.setBackground(new java.awt.Color(226, 87, 76));
         topPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -204,9 +206,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         categoryPanel.setPreferredSize(new java.awt.Dimension(220, 550));
         getContentPane().add(categoryPanel, java.awt.BorderLayout.WEST);
-
-        shopPanel.setPreferredSize(new java.awt.Dimension(930, 730));
-        getContentPane().add(shopPanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(shopPanel1, java.awt.BorderLayout.CENTER);
 
         jMenu1.setText("File");
         menuBar.add(jMenu1);
@@ -269,7 +269,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton recipeBtn;
     private javax.swing.JTextField searchField;
     private javax.swing.JLabel searchIcon;
-    private imatapp_g8.ShopPanel shopPanel;
+    private imatapp_g8.ShopPanel shopPanel1;
     private javax.swing.JButton storeBtn;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables

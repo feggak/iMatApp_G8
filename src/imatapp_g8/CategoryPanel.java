@@ -27,18 +27,28 @@ public class CategoryPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        firstLabel1 = new javax.swing.JLabel();
+        firstLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(50, 77, 91));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(0, 0, 0)));
         setMinimumSize(new java.awt.Dimension(220, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("HEJ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        firstLabel1.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
+        firstLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        firstLabel1.setText("Kampanjvaror");
+        add(firstLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, -1, -1));
+
+        firstLabel2.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
+        firstLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        firstLabel2.setText("Visa alla varor");
+        add(firstLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 38, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel firstLabel1;
+    private javax.swing.JLabel firstLabel2;
     // End of variables declaration//GEN-END:variables
 }

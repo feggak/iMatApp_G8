@@ -21,7 +21,7 @@ public class ShopPanel extends javax.swing.JPanel {
      */
     public ShopPanel() {
         initComponents();
-        fillGrid(MainWindow.db.getProducts(ProductCategory.NUTS_AND_SEEDS));
+        // fillGrid(MainWindow.db.getProducts(ProductCategory.NUTS_AND_SEEDS));
     }
     
     public void fillGrid(List<Product> items) {
@@ -54,9 +54,9 @@ public class ShopPanel extends javax.swing.JPanel {
         shopBannerIcon.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         add(shopBannerIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        mainTitle.setFont(new java.awt.Font("Myriad Pro", 0, 24)); // NOI18N
+        mainTitle.setFont(new java.awt.Font("Myriad Pro", 0, 22)); // NOI18N
         mainTitle.setText("Kampanjvaror");
-        add(mainTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 206, -1, -1));
+        add(mainTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 208, -1, -1));
 
         lineIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/line.png"))); // NOI18N
         add(lineIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 232, -1, -1));
