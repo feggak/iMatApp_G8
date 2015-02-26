@@ -5,17 +5,29 @@
  */
 package imatapp_g8;
 
+import java.util.List;
+import se.chalmers.ait.dat215.project.*;
+
 /**
  *
  * @author frellAn
  */
 public class ShopPanel extends javax.swing.JPanel {
+    
+    // Custom variable declaration
 
     /**
      * Creates new form ShopPanel
      */
     public ShopPanel() {
         initComponents();
+        fillGrid(MainWindow.db.getProducts(ProductCategory.NUTS_AND_SEEDS));
+    }
+    
+    public void fillGrid(List<Product> items) {
+        for (int i = 1; i < items.size(); i++) {
+            productGrid.add(new ShopItem(items.get(i)));
+        }
     }
 
     /**
@@ -27,32 +39,41 @@ public class ShopPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        shopBanner = new javax.swing.JLabel();
+        shopBannerIcon = new javax.swing.JLabel();
+        mainTitle = new javax.swing.JLabel();
+        lineIcon = new javax.swing.JLabel();
+        productGrid = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(830, 32767));
-        setMinimumSize(new java.awt.Dimension(830, 650));
-        setPreferredSize(new java.awt.Dimension(830, 650));
+        setMaximumSize(new java.awt.Dimension(930, 32767));
+        setMinimumSize(new java.awt.Dimension(930, 650));
+        setPreferredSize(new java.awt.Dimension(930, 650));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        shopBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/banner.png"))); // NOI18N
-        shopBanner.setPreferredSize(new java.awt.Dimension(930, 200));
+        shopBannerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/banner.png"))); // NOI18N
+        shopBannerIcon.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        add(shopBannerIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(shopBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(shopBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 450, Short.MAX_VALUE))
-        );
+        mainTitle.setFont(new java.awt.Font("Myriad Pro", 0, 24)); // NOI18N
+        mainTitle.setText("Kampanjvaror");
+        add(mainTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 206, -1, -1));
+
+        lineIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/line.png"))); // NOI18N
+        add(lineIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 232, -1, -1));
+
+        productGrid.setBackground(new java.awt.Color(255, 255, 255));
+        productGrid.setAlignmentX(0.0F);
+        productGrid.setAlignmentY(0.0F);
+        productGrid.setAutoscrolls(true);
+        productGrid.setLayout(new java.awt.GridLayout(0, 5));
+        add(productGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 238, 910, 435));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel shopBanner;
+    private javax.swing.JLabel lineIcon;
+    private javax.swing.JLabel mainTitle;
+    private javax.swing.JPanel productGrid;
+    private javax.swing.JLabel shopBannerIcon;
     // End of variables declaration//GEN-END:variables
 }

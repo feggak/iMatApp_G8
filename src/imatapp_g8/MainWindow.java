@@ -5,16 +5,22 @@
  */
 package imatapp_g8;
 
+import se.chalmers.ait.dat215.project.*;
+
 /**
  *
  * @author frellAn
  */
 public class MainWindow extends javax.swing.JFrame {
+    
+    // Custom variable declaration
+    protected static IMatDataHandler db;
 
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
+        db = IMatDataHandler.getInstance();
         initComponents();
     }
 
@@ -47,9 +53,10 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iMat");
+        setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMaximumSize(new java.awt.Dimension(1150, 1000));
-        setMinimumSize(new java.awt.Dimension(1150, 720));
-        setPreferredSize(new java.awt.Dimension(1150, 720));
+        setMinimumSize(new java.awt.Dimension(1150, 750));
+        setPreferredSize(new java.awt.Dimension(1150, 780));
 
         topPanel.setBackground(new java.awt.Color(226, 87, 76));
         topPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
