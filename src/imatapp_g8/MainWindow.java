@@ -34,7 +34,6 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        loginPopup1 = new imatapp_g8.LoginPopup();
         topPanel = new javax.swing.JPanel();
         storeBtn = new javax.swing.JButton();
         recipeBtn = new javax.swing.JButton();
@@ -48,7 +47,9 @@ public class MainWindow extends javax.swing.JFrame {
         cartBtn = new javax.swing.JButton();
         loginBtn = new javax.swing.JButton();
         categoryPanel = new imatapp_g8.CategoryPanel();
+        detailedPanel1 = new imatapp_g8.DetailedPanel();
         shopPanel = new imatapp_g8.ShopPanel();
+        loginPopup1 = new imatapp_g8.LoginPopup();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -61,8 +62,6 @@ public class MainWindow extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1156, 780));
         setResizable(false);
         getContentPane().setLayout(null);
-        getContentPane().add(loginPopup1);
-        loginPopup1.setBounds(645, 34, 350, 300);
 
         topPanel.setBackground(new java.awt.Color(226, 87, 76));
         topPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -211,8 +210,12 @@ public class MainWindow extends javax.swing.JFrame {
         categoryPanel.setPreferredSize(new java.awt.Dimension(220, 550));
         getContentPane().add(categoryPanel);
         categoryPanel.setBounds(0, 47, 220, 681);
+        getContentPane().add(detailedPanel1);
+        detailedPanel1.setBounds(220, 50, 930, 650);
         getContentPane().add(shopPanel);
         shopPanel.setBounds(220, 47, 930, 681);
+        getContentPane().add(loginPopup1);
+        loginPopup1.setBounds(645, 34, 350, 300);
 
         jMenu1.setText("File");
         menuBar.add(jMenu1);
@@ -268,6 +271,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel cartLabel;
     private imatapp_g8.CategoryPanel categoryPanel;
     private javax.swing.JButton checkoutBtn;
+    private imatapp_g8.DetailedPanel detailedPanel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JButton loginBtn;
