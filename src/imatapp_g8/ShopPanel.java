@@ -41,7 +41,7 @@ public class ShopPanel extends javax.swing.JPanel {
 
         shopBannerIcon = new javax.swing.JLabel();
         mainTitle = new javax.swing.JLabel();
-        lineIcon = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         productGrid = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -58,8 +58,8 @@ public class ShopPanel extends javax.swing.JPanel {
         mainTitle.setText("Kampanjvaror");
         add(mainTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 208, -1, -1));
 
-        lineIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/line.png"))); // NOI18N
-        add(lineIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 232, -1, -1));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 232, 918, 10));
 
         productGrid.setBackground(new java.awt.Color(255, 255, 255));
         productGrid.setAlignmentX(0.0F);
@@ -71,7 +71,7 @@ public class ShopPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lineIcon;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel mainTitle;
     private javax.swing.JPanel productGrid;
     private javax.swing.JLabel shopBannerIcon;

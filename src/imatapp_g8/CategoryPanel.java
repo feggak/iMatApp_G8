@@ -29,6 +29,9 @@ public class CategoryPanel extends javax.swing.JPanel {
 
         firstLabel1 = new javax.swing.JLabel();
         firstLabel2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        label1 = new javax.swing.JLabel();
+        label2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(50, 77, 91));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(0, 0, 0)));
@@ -44,11 +47,28 @@ public class CategoryPanel extends javax.swing.JPanel {
         firstLabel2.setForeground(new java.awt.Color(255, 255, 255));
         firstLabel2.setText("Visa alla varor");
         add(firstLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 38, -1, -1));
+
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 66, 200, 10));
+
+        label1.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
+        label1.setForeground(new java.awt.Color(255, 255, 255));
+        label1.setText("Bröd");
+        add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 78, -1, -1));
+
+        label2.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
+        label2.setForeground(new java.awt.Color(255, 255, 255));
+        label2.setText("Fisk");
+        add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 100, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel firstLabel1;
     private javax.swing.JLabel firstLabel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel label1;
+    private javax.swing.JLabel label2;
     // End of variables declaration//GEN-END:variables
 }
