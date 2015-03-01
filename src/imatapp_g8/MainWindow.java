@@ -47,9 +47,9 @@ public class MainWindow extends javax.swing.JFrame {
         cartBtn = new javax.swing.JButton();
         loginBtn = new javax.swing.JButton();
         categoryPanel = new imatapp_g8.CategoryPanel();
-        detailedPanel1 = new imatapp_g8.DetailedPanel();
+        detailedPanel = new imatapp_g8.DetailedPanel();
         shopPanel = new imatapp_g8.ShopPanel();
-        loginPopup1 = new imatapp_g8.LoginPopup();
+        loginPopup = new imatapp_g8.LoginPopup();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -58,8 +58,8 @@ public class MainWindow extends javax.swing.JFrame {
         setTitle("iMat");
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMaximumSize(new java.awt.Dimension(1156, 1000));
-        setMinimumSize(new java.awt.Dimension(1156, 750));
-        setPreferredSize(new java.awt.Dimension(1156, 780));
+        setMinimumSize(new java.awt.Dimension(1156, 720));
+        setPreferredSize(new java.awt.Dimension(1156, 720));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -113,7 +113,7 @@ public class MainWindow extends javax.swing.JFrame {
         topPanel.add(searchIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 7, 32, 32));
 
         searchField.setText("Sök...");
-        searchField.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.MatteBorder(null), javax.swing.BorderFactory.createEmptyBorder(1, 8, 1, 8)));
+        searchField.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10)));
         topPanel.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 7, 520, 32));
 
         cartIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cart2.png"))); // NOI18N
@@ -210,12 +210,12 @@ public class MainWindow extends javax.swing.JFrame {
         categoryPanel.setPreferredSize(new java.awt.Dimension(220, 550));
         getContentPane().add(categoryPanel);
         categoryPanel.setBounds(0, 47, 220, 681);
-        getContentPane().add(detailedPanel1);
-        detailedPanel1.setBounds(220, 50, 930, 650);
+        getContentPane().add(detailedPanel);
+        detailedPanel.setBounds(220, 47, 930, 650);
         getContentPane().add(shopPanel);
         shopPanel.setBounds(220, 47, 930, 681);
-        getContentPane().add(loginPopup1);
-        loginPopup1.setBounds(645, 34, 350, 300);
+        getContentPane().add(loginPopup);
+        loginPopup.setBounds(645, 34, 350, 300);
 
         jMenu1.setText("File");
         menuBar.add(jMenu1);
@@ -271,11 +271,11 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel cartLabel;
     private imatapp_g8.CategoryPanel categoryPanel;
     private javax.swing.JButton checkoutBtn;
-    private imatapp_g8.DetailedPanel detailedPanel1;
+    private imatapp_g8.DetailedPanel detailedPanel;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JButton loginBtn;
-    private imatapp_g8.LoginPopup loginPopup1;
+    private imatapp_g8.LoginPopup loginPopup;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JButton recipeBtn;
     private javax.swing.JTextField searchField;

@@ -50,9 +50,9 @@ public class ShopItem extends javax.swing.JPanel {
         itemPrice = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(182, 213));
-        setMinimumSize(new java.awt.Dimension(182, 213));
-        setPreferredSize(new java.awt.Dimension(182, 213));
+        setMaximumSize(new java.awt.Dimension(182, 200));
+        setMinimumSize(new java.awt.Dimension(182, 200));
+        setPreferredSize(new java.awt.Dimension(182, 200));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         addToCartBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 16)); // NOI18N
@@ -76,20 +76,20 @@ public class ShopItem extends javax.swing.JPanel {
         addToCartBtn.setRequestFocusEnabled(false);
         addToCartBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_rollover.png"))); // NOI18N
         addToCartBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_selected.png"))); // NOI18N
-        add(addToCartBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 178, 80, 32));
+        add(addToCartBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 166, 80, 32));
 
         itemIcon.setIcon(icon);
-        itemIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        add(itemIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 174, 132));
+        itemIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        add(itemIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 0, 160, 120));
 
         itemName.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
         itemName.setText(name);
-        add(itemName, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 136, -1, -1));
+        add(itemName, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 124, -1, -1));
 
         itemPrice.setFont(new java.awt.Font("Myriad Pro Light", 0, 18)); // NOI18N
         itemPrice.setText(Double.toString(price) + " " + unit
         );
-        add(itemPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 155, -1, -1));
+        add(itemPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 143, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 

@@ -21,7 +21,7 @@ public class ShopPanel extends javax.swing.JPanel {
      */
     public ShopPanel() {
         initComponents();
-        // fillGrid(MainWindow.db.getProducts(ProductCategory.NUTS_AND_SEEDS));
+        fillGrid(MainWindow.db.getProducts(ProductCategory.NUTS_AND_SEEDS));
     }
     
     public void fillGrid(List<Product> items) {
@@ -47,7 +47,7 @@ public class ShopPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(930, 32767));
         setMinimumSize(new java.awt.Dimension(930, 650));
-        setPreferredSize(new java.awt.Dimension(930, 650));
+        setPreferredSize(new java.awt.Dimension(930, 630));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         shopBannerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/banner.png"))); // NOI18N
