@@ -59,8 +59,9 @@ public class DetailedPanel extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(930, 650));
-        setPreferredSize(new java.awt.Dimension(930, 650));
+        setMaximumSize(new java.awt.Dimension(930, 630));
+        setMinimumSize(new java.awt.Dimension(930, 630));
+        setPreferredSize(new java.awt.Dimension(930, 630));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         productIcon.setBackground(java.awt.Color.orange);
@@ -161,7 +162,7 @@ public class DetailedPanel extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 833, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

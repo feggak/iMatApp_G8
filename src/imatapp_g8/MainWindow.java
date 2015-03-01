@@ -21,8 +21,12 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         db = IMatDataHandler.getInstance();
-        initComponents();
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/appicon.png")).getImage());
+        initComponents();
+    }
+    
+    public void setPanel() {
+        contentPanel.add(this);
     }
 
     /**
@@ -46,10 +50,11 @@ public class MainWindow extends javax.swing.JFrame {
         checkoutBtn = new javax.swing.JButton();
         cartBtn = new javax.swing.JButton();
         loginBtn = new javax.swing.JButton();
-        breadcrumbs1 = new imatapp_g8.Breadcrumbs();
         categoryPanel = new imatapp_g8.CategoryPanel();
-        detailedPanel = new imatapp_g8.DetailedPanel();
+        contentPanel = new javax.swing.JPanel();
+        featuredPanel = new imatapp_g8.FeaturedPanel();
         shopPanel = new imatapp_g8.ShopPanel();
+        breadcrumbs = new imatapp_g8.Breadcrumbs();
         loginPopup = new imatapp_g8.LoginPopup();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -208,27 +213,30 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(topPanel);
         topPanel.setBounds(0, 0, 1150, 47);
 
-        javax.swing.GroupLayout breadcrumbs1Layout = new javax.swing.GroupLayout(breadcrumbs1);
-        breadcrumbs1.setLayout(breadcrumbs1Layout);
-        breadcrumbs1Layout.setHorizontalGroup(
-            breadcrumbs1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 930, Short.MAX_VALUE)
-        );
-        breadcrumbs1Layout.setVerticalGroup(
-            breadcrumbs1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 29, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(breadcrumbs1);
-        breadcrumbs1.setBounds(220, 48, 930, 30);
-
         categoryPanel.setPreferredSize(new java.awt.Dimension(220, 550));
         getContentPane().add(categoryPanel);
         categoryPanel.setBounds(0, 47, 220, 681);
-        getContentPane().add(detailedPanel);
-        detailedPanel.setBounds(220, 47, 930, 650);
-        getContentPane().add(shopPanel);
-        shopPanel.setBounds(220, 47, 930, 681);
+
+        contentPanel.setLayout(new java.awt.CardLayout());
+        contentPanel.add(featuredPanel, "card2");
+        contentPanel.add(shopPanel, "card3");
+
+        getContentPane().add(contentPanel);
+        contentPanel.setBounds(220, 47, 930, 680);
+
+        javax.swing.GroupLayout breadcrumbsLayout = new javax.swing.GroupLayout(breadcrumbs);
+        breadcrumbs.setLayout(breadcrumbsLayout);
+        breadcrumbsLayout.setHorizontalGroup(
+            breadcrumbsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 930, Short.MAX_VALUE)
+        );
+        breadcrumbsLayout.setVerticalGroup(
+            breadcrumbsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 29, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(breadcrumbs);
+        breadcrumbs.setBounds(220, 47, 930, 30);
         getContentPane().add(loginPopup);
         loginPopup.setBounds(645, 34, 350, 300);
 
@@ -280,14 +288,15 @@ public class MainWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel arrowIcon;
-    private imatapp_g8.Breadcrumbs breadcrumbs1;
+    private imatapp_g8.Breadcrumbs breadcrumbs;
     private javax.swing.JButton cartBtn;
     private javax.swing.JLabel cartIcon;
     private javax.swing.JLabel cartInfoLabel;
     private javax.swing.JLabel cartLabel;
     private imatapp_g8.CategoryPanel categoryPanel;
     private javax.swing.JButton checkoutBtn;
-    private imatapp_g8.DetailedPanel detailedPanel;
+    private javax.swing.JPanel contentPanel;
+    private imatapp_g8.FeaturedPanel featuredPanel;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JButton loginBtn;
