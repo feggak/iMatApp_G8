@@ -14,6 +14,9 @@ import java.awt.Color;
 public class LoginPopup extends javax.swing.JPanel implements java.beans.Customizer {
     
     private Object bean;
+    private static Register reg = null;
+    private boolean showRegisterWindow = false;
+    public static MainWindow main;
 
     /**
      * Creates new customizer LoginPopup
@@ -25,6 +28,16 @@ public class LoginPopup extends javax.swing.JPanel implements java.beans.Customi
     public void setObject(Object bean) {
         this.bean = bean;
     }
+    public static void setInstance(MainWindow m){
+        main = m;
+    }
+    
+    public MainWindow getInstance(){
+        return main;
+    }
+    
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,6 +64,11 @@ public class LoginPopup extends javax.swing.JPanel implements java.beans.Customi
         passWtxt.setFont(new java.awt.Font("Helvetica", 0, 13)); // NOI18N
         passWtxt.setForeground(new java.awt.Color(153, 153, 153));
         passWtxt.setText("Lösenord..");
+        passWtxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passWtxtFocusLost(evt);
+            }
+        });
         passWtxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 passWtxtMouseClicked(evt);
@@ -62,6 +80,11 @@ public class LoginPopup extends javax.swing.JPanel implements java.beans.Customi
         usernameTxt.setFont(new java.awt.Font("Helvetica", 0, 13)); // NOI18N
         usernameTxt.setForeground(new java.awt.Color(153, 153, 153));
         usernameTxt.setText("Användarnamn..");
+        usernameTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                usernameTxtFocusLost(evt);
+            }
+        });
         usernameTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 usernameTxtMouseClicked(evt);
@@ -88,20 +111,34 @@ public class LoginPopup extends javax.swing.JPanel implements java.beans.Customi
         loginBtn.setRequestFocusEnabled(false);
         loginBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/red2_icon_rollover.png"))); // NOI18N
         loginBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/red2_icon_selected.png"))); // NOI18N
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
         add(loginBtn);
         loginBtn.setBounds(20, 240, 290, 40);
 
+        registerBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hämta.png"))); // NOI18N
         registerBtn.setText("Registrera");
-        registerBtn.setBorder(null);
         registerBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registerBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        registerBtn.setIconTextGap(0);
+        registerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerBtnActionPerformed(evt);
+            }
+        });
         add(registerBtn);
-        registerBtn.setBounds(17, 180, 80, 16);
+        registerBtn.setBounds(10, 170, 120, 29);
 
+        forgottenPwBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hämta.png"))); // NOI18N
         forgottenPwBtn.setText("Glömt lösenord");
-        forgottenPwBtn.setBorder(null);
         forgottenPwBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        forgottenPwBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        forgottenPwBtn.setIconTextGap(0);
         add(forgottenPwBtn);
-        forgottenPwBtn.setBounds(25, 200, 97, 16);
+        forgottenPwBtn.setBounds(20, 200, 130, 29);
 
         backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/popup.png"))); // NOI18N
         add(backgroundLabel);
@@ -109,15 +146,54 @@ public class LoginPopup extends javax.swing.JPanel implements java.beans.Customi
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameTxtMouseClicked
-
-        usernameTxt.setText("");
-        usernameTxt.setForeground(Color.black);
+        //trycker på användarnamn txt:t
+        if(usernameTxt.getText().equals("Användarnamn..")){
+            usernameTxt.setText("");
+            usernameTxt.setForeground(Color.black);
+        }
     }//GEN-LAST:event_usernameTxtMouseClicked
 
     private void passWtxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passWtxtMouseClicked
-        passWtxt.setText("");
-        passWtxt.setForeground(Color.black);
+        //trycker på password txt:t
+        if(passWtxt.getText().equals("Lösenord..")){
+            passWtxt.setText("");
+            passWtxt.setForeground(Color.black);
+        }
     }//GEN-LAST:event_passWtxtMouseClicked
+
+    private void usernameTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameTxtFocusLost
+        // förlorar focus på användarnamn
+        if(usernameTxt.getText().equals("")){
+           usernameTxt.setForeground(Color.lightGray);
+           usernameTxt.setText("Användarnamn..");
+        }
+    }//GEN-LAST:event_usernameTxtFocusLost
+
+    private void passWtxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passWtxtFocusLost
+        // förlorar focus på lösenord
+        if(passWtxt.getText().equals("")){
+            passWtxt.setForeground(Color.lightGray);
+            passWtxt.setText("Lösenord..");
+        }
+        
+    }//GEN-LAST:event_passWtxtFocusLost
+
+    private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
+        // visar registerings vy:n
+        main.setIfShowRegisterWindow(true);
+        main.setIfShowLoginScreen(false);
+        
+    }//GEN-LAST:event_registerBtnActionPerformed
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        
+    }//GEN-LAST:event_loginBtnActionPerformed
+
+         
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

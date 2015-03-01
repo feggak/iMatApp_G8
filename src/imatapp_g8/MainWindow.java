@@ -5,6 +5,7 @@
  */
 package imatapp_g8;
 
+import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.*;
 
 /**
@@ -15,6 +16,10 @@ public class MainWindow extends javax.swing.JFrame {
     
     // Custom variable declaration
     protected static IMatDataHandler db;
+    private boolean switchViewloginPanel = false;
+    private boolean switchViewDetailedPanel = false;
+    private boolean switchViewRegisterPanel = false;
+    public JPanel activePane;
 
     /**
      * Creates new form MainWindow
@@ -23,8 +28,19 @@ public class MainWindow extends javax.swing.JFrame {
         db = IMatDataHandler.getInstance();
         initComponents();
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/appicon.png")).getImage());
+        setVisiblePanes();
+        activePane = shopPanel;
+        
+        
     }
-
+    
+                
+    public void createInstanceOfmain(MainWindow main){
+        
+        LoginPopup.setInstance(main);
+        
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,6 +50,7 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        loginPopup1 = new imatapp_g8.LoginPopup();
         topPanel = new javax.swing.JPanel();
         storeBtn = new javax.swing.JButton();
         recipeBtn = new javax.swing.JButton();
@@ -46,10 +63,10 @@ public class MainWindow extends javax.swing.JFrame {
         checkoutBtn = new javax.swing.JButton();
         cartBtn = new javax.swing.JButton();
         loginBtn = new javax.swing.JButton();
-        categoryPanel = new imatapp_g8.CategoryPanel();
-        detailedPanel1 = new imatapp_g8.DetailedPanel();
         shopPanel = new imatapp_g8.ShopPanel();
-        loginPopup1 = new imatapp_g8.LoginPopup();
+        detailedPanel2 = new imatapp_g8.DetailedPanel();
+        register1 = new imatapp_g8.Register();
+        categoryPanel = new imatapp_g8.CategoryPanel();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -62,6 +79,8 @@ public class MainWindow extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1156, 780));
         setResizable(false);
         getContentPane().setLayout(null);
+        getContentPane().add(loginPopup1);
+        loginPopup1.setBounds(650, 40, 340, 300);
 
         topPanel.setBackground(new java.awt.Color(226, 87, 76));
         topPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -73,7 +92,7 @@ public class MainWindow extends javax.swing.JFrame {
         storeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/red_icon.png"))); // NOI18N
         storeBtn.setAlignmentY(0.0F);
         storeBtn.setContentAreaFilled(false);
-        storeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        storeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         storeBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         storeBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         storeBtn.setIconTextGap(0);
@@ -95,7 +114,7 @@ public class MainWindow extends javax.swing.JFrame {
         recipeBtn.setAlignmentY(0.0F);
         recipeBtn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(0, 0, 0)));
         recipeBtn.setContentAreaFilled(false);
-        recipeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        recipeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         recipeBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         recipeBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         recipeBtn.setIconTextGap(0);
@@ -109,7 +128,7 @@ public class MainWindow extends javax.swing.JFrame {
         topPanel.add(recipeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 110, 46));
 
         searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
-        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         topPanel.add(searchIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 7, 32, 32));
 
         searchField.setText("Sök...");
@@ -117,25 +136,25 @@ public class MainWindow extends javax.swing.JFrame {
         topPanel.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 7, 520, 32));
 
         cartIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cart2.png"))); // NOI18N
-        cartIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cartIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         topPanel.add(cartIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(883, 6, 33, 34));
 
         cartLabel.setFont(new java.awt.Font("Myriad Pro", 0, 15)); // NOI18N
         cartLabel.setForeground(new java.awt.Color(255, 255, 255));
         cartLabel.setText("12 varor");
         cartLabel.setAlignmentY(0.0F);
-        cartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         topPanel.add(cartLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(924, 7, 60, -1));
 
         cartInfoLabel.setFont(new java.awt.Font("Myriad Pro", 0, 15)); // NOI18N
         cartInfoLabel.setForeground(new java.awt.Color(255, 255, 255));
         cartInfoLabel.setText("123 kr");
         cartInfoLabel.setAlignmentY(0.0F);
-        cartInfoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cartInfoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         topPanel.add(cartInfoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(924, 25, 60, -1));
 
         arrowIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
-        arrowIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        arrowIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         topPanel.add(arrowIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 10, 29, 28));
 
         checkoutBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 17)); // NOI18N
@@ -146,7 +165,7 @@ public class MainWindow extends javax.swing.JFrame {
         checkoutBtn.setBorder(null);
         checkoutBtn.setBorderPainted(false);
         checkoutBtn.setContentAreaFilled(false);
-        checkoutBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        checkoutBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         checkoutBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         checkoutBtn.setDefaultCapable(false);
         checkoutBtn.setFocusPainted(false);
@@ -167,7 +186,7 @@ public class MainWindow extends javax.swing.JFrame {
         cartBtn.setAlignmentY(0.0F);
         cartBtn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(0, 0, 0)));
         cartBtn.setContentAreaFilled(false);
-        cartBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cartBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cartBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         cartBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         cartBtn.setIconTextGap(0);
@@ -189,7 +208,7 @@ public class MainWindow extends javax.swing.JFrame {
         loginBtn.setBorder(null);
         loginBtn.setBorderPainted(false);
         loginBtn.setContentAreaFilled(false);
-        loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         loginBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         loginBtn.setDefaultCapable(false);
         loginBtn.setFocusPainted(false);
@@ -202,20 +221,25 @@ public class MainWindow extends javax.swing.JFrame {
         loginBtn.setRequestFocusEnabled(false);
         loginBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_rollover.png"))); // NOI18N
         loginBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_selected.png"))); // NOI18N
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
         topPanel.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(752, 6, 118, 36));
 
         getContentPane().add(topPanel);
-        topPanel.setBounds(0, 0, 1150, 47);
+        topPanel.setBounds(0, 0, 1150, 50);
+        getContentPane().add(shopPanel);
+        shopPanel.setBounds(220, 50, 1150, 728);
+        getContentPane().add(detailedPanel2);
+        detailedPanel2.setBounds(220, 50, 930, 680);
+        getContentPane().add(register1);
+        register1.setBounds(220, 50, 930, 680);
 
         categoryPanel.setPreferredSize(new java.awt.Dimension(220, 550));
         getContentPane().add(categoryPanel);
-        categoryPanel.setBounds(0, 47, 220, 681);
-        getContentPane().add(detailedPanel1);
-        detailedPanel1.setBounds(220, 50, 930, 650);
-        getContentPane().add(shopPanel);
-        shopPanel.setBounds(220, 47, 930, 681);
-        getContentPane().add(loginPopup1);
-        loginPopup1.setBounds(645, 34, 350, 300);
+        categoryPanel.setBounds(0, 50, 1150, 728);
 
         jMenu1.setText("File");
         menuBar.add(jMenu1);
@@ -228,6 +252,40 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setVisiblePanes(){
+        setIfShowLoginScreen(false);
+        setIfShowDetailedView(false);
+        setIfShowRegisterWindow(false);
+    }
+    
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // Klickar på login knappen
+        setIfShowLoginScreen(switchViewloginPanel);
+
+    }//GEN-LAST:event_loginBtnActionPerformed
+
+    public void setIfShowDetailedView(boolean b){
+        if(b){
+            activePane.setVisible(false);
+            activePane = detailedPanel2;
+        }
+        detailedPanel2.setVisible(b);
+        switchViewDetailedPanel = !b;
+        
+    }
+    public void setIfShowLoginScreen(boolean b){
+            loginPopup1.setVisible(b);
+            switchViewloginPanel = !b;
+    }
+    public void setIfShowRegisterWindow(boolean b){
+         if(b){
+            activePane.setVisible(false);
+            activePane = register1;
+        }
+        register1.setVisible(b);
+        switchViewRegisterPanel = !b;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -258,7 +316,10 @@ public class MainWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainWindow().setVisible(true);
+                MainWindow main = new MainWindow();
+                main.setVisible(true);
+                main.createInstanceOfmain(main);
+
             }
         });
     }
@@ -271,13 +332,14 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel cartLabel;
     private imatapp_g8.CategoryPanel categoryPanel;
     private javax.swing.JButton checkoutBtn;
-    private imatapp_g8.DetailedPanel detailedPanel1;
+    private imatapp_g8.DetailedPanel detailedPanel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JButton loginBtn;
     private imatapp_g8.LoginPopup loginPopup1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JButton recipeBtn;
+    private imatapp_g8.Register register1;
     private javax.swing.JTextField searchField;
     private javax.swing.JLabel searchIcon;
     private imatapp_g8.ShopPanel shopPanel;

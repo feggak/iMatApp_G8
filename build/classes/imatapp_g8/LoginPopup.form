@@ -44,6 +44,7 @@
         <Property name="text" type="java.lang.String" value="L&#xf6;senord.."/>
       </Properties>
       <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="passWtxtFocusLost"/>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="passWtxtMouseClicked"/>
       </Events>
       <Constraints>
@@ -63,6 +64,7 @@
         <Property name="text" type="java.lang.String" value="Anv&#xe4;ndarnamn.."/>
       </Properties>
       <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="usernameTxtFocusLost"/>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="usernameTxtMouseClicked"/>
       </Events>
       <Constraints>
@@ -114,6 +116,9 @@
           <Image iconType="3" name="/red2_icon_selected.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginBtnActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="20" y="240" width="290" height="40"/>
@@ -122,33 +127,40 @@
     </Component>
     <Component class="javax.swing.JButton" name="registerBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Registrera"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/h&#xe4;mta.png"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="Registrera"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Handmark&#xf6;r"/>
         </Property>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="iconTextGap" type="int" value="0"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerBtnActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="17" y="180" width="80" height="-1"/>
+          <AbsoluteConstraints x="10" y="170" width="120" height="29"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="forgottenPwBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Gl&#xf6;mt l&#xf6;senord"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/h&#xe4;mta.png"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="Gl&#xf6;mt l&#xf6;senord"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Handmark&#xf6;r"/>
         </Property>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="iconTextGap" type="int" value="0"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="25" y="200" width="-1" height="-1"/>
+          <AbsoluteConstraints x="20" y="200" width="130" height="29"/>
         </Constraint>
       </Constraints>
     </Component>

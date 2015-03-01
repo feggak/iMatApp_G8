@@ -56,6 +56,13 @@
     <Property name="useNullLayout" type="boolean" value="true"/>
   </Layout>
   <SubComponents>
+    <Component class="imatapp_g8.LoginPopup" name="loginPopup1">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="650" y="40" width="340" height="300"/>
+        </Constraint>
+      </Constraints>
+    </Component>
     <Container class="javax.swing.JPanel" name="topPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -72,7 +79,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="1150" height="-1"/>
+          <AbsoluteConstraints x="0" y="0" width="1150" height="50"/>
         </Constraint>
       </Constraints>
 
@@ -94,7 +101,7 @@
             <Property name="alignmentY" type="float" value="0.0"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
             <Property name="debugGraphicsOptions" type="int" value="-1"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -147,7 +154,7 @@
             </Property>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
             <Property name="debugGraphicsOptions" type="int" value="-1"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -184,7 +191,7 @@
               <Image iconType="3" name="/search.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
           </Properties>
           <Constraints>
@@ -221,7 +228,7 @@
               <Image iconType="3" name="/cart2.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
           </Properties>
           <Constraints>
@@ -241,7 +248,7 @@
             <Property name="text" type="java.lang.String" value="12 varor"/>
             <Property name="alignmentY" type="float" value="0.0"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
           </Properties>
           <Constraints>
@@ -261,7 +268,7 @@
             <Property name="text" type="java.lang.String" value="123 kr"/>
             <Property name="alignmentY" type="float" value="0.0"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
           </Properties>
           <Constraints>
@@ -276,7 +283,7 @@
               <Image iconType="3" name="/arrow.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
           </Properties>
           <Constraints>
@@ -304,7 +311,7 @@
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
             <Property name="debugGraphicsOptions" type="int" value="-1"/>
             <Property name="defaultCapable" type="boolean" value="false"/>
@@ -356,7 +363,7 @@
             </Property>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
             <Property name="debugGraphicsOptions" type="int" value="-1"/>
             <Property name="horizontalTextPosition" type="int" value="2"/>
@@ -407,7 +414,7 @@
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
             <Property name="debugGraphicsOptions" type="int" value="-1"/>
             <Property name="defaultCapable" type="boolean" value="false"/>
@@ -434,6 +441,9 @@
               <Image iconType="3" name="/green_icon_selected.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginBtnActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="752" y="6" width="118" height="36"/>
@@ -442,6 +452,27 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="imatapp_g8.ShopPanel" name="shopPanel">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="220" y="50" width="1150" height="728"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="imatapp_g8.DetailedPanel" name="detailedPanel2">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="220" y="50" width="930" height="680"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="imatapp_g8.Register" name="register1">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="220" y="50" width="930" height="680"/>
+        </Constraint>
+      </Constraints>
+    </Component>
     <Component class="imatapp_g8.CategoryPanel" name="categoryPanel">
       <Properties>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -450,28 +481,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="47" width="-1" height="681"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="imatapp_g8.DetailedPanel" name="detailedPanel1">
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="220" y="50" width="-1" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="imatapp_g8.ShopPanel" name="shopPanel">
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="220" y="47" width="-1" height="681"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="imatapp_g8.LoginPopup" name="loginPopup1">
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="645" y="34" width="-1" height="-1"/>
+          <AbsoluteConstraints x="0" y="50" width="1150" height="728"/>
         </Constraint>
       </Constraints>
     </Component>
