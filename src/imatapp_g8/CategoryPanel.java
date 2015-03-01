@@ -5,17 +5,22 @@
  */
 package imatapp_g8;
 
+import se.chalmers.ait.dat215.project.ProductCategory;
+
 /**
  *
  * @author frellAn
  */
 public class CategoryPanel extends javax.swing.JPanel {
 
+    Controller controller;
+    
     /**
      * Creates new form CategoryPanel
      */
     public CategoryPanel() {
         initComponents();
+        controller = Controller.getInstance();
     }
 
     /**
@@ -50,8 +55,14 @@ public class CategoryPanel extends javax.swing.JPanel {
         kampanjBtn.setBorder(null);
         kampanjBtn.setBorderPainted(false);
         kampanjBtn.setContentAreaFilled(false);
+        kampanjBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         kampanjBtn.setFocusPainted(false);
         kampanjBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        kampanjBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kampanjBtnActionPerformed(evt);
+            }
+        });
         add(kampanjBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 14, -1, -1));
 
         showAllBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
@@ -61,6 +72,7 @@ public class CategoryPanel extends javax.swing.JPanel {
         showAllBtn.setBorder(null);
         showAllBtn.setBorderPainted(false);
         showAllBtn.setContentAreaFilled(false);
+        showAllBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         showAllBtn.setFocusPainted(false);
         showAllBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         showAllBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -82,6 +94,7 @@ public class CategoryPanel extends javax.swing.JPanel {
         baljvaxtBtn.setBorder(null);
         baljvaxtBtn.setBorderPainted(false);
         baljvaxtBtn.setContentAreaFilled(false);
+        baljvaxtBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         baljvaxtBtn.setFocusPainted(false);
         baljvaxtBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         baljvaxtBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -166,12 +179,18 @@ public class CategoryPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void baljvaxtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baljvaxtBtnActionPerformed
-        
+        controller.showShopCategory(ProductCategory.POD);
+        baljvaxtBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
     }//GEN-LAST:event_baljvaxtBtnActionPerformed
 
     private void showAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAllBtnActionPerformed
-
+        controller.showShopAllProducts();
+        showAllBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
     }//GEN-LAST:event_showAllBtnActionPerformed
+
+    private void kampanjBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kampanjBtnActionPerformed
+        controller.showFeatured();
+    }//GEN-LAST:event_kampanjBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -21,7 +21,16 @@ public class ShopPanel extends javax.swing.JPanel {
      */
     public ShopPanel() {
         initComponents();
-        // fillGrid(MainWindow.db.getProducts(ProductCategory.NUTS_AND_SEEDS));
+    }
+    
+    public ShopPanel(String all) {
+        initComponents();
+        fillGrid(MainWindow.db.getProducts());
+    }
+    
+    public ShopPanel(ProductCategory category) {
+        initComponents();
+        fillGrid(MainWindow.db.getProducts(category));
     }
     
     public void fillGrid(List<Product> items) {
@@ -39,24 +48,31 @@ public class ShopPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        productGridScrollPane = new javax.swing.JScrollPane();
         productGrid = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(930, 32767));
-        setMinimumSize(new java.awt.Dimension(930, 650));
+        setMinimumSize(new java.awt.Dimension(930, 630));
         setPreferredSize(new java.awt.Dimension(930, 630));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        productGridScrollPane.setBorder(null);
+        productGridScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         productGrid.setBackground(new java.awt.Color(255, 255, 255));
         productGrid.setAlignmentX(0.0F);
         productGrid.setAlignmentY(0.0F);
-        productGrid.setAutoscrolls(true);
+        productGrid.setMaximumSize(new java.awt.Dimension(920, 590));
         productGrid.setLayout(new java.awt.GridLayout(0, 5));
-        add(productGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 910, 630));
+        productGridScrollPane.setViewportView(productGrid);
+
+        add(productGridScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 920, 590));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel productGrid;
+    private javax.swing.JScrollPane productGridScrollPane;
     // End of variables declaration//GEN-END:variables
 }

@@ -50,9 +50,9 @@ public class ShopItem extends javax.swing.JPanel {
         itemPrice = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(182, 200));
-        setMinimumSize(new java.awt.Dimension(182, 200));
-        setPreferredSize(new java.awt.Dimension(182, 200));
+        setMaximumSize(new java.awt.Dimension(182, 208));
+        setMinimumSize(new java.awt.Dimension(182, 208));
+        setPreferredSize(new java.awt.Dimension(182, 208));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         addToCartBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 16)); // NOI18N

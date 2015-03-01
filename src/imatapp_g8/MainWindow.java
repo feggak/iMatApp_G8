@@ -24,10 +24,6 @@ public class MainWindow extends javax.swing.JFrame {
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/appicon.png")).getImage());
         initComponents();
     }
-    
-    public void setPanel() {
-        contentPanel.add(this);
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,6 +50,7 @@ public class MainWindow extends javax.swing.JFrame {
         contentPanel = new javax.swing.JPanel();
         featuredPanel = new imatapp_g8.FeaturedPanel();
         shopPanel = new imatapp_g8.ShopPanel();
+        detailedPanel = new imatapp_g8.DetailedPanel();
         breadcrumbs = new imatapp_g8.Breadcrumbs();
         loginPopup = new imatapp_g8.LoginPopup();
         menuBar = new javax.swing.JMenuBar();
@@ -92,6 +89,11 @@ public class MainWindow extends javax.swing.JFrame {
         storeBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/red_icon_rollover.png"))); // NOI18N
         storeBtn.setSelected(true);
         storeBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/red_icon_selected.png"))); // NOI18N
+        storeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                storeBtnActionPerformed(evt);
+            }
+        });
         topPanel.add(storeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 46));
 
         recipeBtn.setFont(new java.awt.Font("Myriad Pro", 0, 22)); // NOI18N
@@ -217,9 +219,10 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(categoryPanel);
         categoryPanel.setBounds(0, 47, 220, 681);
 
-        contentPanel.setLayout(new java.awt.CardLayout());
-        contentPanel.add(featuredPanel, "card2");
-        contentPanel.add(shopPanel, "card3");
+        contentPanel.setLayout(new java.awt.BorderLayout());
+        contentPanel.add(featuredPanel, java.awt.BorderLayout.CENTER);
+        contentPanel.add(shopPanel, java.awt.BorderLayout.CENTER);
+        contentPanel.add(detailedPanel, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(contentPanel);
         contentPanel.setBounds(220, 47, 930, 680);
@@ -250,6 +253,14 @@ public class MainWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void storeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeBtnActionPerformed
+        contentPanel.removeAll();
+        contentPanel.add(new FeaturedPanel());
+        contentPanel.revalidate();
+        storeBtn.setSelected(true);
+        recipeBtn.setSelected(false);
+    }//GEN-LAST:event_storeBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,7 +306,8 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel cartLabel;
     private imatapp_g8.CategoryPanel categoryPanel;
     private javax.swing.JButton checkoutBtn;
-    private javax.swing.JPanel contentPanel;
+    protected static javax.swing.JPanel contentPanel;
+    private imatapp_g8.DetailedPanel detailedPanel;
     private imatapp_g8.FeaturedPanel featuredPanel;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
