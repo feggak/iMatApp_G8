@@ -114,6 +114,11 @@ public class MainWindow extends javax.swing.JFrame {
         recipeBtn.setRequestFocusEnabled(false);
         recipeBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/red_icon_rollover.png"))); // NOI18N
         recipeBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/red_icon_selected.png"))); // NOI18N
+        recipeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recipeBtnActionPerformed(evt);
+            }
+        });
         topPanel.add(recipeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 110, 46));
 
         searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
@@ -261,6 +266,10 @@ public class MainWindow extends javax.swing.JFrame {
         storeBtn.setSelected(true);
         recipeBtn.setSelected(false);
     }//GEN-LAST:event_storeBtnActionPerformed
+
+    private void recipeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recipeBtnActionPerformed
+
+    }//GEN-LAST:event_recipeBtnActionPerformed
 
     /**
      * @param args the command line arguments

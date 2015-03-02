@@ -27,21 +27,87 @@ public class ShoppingCart extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        itemsPanel = new javax.swing.JPanel();
+        summaryPanel = new javax.swing.JPanel();
+        checkoutBtn2 = new javax.swing.JButton();
+        totalPriceLabel = new javax.swing.JLabel();
+
         setPreferredSize(new java.awt.Dimension(276, 576));
+
+        itemsPanel.setBackground(new java.awt.Color(255, 255, 255));
+        itemsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        itemsPanel.setLayout(new java.awt.GridLayout(0, 1));
+
+        summaryPanel.setBackground(new java.awt.Color(204, 204, 204));
+        summaryPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        checkoutBtn2.setFont(new java.awt.Font("Myriad Pro Light", 0, 17)); // NOI18N
+        checkoutBtn2.setForeground(new java.awt.Color(255, 255, 255));
+        checkoutBtn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon.png"))); // NOI18N
+        checkoutBtn2.setText("Till kassan");
+        checkoutBtn2.setAlignmentY(0.0F);
+        checkoutBtn2.setBorder(null);
+        checkoutBtn2.setBorderPainted(false);
+        checkoutBtn2.setContentAreaFilled(false);
+        checkoutBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        checkoutBtn2.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        checkoutBtn2.setDefaultCapable(false);
+        checkoutBtn2.setFocusPainted(false);
+        checkoutBtn2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        checkoutBtn2.setIconTextGap(0);
+        checkoutBtn2.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        checkoutBtn2.setMaximumSize(new java.awt.Dimension(110, 46));
+        checkoutBtn2.setMinimumSize(new java.awt.Dimension(110, 46));
+        checkoutBtn2.setPreferredSize(new java.awt.Dimension(110, 46));
+        checkoutBtn2.setRequestFocusEnabled(false);
+        checkoutBtn2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_rollover.png"))); // NOI18N
+        checkoutBtn2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_selected.png"))); // NOI18N
+
+        totalPriceLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        totalPriceLabel.setText("Totalpris: 200 kr");
+
+        javax.swing.GroupLayout summaryPanelLayout = new javax.swing.GroupLayout(summaryPanel);
+        summaryPanel.setLayout(summaryPanelLayout);
+        summaryPanelLayout.setHorizontalGroup(
+            summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, summaryPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(totalPriceLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(checkoutBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        summaryPanelLayout.setVerticalGroup(
+            summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, summaryPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkoutBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(totalPriceLabel))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 276, Short.MAX_VALUE)
+            .addComponent(itemsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(summaryPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 485, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(itemsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(summaryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton checkoutBtn2;
+    private javax.swing.JPanel itemsPanel;
+    private javax.swing.JPanel summaryPanel;
+    private javax.swing.JLabel totalPriceLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,8 +23,9 @@ public class ShoppingCartItem extends javax.swing.JPanel {
     
     public ShoppingCartItem(Product prod) {
         initComponents();
-        jLabel1.setIcon(MainWindow.db.getImageIcon(prod, 300, 225));
-        jLabel2.setText("" + prod.getPrice());
+        iconLabel.setIcon(MainWindow.db.getImageIcon(prod, 80, 80));
+        priceLabel.setText("" + prod.getPrice());
+        nameLabel.setText(prod.getName());
     }
     
 
@@ -37,33 +38,40 @@ public class ShoppingCartItem extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        iconLabel = new javax.swing.JLabel();
+        removeButton = new javax.swing.JButton();
+        nameLabel = new javax.swing.JLabel();
+        priceLabel = new javax.swing.JLabel();
 
         setBackground(java.awt.Color.white);
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setMaximumSize(new java.awt.Dimension(276, 276));
-        setMinimumSize(new java.awt.Dimension(276, 276));
-        setPreferredSize(new java.awt.Dimension(276, 276));
+        setMaximumSize(new java.awt.Dimension(276, 100));
+        setMinimumSize(new java.awt.Dimension(276, 100));
+        setPreferredSize(new java.awt.Dimension(276, 100));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(java.awt.Color.orange);
-        jLabel1.setOpaque(true);
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 80));
+        iconLabel.setBackground(java.awt.Color.orange);
+        iconLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        iconLabel.setOpaque(true);
+        add(iconLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 80));
 
-        jButton1.setText("Ta Bort");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, -1, -1));
+        removeButton.setText("Ta Bort");
+        add(removeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("<Pris>");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 80, 30));
+        nameLabel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        nameLabel.setText("Mjölk");
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 160, -1));
+
+        priceLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        priceLabel.setText("20 kr");
+        add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel iconLabel;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel priceLabel;
+    private javax.swing.JButton removeButton;
     // End of variables declaration//GEN-END:variables
 }
