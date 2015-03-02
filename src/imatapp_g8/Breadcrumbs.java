@@ -6,6 +6,7 @@
 package imatapp_g8;
 
 import javax.swing.JLabel;
+import se.chalmers.ait.dat215.project.ProductCategory;
 
 /**
  *
@@ -13,11 +14,14 @@ import javax.swing.JLabel;
  */
 public class Breadcrumbs extends javax.swing.JPanel {
 
+    Controller controller;
+    
     /**
      * Creates new form Breadcrumbs
      */
     public Breadcrumbs() {
         initComponents();
+        controller = Controller.getInstance();
     }
     
     public void updateLabels(String one, String two, String three) {
@@ -29,16 +33,20 @@ public class Breadcrumbs extends javax.swing.JPanel {
         }
         // Update SECOND set
         if (two == null) {
+            arrow1.setText("");
             second.setText("");
         }
         if (!two.equals("KEEP")) {
-            second.setText("> " + two);
+            arrow1.setText(">");
+            second.setText(two);
         } else {}
         // Update THIRD set
         if (three == null) {
+            arrow2.setText("");
             third.setText("");
         } else {
-            third.setText("> " + three);
+            arrow2.setText(">");
+            third.setText(three);
         }
     }
 
@@ -52,7 +60,9 @@ public class Breadcrumbs extends javax.swing.JPanel {
     private void initComponents() {
 
         first = new javax.swing.JLabel();
+        arrow1 = new javax.swing.JLabel();
         second = new javax.swing.JLabel();
+        arrow2 = new javax.swing.JLabel();
         third = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -63,20 +73,54 @@ public class Breadcrumbs extends javax.swing.JPanel {
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         first.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
-        first.setText("first >");
+        first.setText("first");
+        first.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        first.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                firstMouseClicked(evt);
+            }
+        });
         add(first);
 
+        arrow1.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
+        arrow1.setText(">");
+        add(arrow1);
+
         second.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
-        second.setText("second >");
+        second.setText("second");
+        second.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        second.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                secondMouseClicked(evt);
+            }
+        });
         add(second);
+
+        arrow2.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
+        arrow2.setText(">");
+        add(arrow2);
 
         third.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
         third.setText("third");
         add(third);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void secondMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_secondMouseClicked
+        controller.updateBreadcrumbs("Butik","KEEP",null);
+        controller.showPreviousShopCategory();
+    }//GEN-LAST:event_secondMouseClicked
+
+    private void firstMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_firstMouseClicked
+        if (first.getText().equals("Butik")) {
+            controller.hideBreadcrumbs();
+            controller.showFeatured();
+        }
+    }//GEN-LAST:event_firstMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel arrow1;
+    private javax.swing.JLabel arrow2;
     private javax.swing.JLabel first;
     private javax.swing.JLabel second;
     private javax.swing.JLabel third;

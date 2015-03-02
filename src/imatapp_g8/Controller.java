@@ -16,7 +16,7 @@ public class Controller {
     private static Controller instance = null;
     
     // Variables declaration
-    private ProductCategory breadcrumbSet2Category;
+    private ProductCategory currentCategory;
     
     private Controller() {}
     
@@ -53,13 +53,20 @@ public class Controller {
     public void showShopAllProducts() {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new ShopPanel("all"));
-        MainWindow.contentPanel.repaint();
+        MainWindow.contentPanel.revalidate();
     }
     
     public void showShopCategory(ProductCategory category) {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new ShopPanel(category));
-        MainWindow.contentPanel.repaint();
+        MainWindow.contentPanel.revalidate();
+        currentCategory = category;
+    }
+    
+    public void showPreviousShopCategory() {
+        MainWindow.contentPanel.removeAll();
+        MainWindow.contentPanel.add(new ShopPanel(currentCategory));
+        MainWindow.contentPanel.revalidate();
     }
     
     public void showDetails(Product product) {
