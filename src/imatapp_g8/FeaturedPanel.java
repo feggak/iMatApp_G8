@@ -12,25 +12,16 @@ import se.chalmers.ait.dat215.project.*;
  *
  * @author frellAn
  */
-public class ShopPanel extends javax.swing.JPanel {
+public class FeaturedPanel extends javax.swing.JPanel {
     
     // Custom variable declaration
 
     /**
      * Creates new form ShopPanel
      */
-    public ShopPanel() {
+    public FeaturedPanel() {
         initComponents();
-    }
-    
-    public ShopPanel(String all) {
-        initComponents();
-        fillGrid(MainWindow.db.getProducts());
-    }
-    
-    public ShopPanel(ProductCategory category) {
-        initComponents();
-        fillGrid(MainWindow.db.getProducts(category));
+        // fillGrid(MainWindow.db.getProducts(ProductCategory.NUTS_AND_SEEDS));
     }
     
     public void fillGrid(List<Product> items) {
@@ -48,31 +39,41 @@ public class ShopPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        productGridScrollPane = new javax.swing.JScrollPane();
+        shopBannerIcon = new javax.swing.JLabel();
+        mainTitle = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         productGrid = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(930, 32767));
-        setMinimumSize(new java.awt.Dimension(930, 630));
+        setMinimumSize(new java.awt.Dimension(930, 650));
         setPreferredSize(new java.awt.Dimension(930, 630));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        productGridScrollPane.setBorder(null);
-        productGridScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        shopBannerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/banner.png"))); // NOI18N
+        shopBannerIcon.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        add(shopBannerIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        mainTitle.setFont(new java.awt.Font("Myriad Pro", 0, 22)); // NOI18N
+        mainTitle.setText("Kampanjvaror");
+        add(mainTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 208, -1, -1));
+
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 232, 918, 10));
 
         productGrid.setBackground(new java.awt.Color(255, 255, 255));
         productGrid.setAlignmentX(0.0F);
         productGrid.setAlignmentY(0.0F);
-        productGrid.setMaximumSize(new java.awt.Dimension(920, 590));
+        productGrid.setAutoscrolls(true);
         productGrid.setLayout(new java.awt.GridLayout(0, 5));
-        productGridScrollPane.setViewportView(productGrid);
-
-        add(productGridScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 920, 590));
+        add(productGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 238, 910, 435));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel mainTitle;
     private javax.swing.JPanel productGrid;
-    private javax.swing.JScrollPane productGridScrollPane;
+    private javax.swing.JLabel shopBannerIcon;
     // End of variables declaration//GEN-END:variables
 }

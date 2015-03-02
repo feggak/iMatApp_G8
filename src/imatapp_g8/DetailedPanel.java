@@ -13,11 +13,9 @@ import se.chalmers.ait.dat215.project.*;
  */
 public class DetailedPanel extends javax.swing.JPanel {
     
-    /////////////////////////////////FÖR TEST-ÄNDAMÅL
-    IMatDataHandler imdh = IMatDataHandler.getInstance();
-    /////////////////////////////////FÖR TEST-ÄNDAMÅL
-    
-    
+    Controller tempController = Controller.getInstance();
+    Product prod;
+
     /**
      * Creates new form DetailedPanel
      */
@@ -26,15 +24,13 @@ public class DetailedPanel extends javax.swing.JPanel {
     }
     
     public DetailedPanel(Product prod) {
-        
-        /////////////////////////////////FÖR TEST-ÄNDAMÅL
         initComponents();
-        jLabel1.setIcon(imdh.getImageIcon(prod, 300, 300));
-        jLabel2.setText(prod.getName());
-        jTextArea1.setText("Det här är " + prod.getName() + " och tillhör kategorin " + prod.getCategory());
-        jLabel3.setText("Pris: " + prod.getPrice() + " " + prod.getUnit());
-        jLabel6.setText("Jmf pris: " + prod.getPrice() + " " + prod.getUnit());
-        /////////////////////////////////FÖR TEST-ÄNDAMÅL
+        productIcon.setIcon(MainWindow.db.getImageIcon(prod, 300, 225));
+        productTitleLabel.setText(prod.getName());
+        priceLabel.setText("Pris: " + prod.getPrice() + " " + prod.getUnit());
+        altPriceLabel.setText("Jmf pris: " + prod.getPrice() + " " + prod.getUnit());
+        
+        this.prod = prod;
     }
 
     /**
@@ -46,136 +42,120 @@ public class DetailedPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        productIcon = new javax.swing.JLabel();
+        mainInfoPanel = new javax.swing.JPanel();
+        infoScrollPane = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        productTitleLabel = new javax.swing.JLabel();
+        infoHeaderLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jPanel2 = new javax.swing.JPanel();
+        buyPanel = new javax.swing.JPanel();
         jSpinner1 = new javax.swing.JSpinner();
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        priceLabel = new javax.swing.JLabel();
+        altPriceLabel = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
+        returnButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(930, 650));
-        setPreferredSize(new java.awt.Dimension(930, 650));
+        setMaximumSize(new java.awt.Dimension(930, 630));
+        setMinimumSize(new java.awt.Dimension(930, 630));
+        setPreferredSize(new java.awt.Dimension(930, 630));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(java.awt.Color.orange);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imatapp_g8/banan 300.jpg"))); // NOI18N
-        jLabel1.setText("BILD");
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel1.setOpaque(true);
+        productIcon.setBackground(java.awt.Color.orange);
+        productIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        productIcon.setOpaque(true);
+        add(productIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 300, 225));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        mainInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
+        mainInfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jScrollPane1.setBorder(null);
+        infoScrollPane.setBorder(null);
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Bananer från Brasilien................................................................................................................................................................................................................................................");
+        jTextArea1.setText("...");
         jTextArea1.setBorder(null);
-        jScrollPane1.setViewportView(jTextArea1);
+        infoScrollPane.setViewportView(jTextArea1);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Produktinformation:");
+        mainInfoPanel.add(infoScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 109, 509, 300));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel2.setText("BANAN");
-        jLabel2.setOpaque(true);
+        productTitleLabel.setBackground(new java.awt.Color(255, 255, 255));
+        productTitleLabel.setFont(new java.awt.Font("Myriad Pro Light", 0, 36)); // NOI18N
+        productTitleLabel.setText("<Varunamn>");
+        productTitleLabel.setOpaque(true);
+        mainInfoPanel.add(productTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 293, -1));
+
+        infoHeaderLabel.setFont(new java.awt.Font("Myriad Pro Light", 0, 18)); // NOI18N
+        infoHeaderLabel.setText("Produktinformation:");
+        mainInfoPanel.add(infoHeaderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 70, -1, -1));
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        mainInfoPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 96, 519, 10));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 216, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        add(mainInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 45, -1, -1));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        buyPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("KÖP");
+        jButton1.setFont(new java.awt.Font("Myriad Pro Light", 0, 18)); // NOI18N
+        jButton1.setText("Lägg till");
 
         jLabel5.setText("st");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Pris: 30,00 kr");
+        priceLabel.setFont(new java.awt.Font("Myriad Pro", 1, 18)); // NOI18N
+        priceLabel.setText("Pris: <Pris> kr");
 
-        jLabel6.setText("Jmf pris: 57,00 kr/kg");
+        altPriceLabel.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
+        altPriceLabel.setText("Jmf pris: <Pris> kr/kg");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout buyPanelLayout = new javax.swing.GroupLayout(buyPanel);
+        buyPanel.setLayout(buyPanelLayout);
+        buyPanelLayout.setHorizontalGroup(
+            buyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buyPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(buyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(buyPanelLayout.createSequentialGroup()
                         .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6))
+                    .addComponent(priceLabel)
+                    .addComponent(altPriceLabel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        buyPanelLayout.setVerticalGroup(
+            buyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buyPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addComponent(priceLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addComponent(altPriceLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(buyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(jButton1))
                 .addContainerGap())
         );
 
+        add(buyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
         jLabel14.setText("Ingår i dessa recept:");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 441, -1, -1));
 
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 461, 890, 10));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -183,68 +163,53 @@ public class DetailedPanel extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 833, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 123, Short.MAX_VALUE)
+            .addGap(0, 130, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator4)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 477, 835, -1));
+
+        returnButton.setText("Tillbaka");
+        returnButton.setActionCommand("Tillbaka");
+        returnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnButtonActionPerformed(evt);
+            }
+        });
+        add(returnButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
+        
+        if(Controller.categoryCheck == 0){
+            tempController.showShopCategory(prod.getCategory());
+        }else{
+            tempController.showShopAllProducts();
+        }
+        
+    }//GEN-LAST:event_returnButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel altPriceLabel;
+    private javax.swing.JPanel buyPanel;
+    private javax.swing.JLabel infoHeaderLabel;
+    private javax.swing.JScrollPane infoScrollPane;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JPanel mainInfoPanel;
+    private javax.swing.JLabel priceLabel;
+    private javax.swing.JLabel productIcon;
+    private javax.swing.JLabel productTitleLabel;
+    private javax.swing.JButton returnButton;
     // End of variables declaration//GEN-END:variables
 }
