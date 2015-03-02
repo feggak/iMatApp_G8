@@ -20,20 +20,25 @@ public class Breadcrumbs extends javax.swing.JPanel {
         initComponents();
     }
     
-    public Breadcrumbs(String first, String second, String third) {
-        initComponents();
-        JLabel one = new JLabel(first);
-        one.setFont(new java.awt.Font("Myriad Pro", 0, 19));
-        add(one);
-        if (second != null) {
-            JLabel two = new JLabel(" > " + second);
-            two.setFont(new java.awt.Font("Myriad Pro", 0, 19));
-            add(two);
+    public void updateLabels(String one, String two, String three) {
+        // Update FIRST set
+        if (one == null) {
+            first.setText("");
+        } else {
+            first.setText(one);
         }
-        if (third != null) {
-            JLabel three = new JLabel(" > " + third);
-            three.setFont(new java.awt.Font("Myriad Pro", 0, 19));
-            add(three);
+        // Update SECOND set
+        if (two == null) {
+            second.setText("");
+        }
+        if (!two.equals("KEEP")) {
+            second.setText("> " + two);
+        } else {}
+        // Update THIRD set
+        if (three == null) {
+            third.setText("");
+        } else {
+            third.setText("> " + three);
         }
     }
 
@@ -46,15 +51,34 @@ public class Breadcrumbs extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        first = new javax.swing.JLabel();
+        second = new javax.swing.JLabel();
+        third = new javax.swing.JLabel();
+
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(930, 32767));
         setMinimumSize(new java.awt.Dimension(930, 0));
         setPreferredSize(new java.awt.Dimension(930, 30));
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        first.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
+        first.setText("first >");
+        add(first);
+
+        second.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
+        second.setText("second >");
+        add(second);
+
+        third.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
+        third.setText("third");
+        add(third);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel first;
+    private javax.swing.JLabel second;
+    private javax.swing.JLabel third;
     // End of variables declaration//GEN-END:variables
 }

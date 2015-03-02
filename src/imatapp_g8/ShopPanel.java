@@ -13,8 +13,6 @@ import se.chalmers.ait.dat215.project.*;
  * @author frellAn
  */
 public class ShopPanel extends javax.swing.JPanel {
-    
-    // Custom variable declaration
 
     /**
      * Creates new form ShopPanel
@@ -69,7 +67,7 @@ public class ShopPanel extends javax.swing.JPanel {
         productGrid.setLayout(new java.awt.GridLayout(0, 5));
         productGridScrollPane.setViewportView(productGrid);
 
-        add(productGridScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 920, 590));
+        add(productGridScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 40, 920, 590));
     }// </editor-fold>//GEN-END:initComponents
 
 

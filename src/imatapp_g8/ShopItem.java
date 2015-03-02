@@ -19,12 +19,15 @@ public class ShopItem extends javax.swing.JPanel {
     private String name;
     private double price;
     private String unit;
+    private Product product;
+    Controller controller;
 
     /**
      * Creates new form ShopItem
      */
     public ShopItem() {
         initComponents();
+        controller = Controller.getInstance();
     }
     
     public ShopItem(Product item) {
@@ -32,7 +35,9 @@ public class ShopItem extends javax.swing.JPanel {
         name = item.getName();
         price = item.getPrice();
         unit = item.getUnit();
+        product = item;
         initComponents();
+        controller = Controller.getInstance();
     }
 
     /**
@@ -74,16 +79,28 @@ public class ShopItem extends javax.swing.JPanel {
         addToCartBtn.setMinimumSize(new java.awt.Dimension(110, 46));
         addToCartBtn.setPreferredSize(new java.awt.Dimension(110, 46));
         addToCartBtn.setRequestFocusEnabled(false);
-        addToCartBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_rollover.png"))); // NOI18N
-        addToCartBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_selected.png"))); // NOI18N
+        addToCartBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/buy_icon_rollover.png"))); // NOI18N
+        addToCartBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/buy_icon_selected.png"))); // NOI18N
         add(addToCartBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 166, 80, 32));
 
         itemIcon.setIcon(icon);
         itemIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        itemIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        itemIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                itemIconMouseClicked(evt);
+            }
+        });
         add(itemIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 0, 160, 120));
 
         itemName.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
         itemName.setText(name);
+        itemName.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        itemName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                itemNameMouseClicked(evt);
+            }
+        });
         add(itemName, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 124, -1, -1));
 
         itemPrice.setFont(new java.awt.Font("Myriad Pro Light", 0, 18)); // NOI18N
@@ -91,6 +108,16 @@ public class ShopItem extends javax.swing.JPanel {
         );
         add(itemPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 143, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void itemIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemIconMouseClicked
+        controller.updateBreadcrumbs("Butik","KEEP",product.getName());
+        controller.showDetails(product);
+    }//GEN-LAST:event_itemIconMouseClicked
+
+    private void itemNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemNameMouseClicked
+        controller.updateBreadcrumbs("Butik","KEEP",product.getName());
+        controller.showDetails(product);
+    }//GEN-LAST:event_itemNameMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

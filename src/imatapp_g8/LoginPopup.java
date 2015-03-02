@@ -78,7 +78,7 @@ public class LoginPopup extends javax.swing.JPanel {
         add(usernameTxt);
         usernameTxt.setBounds(20, 40, 249, 40);
 
-        loginBtn.setFont(new java.awt.Font("Myriad Pro", 0, 24)); // NOI18N
+        loginBtn.setFont(new java.awt.Font("Myriad Pro", 0, 22)); // NOI18N
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/red2_icon.png"))); // NOI18N
         loginBtn.setText("Logga in");
@@ -160,6 +160,7 @@ public class LoginPopup extends javax.swing.JPanel {
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
+        controller.updateBreadcrumbs("Registrering",null,null);
         controller.showRegister();
     }//GEN-LAST:event_registerBtnActionPerformed
 

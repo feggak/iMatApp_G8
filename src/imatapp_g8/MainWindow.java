@@ -25,6 +25,7 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         loginPopup.setVisible(false);
         breadcrumbs.setVisible(false);
+        categoryPanel.resetAllFontsExceptStart();
     }
 
     /**
@@ -49,12 +50,12 @@ public class MainWindow extends javax.swing.JFrame {
         checkoutBtn = new javax.swing.JButton();
         cartBtn = new javax.swing.JButton();
         loginBtn = new javax.swing.JButton();
-        breadcrumbs = new imatapp_g8.Breadcrumbs();
         categoryPanel = new imatapp_g8.CategoryPanel();
+        breadcrumbs = new imatapp_g8.Breadcrumbs();
         contentPanel = new javax.swing.JPanel();
-        featuredPanel = new imatapp_g8.FeaturedPanel();
-        shopPanel = new imatapp_g8.ShopPanel();
         detailedPanel = new imatapp_g8.DetailedPanel();
+        shopPanel = new imatapp_g8.ShopPanel();
+        featuredPanel = new imatapp_g8.FeaturedPanel();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -224,18 +225,16 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(topPanel);
         topPanel.setBounds(0, 0, 1150, 47);
 
-        breadcrumbs.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(breadcrumbs);
-        breadcrumbs.setBounds(220, 47, 930, 30);
-
         categoryPanel.setPreferredSize(new java.awt.Dimension(220, 550));
         getContentPane().add(categoryPanel);
         categoryPanel.setBounds(0, 47, 220, 681);
+        getContentPane().add(breadcrumbs);
+        breadcrumbs.setBounds(220, 47, 930, 30);
 
         contentPanel.setLayout(new java.awt.BorderLayout());
-        contentPanel.add(featuredPanel, java.awt.BorderLayout.CENTER);
-        contentPanel.add(shopPanel, java.awt.BorderLayout.CENTER);
         contentPanel.add(detailedPanel, java.awt.BorderLayout.CENTER);
+        contentPanel.add(shopPanel, java.awt.BorderLayout.CENTER);
+        contentPanel.add(featuredPanel, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(contentPanel);
         contentPanel.setBounds(220, 47, 930, 680);
@@ -255,6 +254,7 @@ public class MainWindow extends javax.swing.JFrame {
         contentPanel.removeAll();
         contentPanel.add(new FeaturedPanel());
         contentPanel.revalidate();
+        categoryPanel.resetAllFontsExceptStart();
         storeBtn.setSelected(true);
         recipeBtn.setSelected(false);
     }//GEN-LAST:event_storeBtnActionPerformed

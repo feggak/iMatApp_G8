@@ -5,6 +5,10 @@
  */
 package imatapp_g8;
 
+import java.awt.Font;
+import java.awt.font.TextAttribute;
+import java.util.Map;
+import javax.swing.JButton;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
 /**
@@ -22,6 +26,40 @@ public class CategoryPanel extends javax.swing.JPanel {
         initComponents();
         resetAllFonts();
         controller = Controller.getInstance();
+    }
+    
+    public void makeBoldAndUnderlined(JButton label) {
+        Font font = label.getFont();
+        Map attributes = font.getAttributes();
+        attributes.put(TextAttribute.WEIGHT,TextAttribute.WEIGHT_BOLD);
+        attributes.put(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE_ON);
+        label.setFont(font.deriveFont(attributes));
+    }
+    
+    public void resetAllFontsExceptStart() {
+        makeBoldAndUnderlined(kampanjBtn);
+        baljvaxtBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        berryBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        breadBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        cabbageBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        citrusBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        dairytBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        drinkColdBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        drinkHotBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        exoticFruitBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        fishBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        flourSugarSaltBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        herbBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        meatBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        melonBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        nutsSeedsBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        pastaBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        potatoRiceBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        rootBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        showAllBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        stoneFruitBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        sweetBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        vegetableBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
     }
     
     public void resetAllFonts() {
@@ -535,161 +573,161 @@ public class CategoryPanel extends javax.swing.JPanel {
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Baljväxter",null);
         controller.showShopCategory(ProductCategory.POD);
-        baljvaxtBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(baljvaxtBtn);
     }//GEN-LAST:event_baljvaxtBtnActionPerformed
 
     private void showAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAllBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Alla produkter",null);
         controller.showShopAllProducts();
-        showAllBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(showAllBtn);
     }//GEN-LAST:event_showAllBtnActionPerformed
 
     private void kampanjBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kampanjBtnActionPerformed
         resetAllFonts();
         controller.hideBreadcrumbs();
         controller.showFeatured();
-        kampanjBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(kampanjBtn);
     }//GEN-LAST:event_kampanjBtnActionPerformed
 
     private void breadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_breadBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Bröd",null);
         controller.showShopCategory(ProductCategory.BREAD);
-        breadBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(breadBtn);
     }//GEN-LAST:event_breadBtnActionPerformed
 
     private void berryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_berryBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Bär",null);
         controller.showShopCategory(ProductCategory.BERRY);
-        berryBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(berryBtn);
     }//GEN-LAST:event_berryBtnActionPerformed
 
     private void citrusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_citrusBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Citrusfrukter",null);
         controller.showShopCategory(ProductCategory.CITRUS_FRUIT);
-        citrusBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(citrusBtn);
     }//GEN-LAST:event_citrusBtnActionPerformed
 
     private void drinkHotBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drinkHotBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Drycker varma",null);
         controller.showShopCategory(ProductCategory.HOT_DRINKS);
-        drinkHotBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(drinkHotBtn);
     }//GEN-LAST:event_drinkHotBtnActionPerformed
 
     private void drinkColdBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drinkColdBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Drycker kalla",null);
         controller.showShopCategory(ProductCategory.COLD_DRINKS);
-        drinkColdBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(drinkColdBtn);
     }//GEN-LAST:event_drinkColdBtnActionPerformed
 
     private void exoticFruitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exoticFruitBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Exotiska frukter",null);
         controller.showShopCategory(ProductCategory.EXOTIC_FRUIT);
-        exoticFruitBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(exoticFruitBtn);
     }//GEN-LAST:event_exoticFruitBtnActionPerformed
 
     private void fishBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fishBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Fisk",null);
         controller.showShopCategory(ProductCategory.FISH);
-        fishBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(fishBtn);
     }//GEN-LAST:event_fishBtnActionPerformed
 
     private void vegetableBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vegetableBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Grönsaker",null);
         controller.showShopCategory(ProductCategory.VEGETABLE_FRUIT);
-        vegetableBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(vegetableBtn);
     }//GEN-LAST:event_vegetableBtnActionPerformed
 
     private void cabbageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cabbageBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Kål",null);
         controller.showShopCategory(ProductCategory.CABBAGE);
-        cabbageBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(cabbageBtn);
     }//GEN-LAST:event_cabbageBtnActionPerformed
 
     private void meatBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meatBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Kött",null);
         controller.showShopCategory(ProductCategory.MEAT);
-        meatBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(meatBtn);
     }//GEN-LAST:event_meatBtnActionPerformed
 
     private void dairytBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dairytBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Mejeriprodukter",null);
         controller.showShopCategory(ProductCategory.DAIRIES);
-        dairytBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(dairytBtn);
     }//GEN-LAST:event_dairytBtnActionPerformed
 
     private void melonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_melonBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Meloner",null);
         controller.showShopCategory(ProductCategory.MELONS);
-        melonBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(melonBtn);
     }//GEN-LAST:event_melonBtnActionPerformed
 
     private void flourSugarSaltBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flourSugarSaltBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Mjöl, socker och salt",null);
         controller.showShopCategory(ProductCategory.FLOUR_SUGAR_SALT);
-        flourSugarSaltBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(flourSugarSaltBtn);
     }//GEN-LAST:event_flourSugarSaltBtnActionPerformed
 
     private void nutsSeedsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nutsSeedsBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Nötter och frön",null);
         controller.showShopCategory(ProductCategory.NUTS_AND_SEEDS);
-        nutsSeedsBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(nutsSeedsBtn);
     }//GEN-LAST:event_nutsSeedsBtnActionPerformed
 
     private void pastaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pastaBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Pasta",null);
         controller.showShopCategory(ProductCategory.PASTA);
-        pastaBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(pastaBtn);
     }//GEN-LAST:event_pastaBtnActionPerformed
 
     private void potatoRiceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_potatoRiceBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Potatis och ris",null);
         controller.showShopCategory(ProductCategory.POTATO_RICE);
-        potatoRiceBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(potatoRiceBtn);
     }//GEN-LAST:event_potatoRiceBtnActionPerformed
 
     private void rootBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rootBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Rotfrukter",null);
         controller.showShopCategory(ProductCategory.ROOT_VEGETABLE);
-        rootBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(rootBtn);
     }//GEN-LAST:event_rootBtnActionPerformed
 
     private void stoneFruitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stoneFruitBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Stenfrukter",null);
         controller.showShopCategory(ProductCategory.FRUIT);
-        stoneFruitBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(stoneFruitBtn);
     }//GEN-LAST:event_stoneFruitBtnActionPerformed
 
     private void sweetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sweetBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Sötsaker",null);
         controller.showShopCategory(ProductCategory.SWEET);
-        sweetBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(sweetBtn);
     }//GEN-LAST:event_sweetBtnActionPerformed
 
     private void herbBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_herbBtnActionPerformed
         resetAllFonts();
         controller.updateBreadcrumbs("Butik","Örtkryddor",null);
         controller.showShopCategory(ProductCategory.HERB);
-        herbBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(herbBtn);
     }//GEN-LAST:event_herbBtnActionPerformed
 
 
