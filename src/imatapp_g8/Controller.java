@@ -24,6 +24,17 @@ public class Controller {
         return instance;
     }
     
+    public void hideBreadcrumbs() {
+        MainWindow.breadcrumbs.removeAll();
+        MainWindow.breadcrumbs.setVisible(false);
+    }
+    
+    public void updateBreadcrumbs(String one, String two, String three) {
+        MainWindow.breadcrumbs.removeAll();
+        MainWindow.breadcrumbs.add(new Breadcrumbs(one,two,three));
+        MainWindow.breadcrumbs.setVisible(true);
+    }
+    
     public void showFeatured() {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new FeaturedPanel());

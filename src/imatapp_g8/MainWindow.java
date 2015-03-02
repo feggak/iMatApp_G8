@@ -24,6 +24,7 @@ public class MainWindow extends javax.swing.JFrame {
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/appicon.png")).getImage());
         initComponents();
         loginPopup.setVisible(false);
+        breadcrumbs.setVisible(false);
     }
 
     /**
@@ -223,17 +224,7 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(topPanel);
         topPanel.setBounds(0, 0, 1150, 47);
 
-        javax.swing.GroupLayout breadcrumbsLayout = new javax.swing.GroupLayout(breadcrumbs);
-        breadcrumbs.setLayout(breadcrumbsLayout);
-        breadcrumbsLayout.setHorizontalGroup(
-            breadcrumbsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 930, Short.MAX_VALUE)
-        );
-        breadcrumbsLayout.setVerticalGroup(
-            breadcrumbsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 29, Short.MAX_VALUE)
-        );
-
+        breadcrumbs.setLayout(new java.awt.BorderLayout());
         getContentPane().add(breadcrumbs);
         breadcrumbs.setBounds(220, 47, 930, 30);
 
@@ -313,12 +304,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel arrowIcon;
-    private imatapp_g8.Breadcrumbs breadcrumbs;
+    protected static imatapp_g8.Breadcrumbs breadcrumbs;
     private javax.swing.JButton cartBtn;
     private javax.swing.JLabel cartIcon;
     private javax.swing.JLabel cartInfoLabel;
     private javax.swing.JLabel cartLabel;
-    private imatapp_g8.CategoryPanel categoryPanel;
+    protected static imatapp_g8.CategoryPanel categoryPanel;
     private javax.swing.JButton checkoutBtn;
     protected static javax.swing.JPanel contentPanel;
     private imatapp_g8.DetailedPanel detailedPanel;
