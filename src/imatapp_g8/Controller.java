@@ -15,13 +15,20 @@ public class Controller {
     
     private static Controller instance = null;
     
-    private Controller() {}
+    private Controller() {
+    }
     
     public static synchronized Controller getInstance() {
         if (instance == null) {
             instance = new Controller();
         }
         return instance;
+    }
+    
+    public void toggleLoginOrNameBtn(boolean b){//false = login, true = name
+        MainWindow.setIfloggedIn(b);
+        MainWindow.set_toggleLoginBtn();
+        
     }
     
     public void showFeatured() {
