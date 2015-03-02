@@ -30,6 +30,13 @@ public class Controller {
         MainWindow.contentPanel.revalidate();
     }
     
+    public void showRegister() {
+        MainWindow.contentPanel.removeAll();
+        MainWindow.loginPopup.setVisible(false);
+        MainWindow.contentPanel.add(new Register());
+        MainWindow.contentPanel.revalidate();
+    }
+    
     public void showShopAllProducts() {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new ShopPanel("all"));

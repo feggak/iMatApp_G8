@@ -23,6 +23,7 @@ public class MainWindow extends javax.swing.JFrame {
         db = IMatDataHandler.getInstance();
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/appicon.png")).getImage());
         initComponents();
+        loginPopup.setVisible(false);
     }
 
     /**
@@ -34,6 +35,7 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        loginPopup = new imatapp_g8.LoginPopup();
         topPanel = new javax.swing.JPanel();
         storeBtn = new javax.swing.JButton();
         recipeBtn = new javax.swing.JButton();
@@ -46,13 +48,12 @@ public class MainWindow extends javax.swing.JFrame {
         checkoutBtn = new javax.swing.JButton();
         cartBtn = new javax.swing.JButton();
         loginBtn = new javax.swing.JButton();
+        breadcrumbs = new imatapp_g8.Breadcrumbs();
         categoryPanel = new imatapp_g8.CategoryPanel();
         contentPanel = new javax.swing.JPanel();
         featuredPanel = new imatapp_g8.FeaturedPanel();
         shopPanel = new imatapp_g8.ShopPanel();
         detailedPanel = new imatapp_g8.DetailedPanel();
-        breadcrumbs = new imatapp_g8.Breadcrumbs();
-        loginPopup = new imatapp_g8.LoginPopup();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -65,6 +66,8 @@ public class MainWindow extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1156, 720));
         setResizable(false);
         getContentPane().setLayout(null);
+        getContentPane().add(loginPopup);
+        loginPopup.setBounds(669, 31, 290, 260);
 
         topPanel.setBackground(new java.awt.Color(226, 87, 76));
         topPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -210,22 +213,15 @@ public class MainWindow extends javax.swing.JFrame {
         loginBtn.setRequestFocusEnabled(false);
         loginBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_rollover.png"))); // NOI18N
         loginBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_selected.png"))); // NOI18N
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
         topPanel.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(752, 6, 118, 36));
 
         getContentPane().add(topPanel);
         topPanel.setBounds(0, 0, 1150, 47);
-
-        categoryPanel.setPreferredSize(new java.awt.Dimension(220, 550));
-        getContentPane().add(categoryPanel);
-        categoryPanel.setBounds(0, 47, 220, 681);
-
-        contentPanel.setLayout(new java.awt.BorderLayout());
-        contentPanel.add(featuredPanel, java.awt.BorderLayout.CENTER);
-        contentPanel.add(shopPanel, java.awt.BorderLayout.CENTER);
-        contentPanel.add(detailedPanel, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(contentPanel);
-        contentPanel.setBounds(220, 47, 930, 680);
 
         javax.swing.GroupLayout breadcrumbsLayout = new javax.swing.GroupLayout(breadcrumbs);
         breadcrumbs.setLayout(breadcrumbsLayout);
@@ -240,8 +236,18 @@ public class MainWindow extends javax.swing.JFrame {
 
         getContentPane().add(breadcrumbs);
         breadcrumbs.setBounds(220, 47, 930, 30);
-        getContentPane().add(loginPopup);
-        loginPopup.setBounds(645, 34, 350, 300);
+
+        categoryPanel.setPreferredSize(new java.awt.Dimension(220, 550));
+        getContentPane().add(categoryPanel);
+        categoryPanel.setBounds(0, 47, 220, 681);
+
+        contentPanel.setLayout(new java.awt.BorderLayout());
+        contentPanel.add(featuredPanel, java.awt.BorderLayout.CENTER);
+        contentPanel.add(shopPanel, java.awt.BorderLayout.CENTER);
+        contentPanel.add(detailedPanel, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(contentPanel);
+        contentPanel.setBounds(220, 47, 930, 680);
 
         jMenu1.setText("File");
         menuBar.add(jMenu1);
@@ -261,6 +267,14 @@ public class MainWindow extends javax.swing.JFrame {
         storeBtn.setSelected(true);
         recipeBtn.setSelected(false);
     }//GEN-LAST:event_storeBtnActionPerformed
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        if (!loginPopup.isVisible()) {
+            loginPopup.setVisible(true);
+        } else {
+            loginPopup.setVisible(false);
+        }
+    }//GEN-LAST:event_loginBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,7 +326,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JButton loginBtn;
-    private imatapp_g8.LoginPopup loginPopup;
+    protected static imatapp_g8.LoginPopup loginPopup;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JButton recipeBtn;
     private javax.swing.JTextField searchField;

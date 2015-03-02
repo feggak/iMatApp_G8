@@ -59,6 +59,8 @@ public class ShopPanel extends javax.swing.JPanel {
 
         productGridScrollPane.setBorder(null);
         productGridScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        productGridScrollPane.setMaximumSize(new java.awt.Dimension(920, 590));
+        productGridScrollPane.setMinimumSize(new java.awt.Dimension(920, 5));
 
         productGrid.setBackground(new java.awt.Color(255, 255, 255));
         productGrid.setAlignmentX(0.0F);

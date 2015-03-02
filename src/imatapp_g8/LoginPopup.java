@@ -11,19 +11,16 @@ import java.awt.Color;
  *
  * @author rasmusdavidsson
  */
-public class LoginPopup extends javax.swing.JPanel implements java.beans.Customizer {
+public class LoginPopup extends javax.swing.JPanel {
     
-    private Object bean;
+    Controller controller;
 
     /**
      * Creates new customizer LoginPopup
      */
     public LoginPopup() {
         initComponents();
-    }
-    
-    public void setObject(Object bean) {
-        this.bean = bean;
+        controller = Controller.getInstance();
     }
 
     /**
@@ -38,39 +35,50 @@ public class LoginPopup extends javax.swing.JPanel implements java.beans.Customi
         usernameTxt = new javax.swing.JTextField();
         loginBtn = new javax.swing.JButton();
         registerBtn = new javax.swing.JButton();
-        forgottenPwBtn = new javax.swing.JButton();
+        forgottenPwdBtn = new javax.swing.JButton();
         backgroundLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(350, 300));
         setMinimumSize(new java.awt.Dimension(350, 300));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(350, 300));
-        setSize(new java.awt.Dimension(350, 320));
         setLayout(null);
 
         passWtxt.setFont(new java.awt.Font("Helvetica", 0, 13)); // NOI18N
         passWtxt.setForeground(new java.awt.Color(153, 153, 153));
         passWtxt.setText("Lösenord..");
+        passWtxt.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 8, 1, 8)));
+        passWtxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passWtxtFocusLost(evt);
+            }
+        });
         passWtxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 passWtxtMouseClicked(evt);
             }
         });
         add(passWtxt);
-        passWtxt.setBounds(20, 100, 290, 50);
+        passWtxt.setBounds(20, 90, 249, 40);
 
         usernameTxt.setFont(new java.awt.Font("Helvetica", 0, 13)); // NOI18N
         usernameTxt.setForeground(new java.awt.Color(153, 153, 153));
         usernameTxt.setText("Användarnamn..");
+        usernameTxt.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 8, 1, 8)));
+        usernameTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                usernameTxtFocusLost(evt);
+            }
+        });
         usernameTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 usernameTxtMouseClicked(evt);
             }
         });
         add(usernameTxt);
-        usernameTxt.setBounds(20, 40, 290, 50);
+        usernameTxt.setBounds(20, 40, 249, 40);
 
-        loginBtn.setFont(new java.awt.Font("Helvetica", 0, 22)); // NOI18N
+        loginBtn.setFont(new java.awt.Font("Myriad Pro", 0, 24)); // NOI18N
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/red2_icon.png"))); // NOI18N
         loginBtn.setText("Logga in");
@@ -88,41 +96,76 @@ public class LoginPopup extends javax.swing.JPanel implements java.beans.Customi
         loginBtn.setRequestFocusEnabled(false);
         loginBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/red2_icon_rollover.png"))); // NOI18N
         loginBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/red2_icon_selected.png"))); // NOI18N
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
         add(loginBtn);
-        loginBtn.setBounds(20, 240, 290, 40);
+        loginBtn.setBounds(20, 140, 249, 40);
 
         registerBtn.setText("Registrera");
-        registerBtn.setBorder(null);
-        registerBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerBtnActionPerformed(evt);
+            }
+        });
         add(registerBtn);
-        registerBtn.setBounds(17, 180, 80, 16);
+        registerBtn.setBounds(20, 195, 120, 30);
 
-        forgottenPwBtn.setText("Glömt lösenord");
-        forgottenPwBtn.setBorder(null);
-        forgottenPwBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(forgottenPwBtn);
-        forgottenPwBtn.setBounds(25, 200, 97, 16);
+        forgottenPwdBtn.setText("Glömt lösenord");
+        add(forgottenPwdBtn);
+        forgottenPwdBtn.setBounds(148, 195, 120, 30);
 
         backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/popup.png"))); // NOI18N
         add(backgroundLabel);
-        backgroundLabel.setBounds(-10, 0, 350, 300);
+        backgroundLabel.setBounds(0, 0, 287, 250);
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameTxtMouseClicked
-
-        usernameTxt.setText("");
-        usernameTxt.setForeground(Color.black);
+        //trycker på användarnamn txt:t
+        if(usernameTxt.getText().equals("Användarnamn..")){
+            usernameTxt.setText("");
+            usernameTxt.setForeground(Color.black);
+        }
     }//GEN-LAST:event_usernameTxtMouseClicked
 
     private void passWtxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passWtxtMouseClicked
-        passWtxt.setText("");
-        passWtxt.setForeground(Color.black);
+        //trycker på password txt:t
+        if(passWtxt.getText().equals("Lösenord..")){
+            passWtxt.setText("");
+            passWtxt.setForeground(Color.black);
+        }
     }//GEN-LAST:event_passWtxtMouseClicked
 
+    private void usernameTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameTxtFocusLost
+        // förlorar focus på användarnamn
+        if(usernameTxt.getText().equals("")){
+           usernameTxt.setForeground(Color.lightGray);
+           usernameTxt.setText("Användarnamn..");
+        }
+    }//GEN-LAST:event_usernameTxtFocusLost
+
+    private void passWtxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passWtxtFocusLost
+        // förlorar focus på lösenord
+        if(passWtxt.getText().equals("")){
+            passWtxt.setForeground(Color.lightGray);
+            passWtxt.setText("Lösenord..");
+        }
+        
+    }//GEN-LAST:event_passWtxtFocusLost
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+
+    }//GEN-LAST:event_loginBtnActionPerformed
+
+    private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
+        controller.showRegister();
+    }//GEN-LAST:event_registerBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLabel;
-    private javax.swing.JButton forgottenPwBtn;
+    private javax.swing.JButton forgottenPwdBtn;
     private javax.swing.JButton loginBtn;
     private javax.swing.JTextField passWtxt;
     private javax.swing.JButton registerBtn;
