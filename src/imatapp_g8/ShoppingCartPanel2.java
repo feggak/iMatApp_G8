@@ -40,6 +40,7 @@ public class ShoppingCartPanel2 extends javax.swing.JPanel {
         itemGrid = new javax.swing.JPanel();
         checkoutBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -59,7 +60,7 @@ public class ShoppingCartPanel2 extends javax.swing.JPanel {
         itemGrid.setLayout(new java.awt.GridLayout(0, 1));
         itemGridScrollPane.setViewportView(itemGrid);
 
-        add(itemGridScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 700, 610));
+        add(itemGridScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 700, 570));
 
         checkoutBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 17)); // NOI18N
         checkoutBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -92,6 +93,10 @@ public class ShoppingCartPanel2 extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Totalsumma: 850.0 kr");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 550, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setText("Produkter i kundvagnen:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
@@ -104,5 +109,6 @@ public class ShoppingCartPanel2 extends javax.swing.JPanel {
     private javax.swing.JPanel itemGrid;
     private javax.swing.JScrollPane itemGridScrollPane;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
