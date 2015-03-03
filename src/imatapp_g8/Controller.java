@@ -18,13 +18,13 @@ public class Controller {
     // Variables declaration
     private static Controller instance = null;
     protected static IMatDataHandler db;
-    private static ShoppingCart shoppingCart;
+    private static ShoppingCart cart;
     private ProductCategory currentCategory;
     private boolean showAllActive = false;
     
     private Controller() {
         db = IMatDataHandler.getInstance();
-        shoppingCart = db.getShoppingCart();
+        cart = db.getShoppingCart();
     }
     
     public static synchronized Controller getInstance() {
@@ -35,11 +35,27 @@ public class Controller {
     }
     
     public void addToShoppingCart(ShoppingItem item) {
-        shoppingCart.addItem(item);
+        cart.addItem(item);
     }
     
     public ShoppingCart getShoppingCart() {
-        return shoppingCart;
+        return cart;
+    }
+    
+    public void toggleLoginOrNameBtn(boolean b){//false = login, true = name
+        MainWindow.setIfloggedIn(b);
+        MainWindow.set_toggleLoginBtn();
+    }
+    
+    public void showForgottenPW(){
+        MainWindow.contentPanel.removeAll();
+        MainWindow.loginPopup.setVisible(false);
+        MainWindow.contentPanel.add(new ForgottenPasswordPanel());
+        MainWindow.contentPanel.revalidate();
+    }
+    
+    public void setIfLoggedIn(boolean b){
+        MainWindow.setIfloggedIn(b);
     }
     
     public void hideBreadcrumbs() {

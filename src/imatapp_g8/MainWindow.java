@@ -16,6 +16,7 @@ import se.chalmers.ait.dat215.project.*;
 public class MainWindow extends javax.swing.JFrame {
 
     Controller controller;
+    private static boolean ifloggedIn;
     
     /**
      * Creates new form MainWindow
@@ -27,6 +28,21 @@ public class MainWindow extends javax.swing.JFrame {
         loginPopup.setVisible(false);
         breadcrumbs.setVisible(false);
         shoppingCartDropdown.setVisible(false);
+    }
+    
+    public static void set_toggleLoginBtn(){
+        if (getIfloggedIn()){
+            loginAndUserBtn.setText(Controller.db.getCustomer().getFirstName());
+        } else {
+            loginAndUserBtn.setText("Logga in");
+        }
+    }
+    public static void setIfloggedIn(boolean b){
+        ifloggedIn = b;
+    }
+    
+    public static boolean getIfloggedIn(){
+        return ifloggedIn;
     }
 
     /**
@@ -51,12 +67,13 @@ public class MainWindow extends javax.swing.JFrame {
         arrowIcon = new javax.swing.JLabel();
         checkoutBtn = new javax.swing.JButton();
         cartBtn = new javax.swing.JButton();
-        loginBtn = new javax.swing.JButton();
+        loginAndUserBtn = new javax.swing.JButton();
         categoryPanel = new imatapp_g8.CategoryPanel();
         breadcrumbs = new imatapp_g8.Breadcrumbs();
         contentPanel = new javax.swing.JPanel();
         welcomePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        forgottenPasswordPanel = new imatapp_g8.ForgottenPasswordPanel();
         featuredPanel = new imatapp_g8.FeaturedPanel();
         shopPanel = new imatapp_g8.ShopPanel();
         detailedPanel = new imatapp_g8.DetailedPanel();
@@ -237,33 +254,33 @@ public class MainWindow extends javax.swing.JFrame {
         });
         topPanel.add(cartBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(874, 0, 276, 46));
 
-        loginBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 17)); // NOI18N
-        loginBtn.setForeground(new java.awt.Color(255, 255, 255));
-        loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon.png"))); // NOI18N
-        loginBtn.setText("Logga in");
-        loginBtn.setAlignmentY(0.0F);
-        loginBtn.setBorder(null);
-        loginBtn.setBorderPainted(false);
-        loginBtn.setContentAreaFilled(false);
-        loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        loginBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        loginBtn.setDefaultCapable(false);
-        loginBtn.setFocusPainted(false);
-        loginBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        loginBtn.setIconTextGap(0);
-        loginBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        loginBtn.setMaximumSize(new java.awt.Dimension(110, 46));
-        loginBtn.setMinimumSize(new java.awt.Dimension(110, 46));
-        loginBtn.setPreferredSize(new java.awt.Dimension(110, 46));
-        loginBtn.setRequestFocusEnabled(false);
-        loginBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_rollover.png"))); // NOI18N
-        loginBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_selected.png"))); // NOI18N
-        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+        loginAndUserBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 17)); // NOI18N
+        loginAndUserBtn.setForeground(new java.awt.Color(255, 255, 255));
+        loginAndUserBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon.png"))); // NOI18N
+        loginAndUserBtn.setText("Logga in");
+        loginAndUserBtn.setAlignmentY(0.0F);
+        loginAndUserBtn.setBorder(null);
+        loginAndUserBtn.setBorderPainted(false);
+        loginAndUserBtn.setContentAreaFilled(false);
+        loginAndUserBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginAndUserBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        loginAndUserBtn.setDefaultCapable(false);
+        loginAndUserBtn.setFocusPainted(false);
+        loginAndUserBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        loginAndUserBtn.setIconTextGap(0);
+        loginAndUserBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        loginAndUserBtn.setMaximumSize(new java.awt.Dimension(110, 46));
+        loginAndUserBtn.setMinimumSize(new java.awt.Dimension(110, 46));
+        loginAndUserBtn.setPreferredSize(new java.awt.Dimension(110, 46));
+        loginAndUserBtn.setRequestFocusEnabled(false);
+        loginAndUserBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_rollover.png"))); // NOI18N
+        loginAndUserBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_selected.png"))); // NOI18N
+        loginAndUserBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginBtnActionPerformed(evt);
+                loginAndUserBtnActionPerformed(evt);
             }
         });
-        topPanel.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(752, 6, 118, 36));
+        topPanel.add(loginAndUserBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(752, 6, 118, 36));
 
         getContentPane().add(topPanel);
         topPanel.setBounds(0, 0, 1150, 47);
@@ -288,6 +305,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel1.setBounds(180, 230, 570, 130);
 
         contentPanel.add(welcomePanel, java.awt.BorderLayout.PAGE_START);
+        contentPanel.add(forgottenPasswordPanel, java.awt.BorderLayout.CENTER);
         contentPanel.add(featuredPanel, java.awt.BorderLayout.CENTER);
         contentPanel.add(shopPanel, java.awt.BorderLayout.CENTER);
         contentPanel.add(detailedPanel, java.awt.BorderLayout.CENTER);
@@ -315,13 +333,19 @@ public class MainWindow extends javax.swing.JFrame {
         recipeBtn.setSelected(false);
     }//GEN-LAST:event_storeBtnActionPerformed
 
-    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        if (!loginPopup.isVisible()) {
-            loginPopup.setVisible(true);
+    private void loginAndUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginAndUserBtnActionPerformed
+        if(!getIfloggedIn()){
+            if (!loginPopup.isVisible()) {
+                loginPopup.setVisible(true);
+            } else {
+                loginPopup.setVisible(false);
+            }
         } else {
-            loginPopup.setVisible(false);
+        contentPanel.removeAll();
+        contentPanel.add(new MyPagePanel());
+        contentPanel.revalidate();
         }
-    }//GEN-LAST:event_loginBtnActionPerformed
+    }//GEN-LAST:event_loginAndUserBtnActionPerformed
 
     private void cartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartBtnActionPerformed
         if (!shoppingCartDropdown.isVisible()) {
@@ -400,10 +424,11 @@ public class MainWindow extends javax.swing.JFrame {
     protected static javax.swing.JPanel contentPanel;
     private imatapp_g8.DetailedPanel detailedPanel;
     private imatapp_g8.FeaturedPanel featuredPanel;
+    private imatapp_g8.ForgottenPasswordPanel forgottenPasswordPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JButton loginBtn;
+    private static javax.swing.JButton loginAndUserBtn;
     protected static imatapp_g8.LoginPopup loginPopup;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JButton recipeBtn;
