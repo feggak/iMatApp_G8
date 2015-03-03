@@ -27,7 +27,7 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         loginPopup.setVisible(false);
         breadcrumbs.setVisible(false);
-        shoppingCartDropdown.setVisible(false);
+        cartDropdown.setVisible(false);
     }
     
     public static void set_toggleLoginBtn(){
@@ -55,7 +55,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         loginPopup = new imatapp_g8.LoginPopup();
-        shoppingCartDropdown = new imatapp_g8.CartDropdown();
+        cartDropdown = new imatapp_g8.CartDropdown();
         topPanel = new javax.swing.JPanel();
         storeBtn = new javax.swing.JButton();
         recipeBtn = new javax.swing.JButton();
@@ -63,7 +63,7 @@ public class MainWindow extends javax.swing.JFrame {
         searchField = new javax.swing.JTextField();
         cartIcon = new javax.swing.JLabel();
         cartLabel = new javax.swing.JLabel();
-        cartInfoLabel = new javax.swing.JLabel();
+        cartTotalLabel = new javax.swing.JLabel();
         arrowIcon = new javax.swing.JLabel();
         checkoutBtn = new javax.swing.JButton();
         cartBtn = new javax.swing.JButton();
@@ -84,15 +84,13 @@ public class MainWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iMat");
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(1156, 1000));
         setMinimumSize(new java.awt.Dimension(1156, 720));
-        setPreferredSize(new java.awt.Dimension(1156, 720));
         setResizable(false);
         getContentPane().setLayout(null);
         getContentPane().add(loginPopup);
         loginPopup.setBounds(669, 31, 290, 260);
-        getContentPane().add(shoppingCartDropdown);
-        shoppingCartDropdown.setBounds(874, 47, 276, 460);
+        getContentPane().add(cartDropdown);
+        cartDropdown.setBounds(874, 47, 276, 460);
 
         topPanel.setBackground(new java.awt.Color(226, 87, 76));
         topPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -190,17 +188,17 @@ public class MainWindow extends javax.swing.JFrame {
 
         cartLabel.setFont(new java.awt.Font("Myriad Pro", 0, 15)); // NOI18N
         cartLabel.setForeground(new java.awt.Color(255, 255, 255));
-        cartLabel.setText("12 varor");
+        cartLabel.setText("Inga varor");
         cartLabel.setAlignmentY(0.0F);
         cartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        topPanel.add(cartLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(924, 7, 60, -1));
+        topPanel.add(cartLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(922, 7, 70, -1));
 
-        cartInfoLabel.setFont(new java.awt.Font("Myriad Pro", 0, 15)); // NOI18N
-        cartInfoLabel.setForeground(new java.awt.Color(255, 255, 255));
-        cartInfoLabel.setText("123 kr");
-        cartInfoLabel.setAlignmentY(0.0F);
-        cartInfoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        topPanel.add(cartInfoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(924, 25, 60, -1));
+        cartTotalLabel.setFont(new java.awt.Font("Myriad Pro", 0, 15)); // NOI18N
+        cartTotalLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cartTotalLabel.setText(" ");
+        cartTotalLabel.setAlignmentY(0.0F);
+        cartTotalLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        topPanel.add(cartTotalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(922, 25, 60, -1));
 
         arrowIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         arrowIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -353,10 +351,10 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_loginAndUserBtnActionPerformed
 
     private void cartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartBtnActionPerformed
-        if (!shoppingCartDropdown.isVisible()) {
-            shoppingCartDropdown.setVisible(true);
+        if (!cartDropdown.isVisible()) {
+            cartDropdown.setVisible(true);
         } else {
-            shoppingCartDropdown.setVisible(false);
+            cartDropdown.setVisible(false);
         }
     }//GEN-LAST:event_cartBtnActionPerformed
 
@@ -426,9 +424,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel arrowIcon;
     protected static imatapp_g8.Breadcrumbs breadcrumbs;
     private javax.swing.JButton cartBtn;
+    private imatapp_g8.CartDropdown cartDropdown;
     private javax.swing.JLabel cartIcon;
-    private javax.swing.JLabel cartInfoLabel;
-    private javax.swing.JLabel cartLabel;
+    protected static javax.swing.JLabel cartLabel;
+    protected static javax.swing.JLabel cartTotalLabel;
     protected static imatapp_g8.CategoryPanel categoryPanel;
     private javax.swing.JButton checkoutBtn;
     protected static javax.swing.JPanel contentPanel;
@@ -445,7 +444,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
     private imatapp_g8.ShopPanel shopPanel;
-    private imatapp_g8.CartDropdown shoppingCartDropdown;
     private javax.swing.JButton storeBtn;
     private javax.swing.JPanel topPanel;
     private javax.swing.JPanel welcomePanel;

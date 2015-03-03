@@ -50,7 +50,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
         <Property name="columns" type="int" value="1"/>
-        <Property name="rows" type="int" value="0"/>
+        <Property name="rows" type="int" value="4"/>
       </Layout>
     </Container>
     <Container class="javax.swing.JPanel" name="summaryPanel">
@@ -75,9 +75,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="totalPriceLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="totalPriceLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="clearCartLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <EmptySpace pref="40" max="32767" attributes="0"/>
                   <Component id="checkoutBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -92,7 +92,7 @@
                       <Group type="102" attributes="0">
                           <Component id="totalPriceLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="totalPriceLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="clearCartLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -159,10 +159,13 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Totalpris: 200 kr"/>
+            <Property name="text" type="java.lang.String" value="Inga varor"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="totalPriceLabel1">
+        <Component class="javax.swing.JLabel" name="clearCartLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Myriad Pro" size="14" style="0"/>
@@ -172,6 +175,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="T&#xf6;m kundvagnen"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="clearCartLabelMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

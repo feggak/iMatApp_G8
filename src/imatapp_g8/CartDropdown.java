@@ -25,8 +25,16 @@ public class CartDropdown extends javax.swing.JPanel {
         controller = Controller.getInstance();
     }
     
-    public static void update(ShoppingItem item) {
-        itemsPanel.add(new CartItem(item));
+    public static void update() {
+        if (Controller.cart.getItems().size() < 5) {
+        itemsPanel.removeAll();
+        itemsPanel.repaint();
+            for (int i = 0; i < Controller.cart.getItems().size(); i++) {
+                itemsPanel.add(new CartDropdownItem(Controller.cart.getItems().get(i)));
+            }
+        itemsPanel.revalidate();
+        }
+        totalPriceLabel.setText("Totalt: " + Double.toString(Controller.cart.getTotal()) + " kr");
     }
 
     /**
@@ -42,7 +50,7 @@ public class CartDropdown extends javax.swing.JPanel {
         summaryPanel = new javax.swing.JPanel();
         checkoutBtn = new javax.swing.JButton();
         totalPriceLabel = new javax.swing.JLabel();
-        totalPriceLabel1 = new javax.swing.JLabel();
+        clearCartLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(276, 400));
         setMinimumSize(new java.awt.Dimension(276, 0));
@@ -52,7 +60,7 @@ public class CartDropdown extends javax.swing.JPanel {
         itemsPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(0, 0, 0)));
         itemsPanel.setMinimumSize(new java.awt.Dimension(276, 0));
         itemsPanel.setPreferredSize(new java.awt.Dimension(276, 400));
-        itemsPanel.setLayout(new java.awt.GridLayout(0, 1));
+        itemsPanel.setLayout(new java.awt.GridLayout(4, 1));
         add(itemsPanel);
 
         summaryPanel.setBackground(new java.awt.Color(50, 70, 91));
@@ -88,11 +96,16 @@ public class CartDropdown extends javax.swing.JPanel {
 
         totalPriceLabel.setFont(new java.awt.Font("Myriad Pro", 0, 18)); // NOI18N
         totalPriceLabel.setForeground(new java.awt.Color(255, 255, 255));
-        totalPriceLabel.setText("Totalpris: 200 kr");
+        totalPriceLabel.setText("Inga varor");
 
-        totalPriceLabel1.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
-        totalPriceLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        totalPriceLabel1.setText("Töm kundvagnen");
+        clearCartLabel.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
+        clearCartLabel.setForeground(new java.awt.Color(255, 255, 255));
+        clearCartLabel.setText("Töm kundvagnen");
+        clearCartLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearCartLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout summaryPanelLayout = new javax.swing.GroupLayout(summaryPanel);
         summaryPanel.setLayout(summaryPanelLayout);
@@ -102,8 +115,8 @@ public class CartDropdown extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(totalPriceLabel)
-                    .addComponent(totalPriceLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                    .addComponent(clearCartLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(checkoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -116,7 +129,7 @@ public class CartDropdown extends javax.swing.JPanel {
                     .addGroup(summaryPanelLayout.createSequentialGroup()
                         .addComponent(totalPriceLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(totalPriceLabel1)))
+                        .addComponent(clearCartLabel)))
                 .addGap(15, 15, 15))
         );
 
@@ -128,12 +141,17 @@ public class CartDropdown extends javax.swing.JPanel {
         controller.showShoppingCartPanel();
     }//GEN-LAST:event_checkoutBtnActionPerformed
 
+    private void clearCartLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearCartLabelMouseClicked
+        Controller.cart.clear();
+        controller.updateCartHeader();
+    }//GEN-LAST:event_clearCartLabelMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton checkoutBtn;
+    private javax.swing.JLabel clearCartLabel;
     private static javax.swing.JPanel itemsPanel;
     private javax.swing.JPanel summaryPanel;
-    private javax.swing.JLabel totalPriceLabel;
-    private javax.swing.JLabel totalPriceLabel1;
+    private static javax.swing.JLabel totalPriceLabel;
     // End of variables declaration//GEN-END:variables
 }

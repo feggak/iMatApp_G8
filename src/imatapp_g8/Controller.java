@@ -34,11 +34,6 @@ public class Controller {
         return instance;
     }
     
-    public void addToShoppingCart(ShoppingItem item) {
-        cart.addItem(item);
-        CartDropdown.update(item);
-    }
-    
     public void toggleLoginOrNameBtn(boolean b){//false = login, true = name
         MainWindow.setIfloggedIn(b);
         MainWindow.set_toggleLoginBtn();
@@ -53,6 +48,15 @@ public class Controller {
     
     public void setIfLoggedIn(boolean b){
         MainWindow.setIfloggedIn(b);
+    }
+    
+    public void updateCartHeader() {
+        if (cart.getItems().isEmpty()) {
+            MainWindow.cartLabel.setText("Inga varor");
+            MainWindow.cartTotalLabel.setText("");
+        }
+        MainWindow.cartLabel.setText(cart.getItems().size() + " varor");
+        MainWindow.cartTotalLabel.setText(cart.getTotal() + " kr");
     }
     
     public void hideBreadcrumbs() {

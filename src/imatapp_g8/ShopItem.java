@@ -37,6 +37,9 @@ public class ShopItem extends javax.swing.JPanel {
         unit = item.getUnit();
         product = item;
         initComponents();
+        if (item.getUnitSuffix().equals("förp") || item.getUnitSuffix().equals("st")) {
+            spinner.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(1.0d), 1.0, null, Double.valueOf(1.0d)));
+        }
         controller = Controller.getInstance();
     }
 
@@ -115,7 +118,7 @@ public class ShopItem extends javax.swing.JPanel {
         add(itemPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 143, -1, -1));
 
         spinner.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        spinner.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(1.0d), null, null, Double.valueOf(1.0d)));
+        spinner.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(1.0d), Double.valueOf(0.1d), null, Double.valueOf(0.1d)));
         add(spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 170, 60, 27));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -130,7 +133,9 @@ public class ShopItem extends javax.swing.JPanel {
     }//GEN-LAST:event_itemNameMouseClicked
 
     private void addToCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartBtnActionPerformed
-        controller.addToShoppingCart(new ShoppingItem(product,(double)spinner.getValue()));
+        controller.cart.addItem(new ShoppingItem(product,(double)spinner.getValue()));
+        CartDropdown.update();
+        controller.updateCartHeader();
     }//GEN-LAST:event_addToCartBtnActionPerformed
 
 
