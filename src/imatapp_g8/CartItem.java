@@ -12,16 +12,16 @@ import se.chalmers.ait.dat215.project.*;
  *
  * @author Michel
  */
-public class ShoppingCartItem extends javax.swing.JPanel {
+public class CartItem extends javax.swing.JPanel {
 
     /**
      * Creates new form ShoppingCartItem
      */
-    public ShoppingCartItem() {
+    public CartItem() {
         initComponents();
     }
     
-    public ShoppingCartItem(ShoppingItem item) {
+    public CartItem(ShoppingItem item) {
         initComponents();
         iconLabel.setIcon(Controller.db.getImageIcon(item.getProduct(), 80, 80));
         priceLabel.setText("" + item.getProduct().getPrice());
@@ -44,7 +44,6 @@ public class ShoppingCartItem extends javax.swing.JPanel {
         priceLabel = new javax.swing.JLabel();
 
         setBackground(java.awt.Color.white);
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(276, 100));
         setMinimumSize(new java.awt.Dimension(276, 100));
         setPreferredSize(new java.awt.Dimension(276, 100));

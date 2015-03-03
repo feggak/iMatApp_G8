@@ -18,7 +18,7 @@ public class Controller {
     // Variables declaration
     private static Controller instance = null;
     protected static IMatDataHandler db;
-    private static ShoppingCart cart;
+    protected static ShoppingCart cart;
     private ProductCategory currentCategory;
     private boolean showAllActive = false;
     
@@ -36,10 +36,7 @@ public class Controller {
     
     public void addToShoppingCart(ShoppingItem item) {
         cart.addItem(item);
-    }
-    
-    public ShoppingCart getShoppingCart() {
-        return cart;
+        CartDropdown.update(item);
     }
     
     public void toggleLoginOrNameBtn(boolean b){//false = login, true = name
@@ -68,6 +65,12 @@ public class Controller {
         MainWindow.breadcrumbs.setVisible(true);
     }
     
+    public void showShoppingCartPanel() {
+        MainWindow.contentPanel.removeAll();
+        MainWindow.contentPanel.add(new CartPanel());
+        MainWindow.contentPanel.repaint();
+    }
+    
     public void showFeatured() {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new FeaturedPanel());
@@ -89,8 +92,10 @@ public class Controller {
     }
     
     public void showShopSearch(String search) {
+        List<Product> result = new ArrayList<>();
+        result = Controller.db.findProducts(search);
         MainWindow.contentPanel.removeAll();
-        MainWindow.contentPanel.add(new ShopPanel(search));
+        MainWindow.contentPanel.add(new ShopPanel(result));
         MainWindow.contentPanel.revalidate();
         showAllActive = false;
     }

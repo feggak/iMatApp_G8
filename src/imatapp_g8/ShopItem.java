@@ -131,7 +131,6 @@ public class ShopItem extends javax.swing.JPanel {
 
     private void addToCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartBtnActionPerformed
         controller.addToShoppingCart(new ShoppingItem(product,(double)spinner.getValue()));
-        System.out.println("Lägger till");
     }//GEN-LAST:event_addToCartBtnActionPerformed
 
 

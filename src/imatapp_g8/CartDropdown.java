@@ -13,26 +13,20 @@ import se.chalmers.ait.dat215.project.*;
  *
  * @author frellAn
  */
-public class ShoppingCartDropdown extends javax.swing.JPanel {
+public class CartDropdown extends javax.swing.JPanel {
 
     static Controller controller;
-    static ShoppingCart shoppingCart;
     
     /**
      * Creates new form ShoppingCart
      */
-    public ShoppingCartDropdown() {
+    public CartDropdown() {
         initComponents();
         controller = Controller.getInstance();
-        shoppingCart = controller.getShoppingCart();
     }
     
-    public void update() {
-        List<ShoppingItem> tempList = new ArrayList<>();
-        tempList = controller.getShoppingCart().getItems();
-        for (int i = 1; i < tempList.size(); i++) {
-            itemsPanel.add(new ShoppingCartItem(tempList.get(i)));
-        }
+    public static void update(ShoppingItem item) {
+        itemsPanel.add(new CartItem(item));
     }
 
     /**
@@ -43,7 +37,6 @@ public class ShoppingCartDropdown extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         itemsPanel = new javax.swing.JPanel();
         summaryPanel = new javax.swing.JPanel();
@@ -56,7 +49,7 @@ public class ShoppingCartDropdown extends javax.swing.JPanel {
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         itemsPanel.setBackground(new java.awt.Color(255, 255, 255));
-        itemsPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 1, new java.awt.Color(0, 0, 0)));
+        itemsPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(0, 0, 0)));
         itemsPanel.setMinimumSize(new java.awt.Dimension(276, 0));
         itemsPanel.setPreferredSize(new java.awt.Dimension(276, 400));
         itemsPanel.setLayout(new java.awt.GridLayout(0, 1));
@@ -131,7 +124,8 @@ public class ShoppingCartDropdown extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
-        update();
+        MainWindow.categoryPanel.resetAllFonts();
+        controller.showShoppingCartPanel();
     }//GEN-LAST:event_checkoutBtnActionPerformed
 
 

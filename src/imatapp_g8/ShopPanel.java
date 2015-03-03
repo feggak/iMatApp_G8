@@ -32,22 +32,13 @@ public class ShopPanel extends javax.swing.JPanel {
         fillGrid(Controller.db.getProducts(category));
     }
     
-    public ShopPanel(String search) {
-        List<Product> all = new ArrayList<>();
-        all = Controller.db.getProducts();
-        List<Product> result = new ArrayList<>();
-        for (int i = 1; i < all.size(); i++) {
-            if (all.get(i).getName().equals(search)) {
-                System.out.println("Found you!");
-                result.add(all.get(i));
-            }
-        }
+    public ShopPanel(List<Product> items) {
         initComponents();
-        fillGrid(result);
+        fillGrid(items);
     }
     
     public void fillGrid(List<Product> items) {
-        for (int i = 1; i < items.size(); i++) {
+        for (int i = 0; i < items.size(); i++) {
             productGrid.add(new ShopItem(items.get(i)));
         }
     }

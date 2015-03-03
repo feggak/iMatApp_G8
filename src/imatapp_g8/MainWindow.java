@@ -55,7 +55,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         loginPopup = new imatapp_g8.LoginPopup();
-        shoppingCartDropdown = new imatapp_g8.ShoppingCartDropdown();
+        shoppingCartDropdown = new imatapp_g8.CartDropdown();
         topPanel = new javax.swing.JPanel();
         storeBtn = new javax.swing.JButton();
         recipeBtn = new javax.swing.JButton();
@@ -227,6 +227,11 @@ public class MainWindow extends javax.swing.JFrame {
         checkoutBtn.setRequestFocusEnabled(false);
         checkoutBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_rollover.png"))); // NOI18N
         checkoutBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_selected.png"))); // NOI18N
+        checkoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkoutBtnActionPerformed(evt);
+            }
+        });
         topPanel.add(checkoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1028, 6, 118, 36));
 
         cartBtn.setFont(new java.awt.Font("Open Sans Semibold", 0, 20)); // NOI18N
@@ -366,16 +371,21 @@ public class MainWindow extends javax.swing.JFrame {
     private void searchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyPressed
         if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
             categoryPanel.resetAllFonts();
-            controller.updateBreadcrumbs("Sök",searchField.getText(),null);
             controller.showShopSearch(searchField.getText());
+            controller.updateBreadcrumbs("Sök",searchField.getText(),null);
         }
     }//GEN-LAST:event_searchFieldKeyPressed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         categoryPanel.resetAllFonts();
-        controller.updateBreadcrumbs("Sök",searchField.getText(),null);
         controller.showShopSearch(searchField.getText());
+        controller.updateBreadcrumbs("Sök",searchField.getText(),null);
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
+        categoryPanel.resetAllFonts();
+        controller.showShoppingCartPanel();
+    }//GEN-LAST:event_checkoutBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -435,7 +445,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
     private imatapp_g8.ShopPanel shopPanel;
-    private imatapp_g8.ShoppingCartDropdown shoppingCartDropdown;
+    private imatapp_g8.CartDropdown shoppingCartDropdown;
     private javax.swing.JButton storeBtn;
     private javax.swing.JPanel topPanel;
     private javax.swing.JPanel welcomePanel;

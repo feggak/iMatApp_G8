@@ -61,19 +61,19 @@ public class ForgottenPasswordPanel extends javax.swing.JPanel {
         jLabel5.setText("<html>Ange din epostaddress eller ditt användarnamn för att återställa<br> ditt lösenord<html>");
         jLabel5.setToolTipText("");
         add(jLabel5);
-        jLabel5.setBounds(290, 180, 420, 70);
+        jLabel5.setBounds(265, 180, 420, 70);
 
         jLabel1.setFont(new java.awt.Font("Helvetica", 0, 24)); // NOI18N
         jLabel1.setText("Glömt Lösenord?");
         add(jLabel1);
-        jLabel1.setBounds(290, 140, 185, 32);
+        jLabel1.setBounds(265, 140, 185, 32);
 
         jLabel2.setFont(new java.awt.Font("Helvetica", 0, 16)); // NOI18N
         jLabel2.setText("E-postaddress");
         add(jLabel2);
-        jLabel2.setBounds(290, 300, 103, 21);
+        jLabel2.setBounds(265, 300, 103, 21);
         add(forgottenPWField);
-        forgottenPWField.setBounds(290, 330, 231, 37);
+        forgottenPWField.setBounds(265, 330, 231, 37);
 
         newPWBtn.setText("Återställ Lösenord");
         newPWBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -82,23 +82,23 @@ public class ForgottenPasswordPanel extends javax.swing.JPanel {
             }
         });
         add(newPWBtn);
-        newPWBtn.setBounds(580, 460, 119, 23);
+        newPWBtn.setBounds(555, 460, 119, 23);
 
         forgottenSuccessLabel.setFont(new java.awt.Font("Helvetica", 0, 15)); // NOI18N
         forgottenSuccessLabel.setForeground(new java.awt.Color(0, 153, 51));
         forgottenSuccessLabel.setText("Ett mail har skickats till ");
         add(forgottenSuccessLabel);
-        forgottenSuccessLabel.setBounds(290, 400, 330, 20);
+        forgottenSuccessLabel.setBounds(265, 400, 330, 20);
 
         forgottenErrorLabel.setFont(new java.awt.Font("Helvetica", 0, 16)); // NOI18N
         forgottenErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
         forgottenErrorLabel.setText("Inskrivet Användarnamn eller email existerar ej");
         add(forgottenErrorLabel);
-        forgottenErrorLabel.setBounds(290, 380, 340, 50);
+        forgottenErrorLabel.setBounds(265, 380, 340, 50);
 
         jLabel4.setOpaque(true);
         add(jLabel4);
-        jLabel4.setBounds(210, 120, 560, 380);
+        jLabel4.setBounds(185, 120, 560, 380);
     }// </editor-fold>//GEN-END:initComponents
 
     private void newPWBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPWBtnActionPerformed
