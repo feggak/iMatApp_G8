@@ -35,8 +35,7 @@ public class Breadcrumbs extends javax.swing.JPanel {
         if (two == null) {
             arrow1.setText("");
             second.setText("");
-        }
-        if (!two.equals("KEEP")) {
+        } else if (!two.equals("KEEP")) {
             arrow1.setText(">");
             second.setText(two);
         } else {}

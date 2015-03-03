@@ -78,6 +78,9 @@
           <Image iconType="3" name="/buy_icon_selected.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addToCartBtnActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="92" y="168" width="80" height="32"/>
@@ -145,13 +148,13 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JSpinner" name="jSpinner1">
+    <Component class="javax.swing.JSpinner" name="spinner">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Myriad Pro" size="16" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+          <SpinnerModel initial="1.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
         </Property>
       </Properties>
       <Constraints>

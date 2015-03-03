@@ -31,7 +31,7 @@ public class ShopItem extends javax.swing.JPanel {
     }
     
     public ShopItem(Product item) {
-        icon = MainWindow.db.getImageIcon(item,174,132);
+        icon = Controller.db.getImageIcon(item,174,132);
         name = item.getName();
         price = item.getPrice();
         unit = item.getUnit();
@@ -53,7 +53,7 @@ public class ShopItem extends javax.swing.JPanel {
         itemIcon = new javax.swing.JLabel();
         itemName = new javax.swing.JLabel();
         itemPrice = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        spinner = new javax.swing.JSpinner();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(182, 208));
@@ -82,6 +82,11 @@ public class ShopItem extends javax.swing.JPanel {
         addToCartBtn.setRequestFocusEnabled(false);
         addToCartBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/buy_icon_rollover.png"))); // NOI18N
         addToCartBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/buy_icon_selected.png"))); // NOI18N
+        addToCartBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addToCartBtnActionPerformed(evt);
+            }
+        });
         add(addToCartBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 168, 80, 32));
 
         itemIcon.setIcon(icon);
@@ -109,9 +114,9 @@ public class ShopItem extends javax.swing.JPanel {
         );
         add(itemPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 143, -1, -1));
 
-        jSpinner1.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), null, null, Integer.valueOf(1)));
-        add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 170, 60, 27));
+        spinner.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
+        spinner.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(1.0d), null, null, Double.valueOf(1.0d)));
+        add(spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 170, 60, 27));
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemIconMouseClicked
@@ -124,12 +129,17 @@ public class ShopItem extends javax.swing.JPanel {
         controller.showDetails(product);
     }//GEN-LAST:event_itemNameMouseClicked
 
+    private void addToCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartBtnActionPerformed
+        controller.addToShoppingCart(new ShoppingItem(product,(double)spinner.getValue()));
+        System.out.println("Lägger till");
+    }//GEN-LAST:event_addToCartBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToCartBtn;
     private javax.swing.JLabel itemIcon;
     private javax.swing.JLabel itemName;
     private javax.swing.JLabel itemPrice;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner spinner;
     // End of variables declaration//GEN-END:variables
 }

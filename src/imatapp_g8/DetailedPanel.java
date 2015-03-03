@@ -22,7 +22,7 @@ public class DetailedPanel extends javax.swing.JPanel {
     
     public DetailedPanel(Product product) {
         initComponents();
-        productIcon.setIcon(MainWindow.db.getImageIcon(product, 300, 225));
+        productIcon.setIcon(Controller.db.getImageIcon(product, 300, 225));
         productTitleLabel.setText(product.getName());
         priceLabel.setText("Pris: " + product.getPrice() + " " + product.getUnit());
         altPriceLabel.setText("Jmf pris: " + product.getPrice() + " " + product.getUnit());

@@ -12,20 +12,32 @@ import se.chalmers.ait.dat215.project.*;
  * @author frellAn
  */
 public class Controller {
-    
-    private static Controller instance = null;
-    
+  
     // Variables declaration
+    private static Controller instance = null;
+    protected static IMatDataHandler db;
+    private static ShoppingCart shoppingCart;
     private ProductCategory currentCategory;
     private boolean showAllActive = false;
     
-    private Controller() {}
+    private Controller() {
+        db = IMatDataHandler.getInstance();
+        shoppingCart = db.getShoppingCart();
+    }
     
     public static synchronized Controller getInstance() {
         if (instance == null) {
             instance = new Controller();
         }
         return instance;
+    }
+    
+    public void addToShoppingCart(ShoppingItem item) {
+        shoppingCart.addItem(item);
+    }
+    
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
     }
     
     public void hideBreadcrumbs() {

@@ -23,12 +23,12 @@ public class ShopPanel extends javax.swing.JPanel {
     
     public ShopPanel(String all) {
         initComponents();
-        fillGrid(MainWindow.db.getProducts());
+        fillGrid(Controller.db.getProducts());
     }
     
     public ShopPanel(ProductCategory category) {
         initComponents();
-        fillGrid(MainWindow.db.getProducts(category));
+        fillGrid(Controller.db.getProducts(category));
     }
     
     public void fillGrid(List<Product> items) {

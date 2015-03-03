@@ -14,29 +14,16 @@ import se.chalmers.ait.dat215.project.*;
  * @author frellAn
  */
 public class MainWindow extends javax.swing.JFrame {
-    
-    // Custom variable declaration
-    protected static IMatDataHandler db;
 
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
-        db = IMatDataHandler.getInstance();
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/appicon.png")).getImage());
         initComponents();
         loginPopup.setVisible(false);
         breadcrumbs.setVisible(false);
         categoryPanel.resetAllFontsExceptStart();
-    }
-    
-    public static List<Product> getRandomFeaturedProducts() {
-        List<Product> tempList = new ArrayList<Product>();
-        for (int i = 1; i <= 6; i++) {
-            int number = (int) Math.ceil(Math.random()*148);
-            tempList.add(db.getProduct(number));
-        }
-        return tempList;
     }
 
     /**
@@ -49,6 +36,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         loginPopup = new imatapp_g8.LoginPopup();
+        shoppingCartDropdown = new imatapp_g8.ShoppingCartDropdown();
         topPanel = new javax.swing.JPanel();
         storeBtn = new javax.swing.JButton();
         recipeBtn = new javax.swing.JButton();
@@ -64,9 +52,11 @@ public class MainWindow extends javax.swing.JFrame {
         categoryPanel = new imatapp_g8.CategoryPanel();
         breadcrumbs = new imatapp_g8.Breadcrumbs();
         contentPanel = new javax.swing.JPanel();
-        detailedPanel = new imatapp_g8.DetailedPanel();
-        shopPanel = new imatapp_g8.ShopPanel();
+        welcomePanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         featuredPanel = new imatapp_g8.FeaturedPanel();
+        shopPanel = new imatapp_g8.ShopPanel();
+        detailedPanel = new imatapp_g8.DetailedPanel();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -81,6 +71,8 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().setLayout(null);
         getContentPane().add(loginPopup);
         loginPopup.setBounds(669, 31, 290, 260);
+        getContentPane().add(shoppingCartDropdown);
+        shoppingCartDropdown.setBounds(874, 47, 276, 460);
 
         topPanel.setBackground(new java.awt.Color(226, 87, 76));
         topPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -203,6 +195,11 @@ public class MainWindow extends javax.swing.JFrame {
         cartBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/red2_icon_rollover.png"))); // NOI18N
         cartBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/red2_icon_selected.png"))); // NOI18N
         cartBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        cartBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cartBtnActionPerformed(evt);
+            }
+        });
         topPanel.add(cartBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(874, 0, 276, 46));
 
         loginBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 17)); // NOI18N
@@ -243,9 +240,22 @@ public class MainWindow extends javax.swing.JFrame {
         breadcrumbs.setBounds(220, 47, 930, 30);
 
         contentPanel.setLayout(new java.awt.BorderLayout());
-        contentPanel.add(detailedPanel, java.awt.BorderLayout.CENTER);
+
+        welcomePanel.setPreferredSize(new java.awt.Dimension(930, 630));
+        welcomePanel.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Myriad Pro", 0, 48)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Välkommen till iMat");
+        jLabel1.setFocusable(false);
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        welcomePanel.add(jLabel1);
+        jLabel1.setBounds(180, 260, 570, 130);
+
+        contentPanel.add(welcomePanel, java.awt.BorderLayout.PAGE_START);
+        contentPanel.add(featuredPanel, java.awt.BorderLayout.CENTER);
         contentPanel.add(shopPanel, java.awt.BorderLayout.CENTER);
-        contentPanel.add(featuredPanel, java.awt.BorderLayout.PAGE_START);
+        contentPanel.add(detailedPanel, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(contentPanel);
         contentPanel.setBounds(220, 47, 930, 680);
@@ -277,6 +287,14 @@ public class MainWindow extends javax.swing.JFrame {
             loginPopup.setVisible(false);
         }
     }//GEN-LAST:event_loginBtnActionPerformed
+
+    private void cartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartBtnActionPerformed
+        if (!shoppingCartDropdown.isVisible()) {
+            shoppingCartDropdown.setVisible(true);
+        } else {
+            shoppingCartDropdown.setVisible(false);
+        }
+    }//GEN-LAST:event_cartBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,6 +343,7 @@ public class MainWindow extends javax.swing.JFrame {
     protected static javax.swing.JPanel contentPanel;
     private imatapp_g8.DetailedPanel detailedPanel;
     private imatapp_g8.FeaturedPanel featuredPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JButton loginBtn;
@@ -334,7 +353,9 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTextField searchField;
     private javax.swing.JLabel searchIcon;
     private imatapp_g8.ShopPanel shopPanel;
+    private imatapp_g8.ShoppingCartDropdown shoppingCartDropdown;
     private javax.swing.JButton storeBtn;
     private javax.swing.JPanel topPanel;
+    private javax.swing.JPanel welcomePanel;
     // End of variables declaration//GEN-END:variables
 }

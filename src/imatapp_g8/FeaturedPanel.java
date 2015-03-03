@@ -25,7 +25,7 @@ public class FeaturedPanel extends javax.swing.JPanel {
     public FeaturedPanel() {
         initComponents();
         controller = Controller.getInstance();
-        featuredProducts = MainWindow.getRandomFeaturedProducts();
+        featuredProducts = getRandomFeaturedProducts();
         fillGrid(featuredProducts);
     }
     
@@ -35,6 +35,17 @@ public class FeaturedPanel extends javax.swing.JPanel {
                 productGrid.add(new ShopItem(items.get(i)));
             }
         }
+    }
+    
+    public List<Product> getRandomFeaturedProducts() {
+        List<Product> tempList = new ArrayList<>();
+        for (int i = 1; i <= 6; i++) {
+            int number = (int) Math.ceil(Math.random()*148);
+            if (Controller.db.getProduct(number) != null) {
+                tempList.add(Controller.db.getProduct(number));
+            }
+        }
+        return tempList;
     }
 
     /**
@@ -84,7 +95,7 @@ public class FeaturedPanel extends javax.swing.JPanel {
 
     private void shopBannerIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shopBannerIconMouseClicked
         controller.updateBreadcrumbs("Butik","Kampanjvaror","Fanta burk");
-        controller.showDetails(MainWindow.db.getProduct(35));
+        controller.showDetails(Controller.db.getProduct(35));
     }//GEN-LAST:event_shopBannerIconMouseClicked
 
 
