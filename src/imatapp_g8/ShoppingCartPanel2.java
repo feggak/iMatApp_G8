@@ -82,12 +82,21 @@ public class ShoppingCartPanel2 extends javax.swing.JPanel {
         checkoutBtn.setRequestFocusEnabled(false);
         checkoutBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_rollover.png"))); // NOI18N
         checkoutBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_selected.png"))); // NOI18N
+        checkoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkoutBtnActionPerformed(evt);
+            }
+        });
         add(checkoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 570, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Totalsumma: 850.0 kr");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 550, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkoutBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

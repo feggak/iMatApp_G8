@@ -140,7 +140,7 @@ public class TempCartItem extends javax.swing.JPanel {
 
         jPanel1.add(amountPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 110, 40));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 330, 60));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 330, 60));
 
         nameLabel.setFont(new java.awt.Font("Myriad Pro Light", 1, 18)); // NOI18N
         nameLabel.setText("Mjölk");
@@ -152,7 +152,7 @@ public class TempCartItem extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void iconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseClicked
