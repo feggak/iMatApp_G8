@@ -33,8 +33,6 @@ public class ShoppingCartDropdown extends javax.swing.JPanel {
         for (int i = 1; i < tempList.size(); i++) {
             itemsPanel.add(new ShoppingCartItem(tempList.get(i)));
         }
-        // itemsPanel.add(new ShoppingCartItem());
-        itemsPanel.repaint();
     }
 
     /**
@@ -51,6 +49,7 @@ public class ShoppingCartDropdown extends javax.swing.JPanel {
         summaryPanel = new javax.swing.JPanel();
         checkoutBtn = new javax.swing.JButton();
         totalPriceLabel = new javax.swing.JLabel();
+        totalPriceLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(276, 400));
         setMinimumSize(new java.awt.Dimension(276, 0));
@@ -98,13 +97,19 @@ public class ShoppingCartDropdown extends javax.swing.JPanel {
         totalPriceLabel.setForeground(new java.awt.Color(255, 255, 255));
         totalPriceLabel.setText("Totalpris: 200 kr");
 
+        totalPriceLabel1.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
+        totalPriceLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        totalPriceLabel1.setText("Töm kundvagnen");
+
         javax.swing.GroupLayout summaryPanelLayout = new javax.swing.GroupLayout(summaryPanel);
         summaryPanel.setLayout(summaryPanelLayout);
         summaryPanelLayout.setHorizontalGroup(
             summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, summaryPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(totalPriceLabel)
+                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(totalPriceLabel)
+                    .addComponent(totalPriceLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(checkoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -113,10 +118,13 @@ public class ShoppingCartDropdown extends javax.swing.JPanel {
             summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, summaryPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(summaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(checkoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(totalPriceLabel))
-                .addContainerGap())
+                    .addGroup(summaryPanelLayout.createSequentialGroup()
+                        .addComponent(totalPriceLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(totalPriceLabel1)))
+                .addGap(15, 15, 15))
         );
 
         add(summaryPanel);
@@ -132,5 +140,6 @@ public class ShoppingCartDropdown extends javax.swing.JPanel {
     private static javax.swing.JPanel itemsPanel;
     private javax.swing.JPanel summaryPanel;
     private javax.swing.JLabel totalPriceLabel;
+    private javax.swing.JLabel totalPriceLabel1;
     // End of variables declaration//GEN-END:variables
 }

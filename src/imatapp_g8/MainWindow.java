@@ -15,15 +15,18 @@ import se.chalmers.ait.dat215.project.*;
  */
 public class MainWindow extends javax.swing.JFrame {
 
+    Controller controller;
+    
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/appicon.png")).getImage());
+        controller = Controller.getInstance();
         initComponents();
         loginPopup.setVisible(false);
         breadcrumbs.setVisible(false);
-        categoryPanel.resetAllFontsExceptStart();
+        shoppingCartDropdown.setVisible(false);
     }
 
     /**
@@ -40,7 +43,7 @@ public class MainWindow extends javax.swing.JFrame {
         topPanel = new javax.swing.JPanel();
         storeBtn = new javax.swing.JButton();
         recipeBtn = new javax.swing.JButton();
-        searchIcon = new javax.swing.JLabel();
+        searchButton = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
         cartIcon = new javax.swing.JLabel();
         cartLabel = new javax.swing.JLabel();
@@ -124,13 +127,45 @@ public class MainWindow extends javax.swing.JFrame {
         recipeBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/red_icon_selected.png"))); // NOI18N
         topPanel.add(recipeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 110, 46));
 
-        searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
-        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        topPanel.add(searchIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 7, 32, 32));
+        searchButton.setFont(new java.awt.Font("Myriad Pro Light", 0, 17)); // NOI18N
+        searchButton.setForeground(new java.awt.Color(255, 255, 255));
+        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
+        searchButton.setAlignmentY(0.0F);
+        searchButton.setBorder(null);
+        searchButton.setBorderPainted(false);
+        searchButton.setContentAreaFilled(false);
+        searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchButton.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        searchButton.setDefaultCapable(false);
+        searchButton.setFocusPainted(false);
+        searchButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        searchButton.setIconTextGap(0);
+        searchButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        searchButton.setName(""); // NOI18N
+        searchButton.setRequestFocusEnabled(false);
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+        topPanel.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 7, 32, 32));
 
         searchField.setText("Sök...");
         searchField.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10)));
-        topPanel.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 7, 520, 32));
+        searchField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                searchFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                searchFieldFocusLost(evt);
+            }
+        });
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchFieldKeyPressed(evt);
+            }
+        });
+        topPanel.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 7, 489, 32));
 
         cartIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cart2.png"))); // NOI18N
         cartIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -250,7 +285,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel1.setFocusable(false);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         welcomePanel.add(jLabel1);
-        jLabel1.setBounds(180, 260, 570, 130);
+        jLabel1.setBounds(180, 230, 570, 130);
 
         contentPanel.add(welcomePanel, java.awt.BorderLayout.PAGE_START);
         contentPanel.add(featuredPanel, java.awt.BorderLayout.CENTER);
@@ -295,6 +330,28 @@ public class MainWindow extends javax.swing.JFrame {
             shoppingCartDropdown.setVisible(false);
         }
     }//GEN-LAST:event_cartBtnActionPerformed
+
+    private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
+        searchField.setText("");
+    }//GEN-LAST:event_searchFieldFocusGained
+
+    private void searchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusLost
+        searchField.setText("Sök...");
+    }//GEN-LAST:event_searchFieldFocusLost
+
+    private void searchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            categoryPanel.resetAllFonts();
+            controller.updateBreadcrumbs("Sök",searchField.getText(),null);
+            controller.showShopSearch(searchField.getText());
+        }
+    }//GEN-LAST:event_searchFieldKeyPressed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        categoryPanel.resetAllFonts();
+        controller.updateBreadcrumbs("Sök",searchField.getText(),null);
+        controller.showShopSearch(searchField.getText());
+    }//GEN-LAST:event_searchButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,8 +407,8 @@ public class MainWindow extends javax.swing.JFrame {
     protected static imatapp_g8.LoginPopup loginPopup;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JButton recipeBtn;
+    private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
-    private javax.swing.JLabel searchIcon;
     private imatapp_g8.ShopPanel shopPanel;
     private imatapp_g8.ShoppingCartDropdown shoppingCartDropdown;
     private javax.swing.JButton storeBtn;

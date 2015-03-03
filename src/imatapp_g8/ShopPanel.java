@@ -5,6 +5,7 @@
  */
 package imatapp_g8;
 
+import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.ait.dat215.project.*;
 
@@ -21,7 +22,7 @@ public class ShopPanel extends javax.swing.JPanel {
         initComponents();
     }
     
-    public ShopPanel(String all) {
+    public ShopPanel(int all) {
         initComponents();
         fillGrid(Controller.db.getProducts());
     }
@@ -29,6 +30,20 @@ public class ShopPanel extends javax.swing.JPanel {
     public ShopPanel(ProductCategory category) {
         initComponents();
         fillGrid(Controller.db.getProducts(category));
+    }
+    
+    public ShopPanel(String search) {
+        List<Product> all = new ArrayList<>();
+        all = Controller.db.getProducts();
+        List<Product> result = new ArrayList<>();
+        for (int i = 1; i < all.size(); i++) {
+            if (all.get(i).getName().equals(search)) {
+                System.out.println("Found you!");
+                result.add(all.get(i));
+            }
+        }
+        initComponents();
+        fillGrid(result);
     }
     
     public void fillGrid(List<Product> items) {

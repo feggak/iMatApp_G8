@@ -5,6 +5,8 @@
  */
 package imatapp_g8;
 
+import java.util.ArrayList;
+import java.util.List;
 import se.chalmers.ait.dat215.project.*;
 
 /**
@@ -65,9 +67,16 @@ public class Controller {
     
     public void showShopAllProducts() {
         MainWindow.contentPanel.removeAll();
-        MainWindow.contentPanel.add(new ShopPanel("all"));
+        MainWindow.contentPanel.add(new ShopPanel(0));
         MainWindow.contentPanel.revalidate();
         showAllActive = true;
+    }
+    
+    public void showShopSearch(String search) {
+        MainWindow.contentPanel.removeAll();
+        MainWindow.contentPanel.add(new ShopPanel(search));
+        MainWindow.contentPanel.revalidate();
+        showAllActive = false;
     }
     
     public void showShopCategory(ProductCategory category) {
@@ -81,7 +90,7 @@ public class Controller {
     public void showPreviousShopCategory() {
         if (showAllActive) {
             MainWindow.contentPanel.removeAll();
-            MainWindow.contentPanel.add(new ShopPanel("all"));
+            MainWindow.contentPanel.add(new ShopPanel(0));
             MainWindow.contentPanel.revalidate();
             showAllActive = true;
         } else {
