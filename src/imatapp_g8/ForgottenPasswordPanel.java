@@ -5,6 +5,10 @@
  */
 package imatapp_g8;
 
+import se.chalmers.ait.dat215.project.Customer;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.User;
+
 /**
  *
  * @author rasmusdavidsson
@@ -12,12 +16,22 @@ package imatapp_g8;
 public class ForgottenPasswordPanel extends javax.swing.JPanel implements java.beans.Customizer {
     
     private Object bean;
+    Customer customer;
+    User user;
+    IMatDataHandler handler;
+    Controller controller;
 
     /**
      * Creates new customizer ForgottenPasswordPanel
      */
     public ForgottenPasswordPanel() {
         initComponents();
+        controller = Controller.getInstance();
+        handler = IMatDataHandler.getInstance();
+        customer = handler.getCustomer();
+        user = handler.getUser();
+        forgottenErrorLabel.setVisible(false);
+        forgottenSuccessLabel.setVisible(false);
     }
     
     public void setObject(Object bean) {
@@ -32,32 +46,95 @@ public class ForgottenPasswordPanel extends javax.swing.JPanel implements java.b
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        forgottenPWField = new javax.swing.JTextField();
+        newPWBtn = new javax.swing.JToggleButton();
+        forgottenSuccessLabel = new javax.swing.JLabel();
+        forgottenErrorLabel = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setAlignmentX(0.0F);
+        setAlignmentY(0.0F);
+        setMaximumSize(new java.awt.Dimension(930, 630));
+        setMinimumSize(new java.awt.Dimension(930, 630));
+        setPreferredSize(new java.awt.Dimension(930, 630));
+        setLayout(null);
 
-        jLabel1.setText("jLabel1");
+        jLabel5.setFont(new java.awt.Font("Helvetica", 0, 15)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel5.setText("<html>Ange din epostaddress eller ditt användarnamn för att återställa<br> ditt lösenord<html>");
+        jLabel5.setToolTipText("");
+        add(jLabel5);
+        jLabel5.setBounds(290, 180, 420, 70);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addComponent(jLabel1)
-                .addContainerGap(428, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jLabel1)
-                .addContainerGap(251, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Helvetica", 0, 24)); // NOI18N
+        jLabel1.setText("Glömt Lösenord?");
+        add(jLabel1);
+        jLabel1.setBounds(290, 140, 182, 25);
+
+        jLabel2.setFont(new java.awt.Font("Helvetica", 0, 16)); // NOI18N
+        jLabel2.setText("E-postaddress");
+        add(jLabel2);
+        jLabel2.setBounds(290, 300, 103, 17);
+        add(forgottenPWField);
+        forgottenPWField.setBounds(290, 330, 231, 37);
+
+        newPWBtn.setText("Återställ Lösenord");
+        newPWBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newPWBtnActionPerformed(evt);
+            }
+        });
+        add(newPWBtn);
+        newPWBtn.setBounds(580, 460, 159, 29);
+
+        forgottenSuccessLabel.setFont(new java.awt.Font("Helvetica", 0, 15)); // NOI18N
+        forgottenSuccessLabel.setForeground(new java.awt.Color(0, 153, 51));
+        forgottenSuccessLabel.setText("Ett mail har skickats till ");
+        add(forgottenSuccessLabel);
+        forgottenSuccessLabel.setBounds(290, 400, 330, 16);
+
+        forgottenErrorLabel.setFont(new java.awt.Font("Helvetica", 0, 16)); // NOI18N
+        forgottenErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        forgottenErrorLabel.setText("Inskrivet Användarnamn eller email existerar ej");
+        add(forgottenErrorLabel);
+        forgottenErrorLabel.setBounds(290, 380, 340, 50);
+
+        jLabel4.setOpaque(true);
+        add(jLabel4);
+        jLabel4.setBounds(210, 120, 560, 380);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void newPWBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPWBtnActionPerformed
+       if(forgottenPWField.getText().equals(customer.getEmail()) && !forgottenPWField.getText().equals("")){
+           forgottenErrorLabel.setVisible(false);
+           forgottenSuccessLabel.setVisible(true);
+           forgottenSuccessLabel.setText(forgottenSuccessLabel.getText() + customer.getEmail());
+           
+           //du har skickat skiten
+           
+       } else {
+           forgottenErrorLabel.setVisible(true);
+       }
+        
+    }//GEN-LAST:event_newPWBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel forgottenErrorLabel;
+    private javax.swing.JTextField forgottenPWField;
+    private javax.swing.JLabel forgottenSuccessLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JToggleButton newPWBtn;
     // End of variables declaration//GEN-END:variables
 }

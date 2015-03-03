@@ -6,6 +6,8 @@
 package imatapp_g8;
 
 import java.awt.Color;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.User;
 
 /**
  *
@@ -14,6 +16,9 @@ import java.awt.Color;
 public class LoginPopup extends javax.swing.JPanel {
     
     Controller controller;
+    User user;
+    IMatDataHandler handler;
+    char c = 0;
 
     /**
      * Creates new customizer LoginPopup
@@ -21,6 +26,9 @@ public class LoginPopup extends javax.swing.JPanel {
     public LoginPopup() {
         initComponents();
         controller = Controller.getInstance();
+        handler = IMatDataHandler.getInstance();
+        passWtxt.setEchoChar(c);
+        loginErrorLabel.setVisible(false);
     }
 
     /**
@@ -31,9 +39,10 @@ public class LoginPopup extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        passWtxt = new javax.swing.JTextField();
+        passWtxt = new javax.swing.JPasswordField();
         usernameTxt = new javax.swing.JTextField();
         loginBtn = new javax.swing.JButton();
+        loginErrorLabel = new javax.swing.JLabel();
         registerBtn = new javax.swing.JButton();
         forgottenPwdBtn = new javax.swing.JButton();
         backgroundLabel = new javax.swing.JLabel();
@@ -44,27 +53,22 @@ public class LoginPopup extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(350, 300));
         setLayout(null);
 
-        passWtxt.setFont(new java.awt.Font("Helvetica", 0, 13)); // NOI18N
         passWtxt.setForeground(new java.awt.Color(153, 153, 153));
         passWtxt.setText("Lösenord..");
-        passWtxt.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 8, 1, 8)));
         passWtxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passWtxtFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 passWtxtFocusLost(evt);
             }
         });
-        passWtxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                passWtxtMouseClicked(evt);
-            }
-        });
         add(passWtxt);
-        passWtxt.setBounds(20, 90, 249, 40);
+        passWtxt.setBounds(20, 70, 250, 40);
 
         usernameTxt.setFont(new java.awt.Font("Helvetica", 0, 13)); // NOI18N
         usernameTxt.setForeground(new java.awt.Color(153, 153, 153));
         usernameTxt.setText("Användarnamn..");
-        usernameTxt.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 8, 1, 8)));
         usernameTxt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 usernameTxtFocusLost(evt);
@@ -76,7 +80,7 @@ public class LoginPopup extends javax.swing.JPanel {
             }
         });
         add(usernameTxt);
-        usernameTxt.setBounds(20, 40, 249, 40);
+        usernameTxt.setBounds(20, 30, 249, 40);
 
         loginBtn.setFont(new java.awt.Font("Myriad Pro", 0, 24)); // NOI18N
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,7 +106,13 @@ public class LoginPopup extends javax.swing.JPanel {
             }
         });
         add(loginBtn);
-        loginBtn.setBounds(20, 140, 249, 40);
+        loginBtn.setBounds(20, 120, 249, 40);
+
+        loginErrorLabel.setFont(new java.awt.Font("Helvetica", 0, 16)); // NOI18N
+        loginErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        loginErrorLabel.setText("Fel lösenord eller användarnamn");
+        add(loginErrorLabel);
+        loginErrorLabel.setBounds(20, 180, 250, 17);
 
         registerBtn.setText("Registrera");
         registerBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -111,15 +121,20 @@ public class LoginPopup extends javax.swing.JPanel {
             }
         });
         add(registerBtn);
-        registerBtn.setBounds(20, 195, 120, 30);
+        registerBtn.setBounds(20, 210, 120, 30);
 
         forgottenPwdBtn.setText("Glömt lösenord");
+        forgottenPwdBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                forgottenPwdBtnActionPerformed(evt);
+            }
+        });
         add(forgottenPwdBtn);
-        forgottenPwdBtn.setBounds(148, 195, 120, 30);
+        forgottenPwdBtn.setBounds(150, 210, 120, 30);
 
         backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/popup.png"))); // NOI18N
         add(backgroundLabel);
-        backgroundLabel.setBounds(0, 0, 287, 250);
+        backgroundLabel.setBounds(0, 0, 310, 260);
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameTxtMouseClicked
@@ -130,14 +145,6 @@ public class LoginPopup extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_usernameTxtMouseClicked
 
-    private void passWtxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passWtxtMouseClicked
-        //trycker på password txt:t
-        if(passWtxt.getText().equals("Lösenord..")){
-            passWtxt.setText("");
-            passWtxt.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_passWtxtMouseClicked
-
     private void usernameTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameTxtFocusLost
         // förlorar focus på användarnamn
         if(usernameTxt.getText().equals("")){
@@ -146,28 +153,56 @@ public class LoginPopup extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_usernameTxtFocusLost
 
-    private void passWtxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passWtxtFocusLost
-        // förlorar focus på lösenord
-        if(passWtxt.getText().equals("")){
-            passWtxt.setForeground(Color.lightGray);
-            passWtxt.setText("Lösenord..");
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        user = handler.getUser();
+        if(user.getUserName().equals(usernameTxt.getText())&&user.getPassword().equals(String.valueOf(passWtxt.getPassword()))){
+        //logga in :)
+            loginErrorLabel.setVisible(false);
+            controller.toggleLoginOrNameBtn(true);
+            controller.showFeatured();
+        } else{
+            loginErrorLabel.setVisible(true);
+        
         }
         
-    }//GEN-LAST:event_passWtxtFocusLost
-
-    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-
+        
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         controller.showRegister();
     }//GEN-LAST:event_registerBtnActionPerformed
 
+    private void forgottenPwdBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgottenPwdBtnActionPerformed
+
+        controller.showForgottenPW();
+    }//GEN-LAST:event_forgottenPwdBtnActionPerformed
+
+    private void passWtxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passWtxtFocusLost
+        // focus lost password
+        if(String.valueOf(passWtxt.getPassword()).equals("")){
+            c=0;
+            passWtxt.setEchoChar(c);
+            passWtxt.setForeground(Color.lightGray);
+            passWtxt.setText("Lösenord..");
+        }
+    }//GEN-LAST:event_passWtxtFocusLost
+
+    private void passWtxtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passWtxtFocusGained
+        // focus gained password
+        if(String.valueOf(passWtxt.getPassword()).equals("Lösenord..")){
+            c='*';
+            passWtxt.setEchoChar(c);
+            passWtxt.setText("");
+            passWtxt.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_passWtxtFocusGained
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLabel;
     private javax.swing.JButton forgottenPwdBtn;
     private javax.swing.JButton loginBtn;
-    private javax.swing.JTextField passWtxt;
+    private javax.swing.JLabel loginErrorLabel;
+    private javax.swing.JPasswordField passWtxt;
     private javax.swing.JButton registerBtn;
     private javax.swing.JTextField usernameTxt;
     // End of variables declaration//GEN-END:variables

@@ -27,6 +27,10 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         loginPopup.setVisible(false);
         handler = IMatDataHandler.getInstance();
+        contentPanel.removeAll();
+        contentPanel.add(new FeaturedPanel());
+        contentPanel.revalidate();
+        System.out.println("username: " + handler.getUser().getUserName() + " password: " + handler.getUser().getPassword());
     }
 
     /**
@@ -56,6 +60,7 @@ public class MainWindow extends javax.swing.JFrame {
         contentPanel = new javax.swing.JPanel();
         featuredPanel = new imatapp_g8.FeaturedPanel();
         shopPanel = new imatapp_g8.ShopPanel();
+        forgottenPasswordPanel1 = new imatapp_g8.ForgottenPasswordPanel();
         detailedPanel = new imatapp_g8.DetailedPanel();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -68,6 +73,11 @@ public class MainWindow extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1156, 720));
         setPreferredSize(new java.awt.Dimension(1156, 720));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
         getContentPane().add(loginPopup);
         loginPopup.setBounds(669, 31, 290, 260);
@@ -247,6 +257,7 @@ public class MainWindow extends javax.swing.JFrame {
         contentPanel.setLayout(new java.awt.BorderLayout());
         contentPanel.add(featuredPanel, java.awt.BorderLayout.CENTER);
         contentPanel.add(shopPanel, java.awt.BorderLayout.CENTER);
+        contentPanel.add(forgottenPasswordPanel1, java.awt.BorderLayout.PAGE_START);
         contentPanel.add(detailedPanel, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(contentPanel);
@@ -281,9 +292,20 @@ public class MainWindow extends javax.swing.JFrame {
             }
         } else{
             //gå till dina sidor!
+            
+            contentPanel.removeAll();
+            contentPanel.add(new MyPagePanel());
+            contentPanel.revalidate();
+        
        
         }
     }//GEN-LAST:event_loginAndUserBtnActionPerformed
+
+    
+    //spara saker då fönstret stängs..
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        handler.shutDown();
+    }//GEN-LAST:event_formWindowClosing
     
     public static void set_toggleLoginBtn(){
         
@@ -300,7 +322,6 @@ public class MainWindow extends javax.swing.JFrame {
     public static boolean getIfloggedIn(){
         return ifloggedIn;
     }
-    
 
     /**
      * @param args the command line arguments
@@ -349,6 +370,7 @@ public class MainWindow extends javax.swing.JFrame {
     protected static javax.swing.JPanel contentPanel;
     private imatapp_g8.DetailedPanel detailedPanel;
     private imatapp_g8.FeaturedPanel featuredPanel;
+    private imatapp_g8.ForgottenPasswordPanel forgottenPasswordPanel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private static javax.swing.JButton loginAndUserBtn;

@@ -74,7 +74,7 @@
     <Component class="javax.swing.JLabel" name="regEmailLabel">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="E-mail: *"/>
+        <Property name="text" type="java.lang.String" value="E-post: *"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
       <Constraints>

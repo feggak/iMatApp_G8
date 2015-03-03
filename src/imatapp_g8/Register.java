@@ -91,7 +91,7 @@ public class Register extends javax.swing.JPanel implements java.beans.Customize
         add(regLastNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 110, -1));
 
         regEmailLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        regEmailLabel.setText("E-mail: *");
+        regEmailLabel.setText("E-post: *");
         regEmailLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(regEmailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 80, -1));
 
@@ -177,6 +177,7 @@ public class Register extends javax.swing.JPanel implements java.beans.Customize
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         //trycker på registrera knappen..
         if(checkRequiredFields()){
+            handler.reset();
             errorLabel.setVisible(false);
             customer = handler.getCustomer();
             user = handler.getUser();
@@ -190,7 +191,7 @@ public class Register extends javax.swing.JPanel implements java.beans.Customize
             customer.setPostCode(regPostalCodeField.getText());
             user.setPassword(String.valueOf(regPwField.getPassword()));
             user.setUserName(regUsernameField.getText());
-            controller.showShopAllProducts();
+            controller.showFeatured();
             controller.toggleLoginOrNameBtn(true);
             
             

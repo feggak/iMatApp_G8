@@ -33,6 +33,7 @@ public class Controller {
     
     public void showFeatured() {
         MainWindow.contentPanel.removeAll();
+        MainWindow.loginPopup.setVisible(false);
         MainWindow.contentPanel.add(new FeaturedPanel());
         MainWindow.contentPanel.revalidate();
     }
@@ -44,8 +45,22 @@ public class Controller {
         MainWindow.contentPanel.revalidate();
     }
     
+    public void showForgottenPW(){
+        MainWindow.contentPanel.removeAll();
+        MainWindow.loginPopup.setVisible(false);
+        MainWindow.contentPanel.add(new ForgottenPasswordPanel());
+        MainWindow.contentPanel.revalidate();
+    
+    }
+    
+    public void setIfLoggedIn(boolean b){
+        MainWindow.setIfloggedIn(b);
+    }
+
+    
     public void showShopAllProducts() {
         MainWindow.contentPanel.removeAll();
+        MainWindow.loginPopup.setVisible(false);
         MainWindow.contentPanel.add(new ShopPanel("all"));
         MainWindow.contentPanel.revalidate();
     }
