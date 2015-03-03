@@ -90,7 +90,6 @@ public class TempCartItem extends javax.swing.JPanel {
 
         totalPriceLabel2.setFont(new java.awt.Font("Myriad Pro", 0, 12)); // NOI18N
         totalPriceLabel2.setText("40.0 kr");
-        totalPriceLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         totalPriceLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 totalPriceLabel2MouseClicked(evt);
@@ -144,6 +143,7 @@ public class TempCartItem extends javax.swing.JPanel {
 
         nameLabel.setFont(new java.awt.Font("Myriad Pro Light", 1, 18)); // NOI18N
         nameLabel.setText("Mjölk");
+        nameLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         jButton1.setText("Ta Bort");
@@ -156,7 +156,7 @@ public class TempCartItem extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void iconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseClicked
-        tempController.showDetailedView(prod);
+        
     }//GEN-LAST:event_iconLabelMouseClicked
 
     private void totalPriceLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_totalPriceLabel2MouseClicked
