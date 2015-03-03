@@ -5,6 +5,7 @@
  */
 package imatapp_g8;
 
+import javax.swing.JButton;
 import se.chalmers.ait.dat215.project.*;
 
 /**
@@ -50,7 +51,7 @@ public class MainWindow extends javax.swing.JFrame {
         contentPanel = new javax.swing.JPanel();
         featuredPanel = new imatapp_g8.FeaturedPanel();
         shopPanel = new imatapp_g8.ShopPanel();
-        detailedPanel = new imatapp_g8.DetailedPanel();
+        shoppingCartPanel21 = new imatapp_g8.ShoppingCartPanel2();
         breadcrumbs = new imatapp_g8.Breadcrumbs();
         loginPopup = new imatapp_g8.LoginPopup();
         menuBar = new javax.swing.JMenuBar();
@@ -227,7 +228,7 @@ public class MainWindow extends javax.swing.JFrame {
         contentPanel.setLayout(new java.awt.BorderLayout());
         contentPanel.add(featuredPanel, java.awt.BorderLayout.CENTER);
         contentPanel.add(shopPanel, java.awt.BorderLayout.CENTER);
-        contentPanel.add(detailedPanel, java.awt.BorderLayout.CENTER);
+        contentPanel.add(shoppingCartPanel21, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(contentPanel);
         contentPanel.setBounds(220, 47, 930, 680);
@@ -268,7 +269,14 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_storeBtnActionPerformed
 
     private void recipeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recipeBtnActionPerformed
-
+        
+        shoppingCartPanel21.addItem();
+        revalidate();
+        
+        
+        //shoppingCartPanel1.addButton();
+        
+        
     }//GEN-LAST:event_recipeBtnActionPerformed
 
     /**
@@ -316,7 +324,6 @@ public class MainWindow extends javax.swing.JFrame {
     private imatapp_g8.CategoryPanel categoryPanel;
     private javax.swing.JButton checkoutBtn;
     protected static javax.swing.JPanel contentPanel;
-    private imatapp_g8.DetailedPanel detailedPanel;
     private imatapp_g8.FeaturedPanel featuredPanel;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -327,6 +334,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTextField searchField;
     private javax.swing.JLabel searchIcon;
     private imatapp_g8.ShopPanel shopPanel;
+    private imatapp_g8.ShoppingCartPanel2 shoppingCartPanel21;
     private javax.swing.JButton storeBtn;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables

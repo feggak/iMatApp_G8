@@ -486,10 +486,10 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="imatapp_g8.DetailedPanel" name="detailedPanel">
+        <Component class="imatapp_g8.ShoppingCartPanel2" name="shoppingCartPanel21">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-              <BorderConstraints direction="Center"/>
+              <BorderConstraints direction="First"/>
             </Constraint>
           </Constraints>
         </Component>
