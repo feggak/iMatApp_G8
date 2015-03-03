@@ -29,7 +29,7 @@ public class Breadcrumbs extends javax.swing.JPanel {
         if (one == null) {
             first.setText("");
         } else {
-            first.setText(one);
+            first.setText(" " + one);
         }
         // Update SECOND set
         if (two == null) {
@@ -75,6 +75,7 @@ public class Breadcrumbs extends javax.swing.JPanel {
         first.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
         first.setText("first");
         first.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        first.setMaximumSize(new java.awt.Dimension(100, 20));
         first.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 firstMouseClicked(evt);
@@ -82,13 +83,15 @@ public class Breadcrumbs extends javax.swing.JPanel {
         });
         add(first);
 
-        arrow1.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
+        arrow1.setFont(new java.awt.Font("Myriad Pro", 1, 19)); // NOI18N
         arrow1.setText(">");
         add(arrow1);
 
         second.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
         second.setText("second");
         second.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        second.setMaximumSize(new java.awt.Dimension(200, 20));
+        second.setMinimumSize(new java.awt.Dimension(90, 20));
         second.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 secondMouseClicked(evt);
@@ -96,12 +99,13 @@ public class Breadcrumbs extends javax.swing.JPanel {
         });
         add(second);
 
-        arrow2.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
+        arrow2.setFont(new java.awt.Font("Myriad Pro", 1, 19)); // NOI18N
         arrow2.setText(">");
         add(arrow2);
 
         third.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
         third.setText("third");
+        third.setMaximumSize(new java.awt.Dimension(200, 20));
         add(third);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -111,10 +115,9 @@ public class Breadcrumbs extends javax.swing.JPanel {
     }//GEN-LAST:event_secondMouseClicked
 
     private void firstMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_firstMouseClicked
-        if (first.getText().equals("Butik")) {
-            controller.hideBreadcrumbs();
-            controller.showFeatured();
-        }
+        controller.hideBreadcrumbs();
+        controller.showFeatured();
+        MainWindow.categoryPanel.resetAllFontsExceptStart();
     }//GEN-LAST:event_firstMouseClicked
 
 

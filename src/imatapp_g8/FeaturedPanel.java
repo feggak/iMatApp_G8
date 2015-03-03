@@ -5,6 +5,7 @@
  */
 package imatapp_g8;
 
+import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.ait.dat215.project.*;
 
@@ -15,18 +16,24 @@ import se.chalmers.ait.dat215.project.*;
 public class FeaturedPanel extends javax.swing.JPanel {
     
     // Custom variable declaration
-
+    private List<Product> featuredProducts;
+    Controller controller;
+    
     /**
      * Creates new form ShopPanel
      */
     public FeaturedPanel() {
         initComponents();
-        // fillGrid(MainWindow.db.getProducts(ProductCategory.NUTS_AND_SEEDS));
+        controller = Controller.getInstance();
+        featuredProducts = MainWindow.getRandomFeaturedProducts();
+        fillGrid(featuredProducts);
     }
     
     public void fillGrid(List<Product> items) {
         for (int i = 1; i < items.size(); i++) {
-            productGrid.add(new ShopItem(items.get(i)));
+            if (items.get(i) != null) {
+                productGrid.add(new ShopItem(items.get(i)));
+            }
         }
     }
 
@@ -50,24 +57,35 @@ public class FeaturedPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(930, 630));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        shopBannerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/banner.png"))); // NOI18N
+        shopBannerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/banner2.png"))); // NOI18N
         shopBannerIcon.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        add(shopBannerIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        shopBannerIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        shopBannerIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                shopBannerIconMouseClicked(evt);
+            }
+        });
+        add(shopBannerIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 250));
 
         mainTitle.setFont(new java.awt.Font("Myriad Pro", 0, 22)); // NOI18N
         mainTitle.setText("Kampanjvaror");
-        add(mainTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 208, -1, -1));
+        add(mainTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 258, -1, -1));
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 232, 918, 10));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 282, 918, 10));
 
         productGrid.setBackground(new java.awt.Color(255, 255, 255));
         productGrid.setAlignmentX(0.0F);
         productGrid.setAlignmentY(0.0F);
         productGrid.setAutoscrolls(true);
         productGrid.setLayout(new java.awt.GridLayout(0, 5));
-        add(productGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 238, 910, 435));
+        add(productGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 293, 910, 375));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void shopBannerIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shopBannerIconMouseClicked
+        controller.updateBreadcrumbs("Butik","Kampanjvaror","Fanta burk");
+        controller.showDetails(MainWindow.db.getProduct(35));
+    }//GEN-LAST:event_shopBannerIconMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

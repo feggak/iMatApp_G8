@@ -17,6 +17,7 @@ public class Controller {
     
     // Variables declaration
     private ProductCategory currentCategory;
+    private boolean showAllActive = false;
     
     private Controller() {}
     
@@ -33,8 +34,8 @@ public class Controller {
     
     public void updateBreadcrumbs(String one, String two, String three) {
         MainWindow.breadcrumbs.updateLabels(one, two, three);
-        MainWindow.breadcrumbs.setVisible(true);
         MainWindow.breadcrumbs.repaint();
+        MainWindow.breadcrumbs.setVisible(true);
     }
     
     public void showFeatured() {
@@ -54,6 +55,7 @@ public class Controller {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new ShopPanel("all"));
         MainWindow.contentPanel.revalidate();
+        showAllActive = true;
     }
     
     public void showShopCategory(ProductCategory category) {
@@ -61,18 +63,28 @@ public class Controller {
         MainWindow.contentPanel.add(new ShopPanel(category));
         MainWindow.contentPanel.revalidate();
         currentCategory = category;
+        showAllActive = false;
     }
     
     public void showPreviousShopCategory() {
-        MainWindow.contentPanel.removeAll();
-        MainWindow.contentPanel.add(new ShopPanel(currentCategory));
-        MainWindow.contentPanel.revalidate();
+        if (showAllActive) {
+            MainWindow.contentPanel.removeAll();
+            MainWindow.contentPanel.add(new ShopPanel("all"));
+            MainWindow.contentPanel.revalidate();
+            showAllActive = true;
+        } else {
+            MainWindow.contentPanel.removeAll();
+            MainWindow.contentPanel.add(new ShopPanel(currentCategory));
+            MainWindow.contentPanel.revalidate();
+            showAllActive = false;
+        }
     }
     
     public void showDetails(Product product) {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new DetailedPanel(product));
         MainWindow.contentPanel.repaint();
+        MainWindow.contentPanel.revalidate();
     }
     
 }

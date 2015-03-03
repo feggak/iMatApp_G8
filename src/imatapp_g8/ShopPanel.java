@@ -67,7 +67,7 @@ public class ShopPanel extends javax.swing.JPanel {
         productGrid.setLayout(new java.awt.GridLayout(0, 5));
         productGridScrollPane.setViewportView(productGrid);
 
-        add(productGridScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 40, 920, 590));
+        add(productGridScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 40, 920, 581));
     }// </editor-fold>//GEN-END:initComponents
 
 

@@ -5,6 +5,8 @@
  */
 package imatapp_g8;
 
+import java.util.ArrayList;
+import java.util.List;
 import se.chalmers.ait.dat215.project.*;
 
 /**
@@ -26,6 +28,15 @@ public class MainWindow extends javax.swing.JFrame {
         loginPopup.setVisible(false);
         breadcrumbs.setVisible(false);
         categoryPanel.resetAllFontsExceptStart();
+    }
+    
+    public static List<Product> getRandomFeaturedProducts() {
+        List<Product> tempList = new ArrayList<Product>();
+        for (int i = 1; i <= 6; i++) {
+            int number = (int) Math.ceil(Math.random()*148);
+            tempList.add(db.getProduct(number));
+        }
+        return tempList;
     }
 
     /**
@@ -234,7 +245,7 @@ public class MainWindow extends javax.swing.JFrame {
         contentPanel.setLayout(new java.awt.BorderLayout());
         contentPanel.add(detailedPanel, java.awt.BorderLayout.CENTER);
         contentPanel.add(shopPanel, java.awt.BorderLayout.CENTER);
-        contentPanel.add(featuredPanel, java.awt.BorderLayout.CENTER);
+        contentPanel.add(featuredPanel, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(contentPanel);
         contentPanel.setBounds(220, 47, 930, 680);
