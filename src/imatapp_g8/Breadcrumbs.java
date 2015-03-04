@@ -114,9 +114,7 @@ public class Breadcrumbs extends javax.swing.JPanel {
     }//GEN-LAST:event_secondMouseClicked
 
     private void firstMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_firstMouseClicked
-        controller.hideBreadcrumbs();
-        controller.showFeatured();
-        MainWindow.categoryPanel.resetAllFontsExceptStart();
+        // null
     }//GEN-LAST:event_firstMouseClicked
 
 

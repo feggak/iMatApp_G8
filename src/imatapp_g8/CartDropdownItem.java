@@ -112,7 +112,6 @@ public class CartDropdownItem extends javax.swing.JPanel {
     private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
         Controller.cart.removeItem(currentItem);
         CartDropdown.update();
-        CartPanel.update();
         controller.updateCartHeader();
     }//GEN-LAST:event_removeBtnActionPerformed
 
