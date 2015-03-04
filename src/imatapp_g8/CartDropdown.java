@@ -101,6 +101,7 @@ public class CartDropdown extends javax.swing.JPanel {
         clearCartLabel.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
         clearCartLabel.setForeground(new java.awt.Color(255, 255, 255));
         clearCartLabel.setText("Töm kundvagnen");
+        clearCartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         clearCartLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 clearCartLabelMouseClicked(evt);

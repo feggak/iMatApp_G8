@@ -71,6 +71,7 @@ public class Controller {
     
     public void showShoppingCartPanel() {
         MainWindow.contentPanel.removeAll();
+        MainWindow.cartDropdown.setVisible(false);
         MainWindow.contentPanel.add(new CartPanel());
         MainWindow.contentPanel.repaint();
     }

@@ -70,7 +70,7 @@ public class CartPanel extends javax.swing.JPanel {
         itemGridScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         itemsGrid.setBackground(new java.awt.Color(255, 255, 255));
-        itemsGrid.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(0, 0, 0)));
+        itemsGrid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         itemsGrid.setAlignmentX(0.0F);
         itemsGrid.setAlignmentY(0.0F);
         itemsGrid.setMaximumSize(new java.awt.Dimension(920, 590));

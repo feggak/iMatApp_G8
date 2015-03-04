@@ -54,8 +54,8 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        loginPopup = new imatapp_g8.LoginPopup();
         cartDropdown = new imatapp_g8.CartDropdown();
+        loginPopup = new imatapp_g8.LoginPopup();
         topPanel = new javax.swing.JPanel();
         storeBtn = new javax.swing.JButton();
         recipeBtn = new javax.swing.JButton();
@@ -86,11 +86,17 @@ public class MainWindow extends javax.swing.JFrame {
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMinimumSize(new java.awt.Dimension(1156, 720));
         setResizable(false);
+        setSize(new java.awt.Dimension(1150, 720));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
-        getContentPane().add(loginPopup);
-        loginPopup.setBounds(669, 31, 290, 260);
         getContentPane().add(cartDropdown);
         cartDropdown.setBounds(874, 47, 276, 460);
+        getContentPane().add(loginPopup);
+        loginPopup.setBounds(670, 25, 290, 260);
 
         topPanel.setBackground(new java.awt.Color(226, 87, 76));
         topPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -316,6 +322,8 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(contentPanel);
         contentPanel.setBounds(220, 47, 930, 680);
 
+        menuBar.setBorder(null);
+
         jMenu1.setText("File");
         menuBar.add(jMenu1);
 
@@ -385,6 +393,10 @@ public class MainWindow extends javax.swing.JFrame {
         controller.showShoppingCartPanel();
     }//GEN-LAST:event_checkoutBtnActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        Controller.db.shutDown();
+    }//GEN-LAST:event_formWindowClosing
+
     /**
      * @param args the command line arguments
      */
@@ -424,7 +436,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel arrowIcon;
     protected static imatapp_g8.Breadcrumbs breadcrumbs;
     private javax.swing.JButton cartBtn;
-    private imatapp_g8.CartDropdown cartDropdown;
+    protected static imatapp_g8.CartDropdown cartDropdown;
     private javax.swing.JLabel cartIcon;
     protected static javax.swing.JLabel cartLabel;
     protected static javax.swing.JLabel cartTotalLabel;
