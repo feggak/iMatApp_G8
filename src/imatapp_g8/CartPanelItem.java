@@ -74,9 +74,9 @@ public class CartPanelItem extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        setMaximumSize(new java.awt.Dimension(650, 100));
-        setMinimumSize(new java.awt.Dimension(650, 100));
-        setPreferredSize(new java.awt.Dimension(650, 100));
+        setMaximumSize(new java.awt.Dimension(645, 100));
+        setMinimumSize(new java.awt.Dimension(645, 100));
+        setPreferredSize(new java.awt.Dimension(645, 100));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         iconLabel.setIcon(icon);
@@ -100,8 +100,8 @@ public class CartPanelItem extends javax.swing.JPanel {
                 totalPriceValueLabelMouseClicked(evt);
             }
         });
-        jPanel1.add(totalPriceValueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 30, 60, -1));
-        jPanel1.add(separator, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 370, 10));
+        jPanel1.add(totalPriceValueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 30, 60, -1));
+        jPanel1.add(separator, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 340, 10));
 
         amountLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         amountLabel.setText("Antal");
@@ -113,12 +113,12 @@ public class CartPanelItem extends javax.swing.JPanel {
 
         totalPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         totalPriceLabel.setText("Totalt");
-        jPanel1.add(totalPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, -1, -1));
+        jPanel1.add(totalPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, -1, -1));
 
         priceLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         priceLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         priceLabel2.setText(Double.toString(price) + " " + unit);
-        jPanel1.add(priceLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 30, -1, -1));
+        jPanel1.add(priceLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
 
         spinner.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), null, null, Double.valueOf(1.0d)));
         jPanel1.add(spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 30, 40, -1));
@@ -131,7 +131,7 @@ public class CartPanelItem extends javax.swing.JPanel {
         });
         jPanel1.add(changeAmountBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 28, -1, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 380, 60));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 360, 60));
 
         nameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         nameLabel.setText(name);
@@ -160,7 +160,7 @@ public class CartPanelItem extends javax.swing.JPanel {
                 removeBtnActionPerformed(evt);
             }
         });
-        add(removeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 60, 30, 30));
+        add(removeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(591, 60, 30, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void iconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseClicked

@@ -28,6 +28,7 @@ public class MainWindow extends javax.swing.JFrame {
         loginPopup.setVisible(false);
         breadcrumbs.setVisible(false);
         cartDropdown.setVisible(false);
+        categoryPanel.changeContent("store");
     }
     
     public static void set_toggleLoginBtn(){
@@ -336,9 +337,7 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void storeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeBtnActionPerformed
-        contentPanel.removeAll();
-        contentPanel.add(new FeaturedPanel());
-        contentPanel.revalidate();
+        controller.showFeatured();
         categoryPanel.resetAllFontsExceptStart();
         storeBtn.setSelected(true);
         recipeBtn.setSelected(false);

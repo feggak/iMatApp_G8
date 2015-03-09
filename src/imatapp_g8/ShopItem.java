@@ -133,9 +133,7 @@ public class ShopItem extends javax.swing.JPanel {
     }//GEN-LAST:event_itemNameMouseClicked
 
     private void addToCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartBtnActionPerformed
-        controller.cart.addItem(new ShoppingItem(product,(double)spinner.getValue()));
-        CartDropdown.update();
-        controller.updateCartHeader();
+        controller.addToCart(product,(double)spinner.getValue());
     }//GEN-LAST:event_addToCartBtnActionPerformed
 
 

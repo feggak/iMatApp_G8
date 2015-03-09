@@ -19,7 +19,7 @@ public class Controller {
     private static Controller instance = null;
     protected static IMatDataHandler db;
     protected static ShoppingCart cart;
-    private ProductCategory currentCategory;
+    private List<Product> currentCategory;
     private boolean showAllActive = false;
     private boolean featuredActive = false;
     protected static boolean searchPanelVisible = false;
@@ -62,69 +62,66 @@ public class Controller {
         }
     }
     
+    public void addToCart(Product product,double amount) {
+        boolean different = true;
+        List<ShoppingItem> contents = new ArrayList<>();
+        contents = cart.getItems();
+        for (int i = 0; i < contents.size(); i++) {
+            if (contents.get(i).getProduct().equals(product)) {
+                contents.get(i).setAmount(contents.get(i).getAmount() + amount);
+                different = false;
+            }
+        }
+        if (different) {
+            cart.addItem(new ShoppingItem(product,amount));
+        }
+        CartDropdown.update();
+        updateCartHeader();
+    }
+    
     public void hideBreadcrumbs() {
         MainWindow.breadcrumbs.setVisible(false);
     }
     
+    // Breadcrumbs
+    
     public void updateBreadcrumbs(String one, String two, String three) {
         MainWindow.breadcrumbs.updateLabels(one, two, three);
         MainWindow.breadcrumbs.repaint();
+        MainWindow.breadcrumbs.revalidate();
         MainWindow.breadcrumbs.setVisible(true);
     }
     
-    public void showShoppingCartPanel() {
-        MainWindow.contentPanel.removeAll();
-        MainWindow.cartDropdown.setVisible(false);
-        MainWindow.contentPanel.add(new CartPanel());
-        MainWindow.contentPanel.repaint();
-    }
+    // Store views
     
     public void showFeatured() {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new FeaturedPanel());
-        MainWindow.contentPanel.repaint();
+        MainWindow.contentPanel.revalidate();
+        MainWindow.categoryPanel.changeContent("store");
         showAllActive = false;
         featuredActive = true;
         searchPanelVisible = false;
     }
-    
-    public void showRegister() {
-        MainWindow.contentPanel.removeAll();
-        MainWindow.loginPopup.setVisible(false);
-        MainWindow.contentPanel.add(new Register());
-        MainWindow.contentPanel.repaint();
-    }
-    
     public void showShopAllProducts() {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new ShopPanel(0));
         MainWindow.contentPanel.revalidate();
+        MainWindow.categoryPanel.changeContent("store");
         showAllActive = true;
         featuredActive = false;
         searchPanelVisible = false;
     }
-    
-    public void showShopSearch(String search) {
-        List<Product> result = new ArrayList<>();
-        result = Controller.db.findProducts(search);
-        MainWindow.contentPanel.removeAll();
-        MainWindow.contentPanel.add(new ShopPanel(result));
-        MainWindow.contentPanel.revalidate();
-        showAllActive = false;
-        featuredActive = false;
-        searchPanelVisible = true;
-    }
-    
-    public void showShopCategory(ProductCategory category) {
+    public void showShopCategory(List<Product> category) {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new ShopPanel(category));
         MainWindow.contentPanel.revalidate();
+        MainWindow.categoryPanel.changeContent("store");
         currentCategory = category;
         showAllActive = false;
         featuredActive = false;
         searchPanelVisible = false;
     }
-    
     public void showPreviousShopCategory() {
         if (showAllActive) {
             MainWindow.contentPanel.removeAll();
@@ -149,14 +146,43 @@ public class Controller {
             featuredActive = false;
             searchPanelVisible = false;
         }
+        MainWindow.categoryPanel.changeContent("store");
     }
-    
     public void showDetails(Product product) {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new DetailedPanel(product));
         MainWindow.contentPanel.repaint();
         MainWindow.contentPanel.revalidate();
         searchPanelVisible = false;
+        MainWindow.categoryPanel.changeContent("store");
+    }
+    public void showShopSearch(String search) {
+        List<Product> result = new ArrayList<>();
+        result = Controller.db.findProducts(search);
+        MainWindow.contentPanel.removeAll();
+        MainWindow.contentPanel.add(new ShopPanel(result));
+        MainWindow.contentPanel.revalidate();
+        showAllActive = false;
+        featuredActive = false;
+        searchPanelVisible = true;
+        MainWindow.categoryPanel.changeContent("search");
     }
     
+    // Account views
+    
+    public void showRegister() {
+        MainWindow.contentPanel.removeAll();
+        MainWindow.loginPopup.setVisible(false);
+        MainWindow.contentPanel.add(new Register());
+        MainWindow.contentPanel.repaint();
+    }
+    
+    // Cart & Buy views
+        
+    public void showShoppingCartPanel() {
+        MainWindow.contentPanel.removeAll();
+        MainWindow.cartDropdown.setVisible(false);
+        MainWindow.contentPanel.add(new CartPanel());
+        MainWindow.contentPanel.repaint();
+    }
 }

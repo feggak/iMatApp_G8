@@ -27,11 +27,6 @@ public class ShopPanel extends javax.swing.JPanel {
         fillGrid(Controller.db.getProducts());
     }
     
-    public ShopPanel(ProductCategory category) {
-        initComponents();
-        fillGrid(Controller.db.getProducts(category));
-    }
-    
     public ShopPanel(List<Product> items) {
         initComponents();
         fillGrid(items);
@@ -53,6 +48,7 @@ public class ShopPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         productGridScrollPane = new javax.swing.JScrollPane();
+        productGridScrollPane.getVerticalScrollBar().setUnitIncrement(20);
         productGrid = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
