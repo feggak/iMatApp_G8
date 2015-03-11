@@ -5,10 +5,6 @@
  */
 package imatapp_g8;
 
-import java.util.ArrayList;
-import java.util.List;
-import se.chalmers.ait.dat215.project.*;
-
 /**
  *
  * @author frellAn
@@ -16,7 +12,7 @@ import se.chalmers.ait.dat215.project.*;
 public class MainWindow extends javax.swing.JFrame {
 
     Controller controller;
-    private static boolean ifloggedIn;
+    private static boolean isLoggedIn;
     
     /**
      * Creates new form MainWindow
@@ -27,23 +23,24 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         loginPopup.setVisible(false);
         breadcrumbs.setVisible(false);
+        controller.updateCartHeader();
         cartDropdown.setVisible(false);
-        categoryPanel.changeContent("store");
+        controller.changeCategoryView("store");
     }
     
-    public static void set_toggleLoginBtn(){
-        if (getIfloggedIn()){
-            loginAndUserBtn.setText(Controller.db.getCustomer().getFirstName());
+    public static void setLoginBtnLabel(){
+        if (getIsLoggedIn()){
+            loginAndUserBtn.setText("Mitt konto");
         } else {
             loginAndUserBtn.setText("Logga in");
         }
     }
-    public static void setIfloggedIn(boolean b){
-        ifloggedIn = b;
+    public static void setIsLoggedIn(boolean b){
+        isLoggedIn = b;
     }
     
-    public static boolean getIfloggedIn(){
-        return ifloggedIn;
+    public static boolean getIsLoggedIn(){
+        return isLoggedIn;
     }
 
     /**
@@ -74,10 +71,6 @@ public class MainWindow extends javax.swing.JFrame {
         contentPanel = new javax.swing.JPanel();
         welcomePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        forgottenPasswordPanel = new imatapp_g8.ForgottenPasswordPanel();
-        featuredPanel = new imatapp_g8.FeaturedPanel();
-        shopPanel = new imatapp_g8.ShopPanel();
-        detailedPanel = new imatapp_g8.DetailedPanel();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -315,10 +308,6 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel1.setBounds(180, 230, 570, 130);
 
         contentPanel.add(welcomePanel, java.awt.BorderLayout.PAGE_START);
-        contentPanel.add(forgottenPasswordPanel, java.awt.BorderLayout.CENTER);
-        contentPanel.add(featuredPanel, java.awt.BorderLayout.CENTER);
-        contentPanel.add(shopPanel, java.awt.BorderLayout.CENTER);
-        contentPanel.add(detailedPanel, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(contentPanel);
         contentPanel.setBounds(220, 47, 930, 680);
@@ -338,22 +327,20 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void storeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeBtnActionPerformed
         controller.showFeatured();
-        categoryPanel.resetAllFontsExceptStart();
+        categoryPanel.resetAllStoreFontsExceptFeatured();
         storeBtn.setSelected(true);
         recipeBtn.setSelected(false);
     }//GEN-LAST:event_storeBtnActionPerformed
 
     private void loginAndUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginAndUserBtnActionPerformed
-        if(!getIfloggedIn()){
+        if(isLoggedIn){
+            controller.showAccount();
+        } else {
             if (!loginPopup.isVisible()) {
                 loginPopup.setVisible(true);
             } else {
                 loginPopup.setVisible(false);
             }
-        } else {
-        contentPanel.removeAll();
-        contentPanel.add(new MyPagePanel());
-        contentPanel.revalidate();
         }
     }//GEN-LAST:event_loginAndUserBtnActionPerformed
 
@@ -375,20 +362,20 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void searchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyPressed
         if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            categoryPanel.resetAllFonts();
+            categoryPanel.resetAllStoreFonts();
             controller.showShopSearch(searchField.getText());
             controller.updateBreadcrumbs("Sök",searchField.getText(),null);
         }
     }//GEN-LAST:event_searchFieldKeyPressed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        categoryPanel.resetAllFonts();
+        categoryPanel.resetAllStoreFonts();
         controller.showShopSearch(searchField.getText());
         controller.updateBreadcrumbs("Sök",searchField.getText(),null);
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
-        categoryPanel.resetAllFonts();
+        categoryPanel.resetAllStoreFonts();
         controller.showShoppingCartPanel();
     }//GEN-LAST:event_checkoutBtnActionPerformed
 
@@ -442,9 +429,6 @@ public class MainWindow extends javax.swing.JFrame {
     protected static imatapp_g8.CategoryPanel categoryPanel;
     private javax.swing.JButton checkoutBtn;
     protected static javax.swing.JPanel contentPanel;
-    private imatapp_g8.DetailedPanel detailedPanel;
-    private imatapp_g8.FeaturedPanel featuredPanel;
-    private imatapp_g8.ForgottenPasswordPanel forgottenPasswordPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -454,7 +438,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton recipeBtn;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
-    private imatapp_g8.ShopPanel shopPanel;
     private javax.swing.JButton storeBtn;
     private javax.swing.JPanel topPanel;
     private javax.swing.JPanel welcomePanel;

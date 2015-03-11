@@ -9,21 +9,21 @@ package imatapp_g8;
  *
  * @author rasmusdavidsson
  */
+import java.awt.CardLayout;
+import java.util.List;
 import se.chalmers.ait.dat215.project.*;
-public class MyPagePanel extends javax.swing.JPanel {
+
+public class AccountPanel extends javax.swing.JPanel {
     
     Controller controller;
-    Customer customer;
-    User user;
+    Customer customer = Controller.db.getCustomer();
+    User user = Controller.db.getUser();
     /**
      * Creates new customizer MyPagePanel
      */
-    public MyPagePanel() {
+    public AccountPanel() {
         initComponents();
         controller = Controller.getInstance();
-        Controller.db = IMatDataHandler.getInstance();
-        customer = Controller.db.getCustomer();
-        user = Controller.db.getUser();
         myPagenameLabel.setText(customer.getFirstName());
         myPageaddressLabel.setText(customer.getAddress());
         myPagemailLabel.setText(customer.getEmail());
@@ -33,7 +33,6 @@ public class MyPagePanel extends javax.swing.JPanel {
         myPageortLabel.setText(customer.getPostAddress());
         myPagepostalcodeLabel.setText(customer.getPostCode());
         myPageusernameLabel.setText(user.getUserName());
-        
     }
 
     /**
@@ -156,8 +155,8 @@ public class MyPagePanel extends javax.swing.JPanel {
 
     private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
         Controller.db.shutDown();
-        controller.setIfLoggedIn(false);
-        controller.toggleLoginOrNameBtn(false);
+        controller.setIsLoggedIn(false);
+        controller.toggleLoginBtn(false);
         controller.showFeatured();
     }//GEN-LAST:event_logOutBtnActionPerformed
 

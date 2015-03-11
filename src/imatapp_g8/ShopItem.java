@@ -20,6 +20,7 @@ public class ShopItem extends javax.swing.JPanel {
     private double price;
     private String unit;
     private Product product;
+    private boolean isFavorite = false;
     Controller controller;
 
     /**
@@ -31,16 +32,24 @@ public class ShopItem extends javax.swing.JPanel {
     }
     
     public ShopItem(Product item) {
+        controller = Controller.getInstance();
         icon = Controller.db.getImageIcon(item,174,132);
         name = item.getName();
         price = item.getPrice();
         unit = item.getUnit();
         product = item;
         initComponents();
-        if (item.getUnitSuffix().equals("förp") || item.getUnitSuffix().equals("st")) {
+        if (item.getUnitSuffix().equals("förp") || item.getUnitSuffix().equals("st") || item.getUnitSuffix().equals("påse") || item.getUnitSuffix().equals("burk")) {
             spinner.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(1.0d), 1.0, null, Double.valueOf(1.0d)));
         }
-        controller = Controller.getInstance();
+        for (Product favorite : Controller.db.favorites()) {
+            if (favorite.equals(product)) {
+                isFavorite = true;
+            }
+        }
+        if (isFavorite) {
+            favoriteBtn.setSelected(true);
+        }
     }
 
     /**
@@ -52,6 +61,7 @@ public class ShopItem extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        favoriteBtn = new javax.swing.JButton();
         addToCartBtn = new javax.swing.JButton();
         itemIcon = new javax.swing.JLabel();
         itemName = new javax.swing.JLabel();
@@ -63,6 +73,31 @@ public class ShopItem extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(182, 208));
         setPreferredSize(new java.awt.Dimension(182, 208));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        favoriteBtn.setForeground(new java.awt.Color(255, 255, 255));
+        favoriteBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/favicon.png"))); // NOI18N
+        favoriteBtn.setAlignmentY(0.0F);
+        favoriteBtn.setBorder(null);
+        favoriteBtn.setBorderPainted(false);
+        favoriteBtn.setContentAreaFilled(false);
+        favoriteBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        favoriteBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        favoriteBtn.setDefaultCapable(false);
+        favoriteBtn.setFocusPainted(false);
+        favoriteBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        favoriteBtn.setIconTextGap(0);
+        favoriteBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        favoriteBtn.setMaximumSize(new java.awt.Dimension(110, 46));
+        favoriteBtn.setMinimumSize(new java.awt.Dimension(110, 46));
+        favoriteBtn.setRequestFocusEnabled(false);
+        favoriteBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/favicon_rollover.png"))); // NOI18N
+        favoriteBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/favicon_selected.png"))); // NOI18N
+        favoriteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                favoriteBtnActionPerformed(evt);
+            }
+        });
+        add(favoriteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 128, 32, 32));
 
         addToCartBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 16)); // NOI18N
         addToCartBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,9 +171,20 @@ public class ShopItem extends javax.swing.JPanel {
         controller.addToCart(product,(double)spinner.getValue());
     }//GEN-LAST:event_addToCartBtnActionPerformed
 
+    private void favoriteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favoriteBtnActionPerformed
+        if (!favoriteBtn.isSelected()) {
+            Controller.db.addFavorite(product);
+            favoriteBtn.setSelected(true);
+        } else {
+            Controller.db.removeFavorite(product);
+            favoriteBtn.setSelected(false);
+        }
+    }//GEN-LAST:event_favoriteBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToCartBtn;
+    private javax.swing.JButton favoriteBtn;
     private javax.swing.JLabel itemIcon;
     private javax.swing.JLabel itemName;
     private javax.swing.JLabel itemPrice;

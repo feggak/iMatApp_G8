@@ -138,7 +138,7 @@ public class CartDropdown extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
-        MainWindow.categoryPanel.resetAllFonts();
+        MainWindow.categoryPanel.resetAllStoreFonts();
         controller.showShoppingCartPanel();
     }//GEN-LAST:event_checkoutBtnActionPerformed
 

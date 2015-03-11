@@ -17,14 +17,14 @@ public class CartPanel extends javax.swing.JPanel {
     
     // Custom variable declaration
     static Controller controller;
-    private double totalPrice;
+    private static double totalPrice;
     
     /**
      * Creates new form ShopPanel
      */
     public CartPanel() {
         controller = Controller.getInstance();
-        totalPrice = controller.cart.getTotal();
+        totalPrice = (Math.round(controller.cart.getTotal()*100.0)/100.0) + controller.getShippingPrice();
         initComponents();
         List<ShoppingItem> tempList;
         tempList = Controller.cart.getItems();
@@ -34,15 +34,16 @@ public class CartPanel extends javax.swing.JPanel {
     }
     
     public static void update() {
-        if (Controller.cart.getItems().size() < 5) {
         itemsGrid.removeAll();
         itemsGrid.repaint();
-            for (int i = 0; i < Controller.cart.getItems().size(); i++) {
-                itemsGrid.add(new CartPanelItem(Controller.cart.getItems().get(i)));
-            }
-        itemsGrid.revalidate();
+        for (int i = 0; i < Controller.cart.getItems().size(); i++) {
+            itemsGrid.add(new CartPanelItem(Controller.cart.getItems().get(i)));
         }
-        totalPriceLabel.setText("Totalsumma: " + Double.toString(Controller.cart.getTotal()) + " kr");
+        itemsGrid.revalidate();
+        totalPrice = (Math.round(controller.cart.getTotal()*100.0)/100.0) + controller.getShippingPrice();
+        productsPriceLabel.setText("Produktkostnad: " + Double.toString((Math.round(controller.cart.getTotal()*100.0)/100.0)) + " kr");
+        productsTaxPriceLabel.setText("Varav moms: " + Double.toString((Math.round(controller.cart.getTotal()*12.0)/100.0)) + " kr");
+        totalPriceLabel.setText("Totalsumma: " + Double.toString(totalPrice) + " kr");
     }
 
     /**
@@ -63,9 +64,9 @@ public class CartPanel extends javax.swing.JPanel {
         headerLabel = new javax.swing.JLabel();
         shippingHeaderLabel = new javax.swing.JLabel();
         shippingOptionsPanel = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        shippingOption1Button = new javax.swing.JRadioButton();
+        shippingOption2Button = new javax.swing.JRadioButton();
+        shippingOption3Button = new javax.swing.JRadioButton();
         productsPriceLabel = new javax.swing.JLabel();
         productsTaxPriceLabel = new javax.swing.JLabel();
 
@@ -75,18 +76,17 @@ public class CartPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(930, 630));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        itemGridScrollPane.setBorder(null);
+        itemGridScrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         itemGridScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         itemsGrid.setBackground(new java.awt.Color(255, 255, 255));
-        itemsGrid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         itemsGrid.setAlignmentX(0.0F);
         itemsGrid.setAlignmentY(0.0F);
         itemsGrid.setMaximumSize(new java.awt.Dimension(920, 590));
         itemsGrid.setLayout(new java.awt.GridLayout(0, 1));
         itemGridScrollPane.setViewportView(itemsGrid);
 
-        add(itemGridScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 44, 660, 570));
+        add(itemGridScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 44, 660, 570));
 
         checkoutBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 17)); // NOI18N
         checkoutBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -96,7 +96,7 @@ public class CartPanel extends javax.swing.JPanel {
         checkoutBtn.setBorder(null);
         checkoutBtn.setBorderPainted(false);
         checkoutBtn.setContentAreaFilled(false);
-        checkoutBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        checkoutBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         checkoutBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         checkoutBtn.setDefaultCapable(false);
         checkoutBtn.setFocusPainted(false);
@@ -114,19 +114,19 @@ public class CartPanel extends javax.swing.JPanel {
                 checkoutBtnActionPerformed(evt);
             }
         });
-        add(checkoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 570, -1, -1));
+        add(checkoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(802, 580, 118, 36));
 
         shippingPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         shippingPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        shippingPriceLabel.setText("Fraktkostnad: " + Double.toString(totalPrice/30) + " kr"
+        shippingPriceLabel.setText("Fraktkostnad: " + Double.toString(controller.getShippingPrice()) + " kr"
         );
         add(shippingPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 515, 180, -1));
 
         totalPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        totalPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        totalPriceLabel.setText("Totalsumma: " + Double.toString((Math.round(totalPrice*100.0)/100.0)) + " kr"
+        totalPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        totalPriceLabel.setText("Totalsumma: " + Double.toString((Math.round(controller.cart.getTotal()*100.0)/100.0) + controller.getShippingPrice()) + " kr"
         );
-        add(totalPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(688, 540, 230, -1));
+        add(totalPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 540, 240, -1));
 
         headerLabel.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         headerLabel.setText("Välj fraktsätt:");
@@ -134,51 +134,106 @@ public class CartPanel extends javax.swing.JPanel {
 
         shippingHeaderLabel.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         shippingHeaderLabel.setText("Produkter i kundvagnen:");
-        add(shippingHeaderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, -1, -1));
+        add(shippingHeaderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 14, -1, -1));
 
         shippingOptionsPanel.setBackground(new java.awt.Color(255, 255, 255));
         shippingOptionsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         shippingOptionsPanel.setLayout(new java.awt.GridLayout(3, 1));
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jRadioButton1.setText("Hämta på lagret");
-        jRadioButton1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 30, 1, 30)));
-        shippingOptionsPanel.add(jRadioButton1);
+        shippingOption1Button.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup.add(shippingOption1Button);
+        shippingOption1Button.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        shippingOption1Button.setAlignmentY(0.0F);
+        shippingOption1Button.setBorder(null);
+        shippingOption1Button.setContentAreaFilled(false);
+        shippingOption1Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        shippingOption1Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shipping1_icon.png"))); // NOI18N
+        shippingOption1Button.setIconTextGap(0);
+        shippingOption1Button.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        shippingOption1Button.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/shipping1_icon_rollover.png"))); // NOI18N
+        shippingOption1Button.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/shipping1_icon_selected.png"))); // NOI18N
+        shippingOption1Button.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        shippingOption1Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shippingOption1ButtonActionPerformed(evt);
+            }
+        });
+        shippingOptionsPanel.add(shippingOption1Button);
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jRadioButton2.setText("Normalfrakt");
-        jRadioButton2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 30, 1, 30)));
-        shippingOptionsPanel.add(jRadioButton2);
+        shippingOption2Button.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup.add(shippingOption2Button);
+        shippingOption2Button.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        shippingOption2Button.setAlignmentY(0.0F);
+        shippingOption2Button.setBorder(null);
+        shippingOption2Button.setContentAreaFilled(false);
+        shippingOption2Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        shippingOption2Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shipping2_icon.png"))); // NOI18N
+        shippingOption2Button.setIconTextGap(0);
+        shippingOption2Button.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        shippingOption2Button.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/shipping2_icon_rollover.png"))); // NOI18N
+        shippingOption2Button.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/shipping2_icon_selected.png"))); // NOI18N
+        shippingOption2Button.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        shippingOption2Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shippingOption2ButtonActionPerformed(evt);
+            }
+        });
+        shippingOptionsPanel.add(shippingOption2Button);
 
-        jRadioButton3.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jRadioButton3.setText("Expressfrakt");
-        jRadioButton3.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 30, 1, 30)));
-        shippingOptionsPanel.add(jRadioButton3);
+        shippingOption3Button.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup.add(shippingOption3Button);
+        shippingOption3Button.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        shippingOption3Button.setAlignmentY(0.0F);
+        shippingOption3Button.setBorder(null);
+        shippingOption3Button.setContentAreaFilled(false);
+        shippingOption3Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        shippingOption3Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shipping3_icon.png"))); // NOI18N
+        shippingOption3Button.setIconTextGap(0);
+        shippingOption3Button.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        shippingOption3Button.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/shipping3_icon_rollover.png"))); // NOI18N
+        shippingOption3Button.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/shipping3_icon_selected.png"))); // NOI18N
+        shippingOption3Button.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        shippingOption3Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shippingOption3ButtonActionPerformed(evt);
+            }
+        });
+        shippingOptionsPanel.add(shippingOption3Button);
 
-        add(shippingOptionsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(686, 44, 230, 400));
+        add(shippingOptionsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(686, 44, 230, 398));
 
         productsPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         productsPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        productsPriceLabel.setText("Produktkostnad: " + Double.toString((Math.round(totalPrice*88.0)/100.0)) + " kr"
-        );
-        add(productsPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(705, 457, 200, -1));
+        productsPriceLabel.setText("Produktkostnad: " + Double.toString((Math.round(controller.cart.getTotal()*100.0)/100.0)) + " kr");
+        add(productsPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(706, 457, 200, -1));
 
         productsTaxPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         productsTaxPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        productsTaxPriceLabel.setText("Moms: " + Double.toString((Math.round(totalPrice*12.0)/100.0)) + " kr"
-        );
-        add(productsTaxPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(773, 486, 150, -1));
+        productsTaxPriceLabel.setText("Varav moms: " + Double.toString((Math.round(controller.cart.getTotal()*12.0)/100.0)) + " kr");
+        add(productsTaxPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 486, 180, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
-        // TODO add your handling code here:
+        controller.showBuyPanel();
     }//GEN-LAST:event_checkoutBtnActionPerformed
+
+    private void shippingOption1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shippingOption1ButtonActionPerformed
+        controller.setShippingType(1);
+        shippingPriceLabel.setText("Fraktkostnad: " + Double.toString(controller.getShippingPrice()) + " kr");
+        update();
+    }//GEN-LAST:event_shippingOption1ButtonActionPerformed
+
+    private void shippingOption2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shippingOption2ButtonActionPerformed
+        controller.setShippingType(2);
+        shippingPriceLabel.setText("Fraktkostnad: " + Double.toString(controller.getShippingPrice()) + " kr");
+        update();
+    }//GEN-LAST:event_shippingOption2ButtonActionPerformed
+
+    private void shippingOption3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shippingOption3ButtonActionPerformed
+        controller.setShippingType(3);
+        shippingPriceLabel.setText("Fraktkostnad: " + Double.toString(controller.getShippingPrice()) + " kr");
+        update();
+    }//GEN-LAST:event_shippingOption3ButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup;
@@ -186,12 +241,12 @@ public class CartPanel extends javax.swing.JPanel {
     private javax.swing.JLabel headerLabel;
     private javax.swing.JScrollPane itemGridScrollPane;
     private static javax.swing.JPanel itemsGrid;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     protected static javax.swing.JLabel productsPriceLabel;
     protected static javax.swing.JLabel productsTaxPriceLabel;
     private javax.swing.JLabel shippingHeaderLabel;
+    private javax.swing.JRadioButton shippingOption1Button;
+    private javax.swing.JRadioButton shippingOption2Button;
+    private javax.swing.JRadioButton shippingOption3Button;
     private javax.swing.JPanel shippingOptionsPanel;
     protected static javax.swing.JLabel shippingPriceLabel;
     protected static javax.swing.JLabel totalPriceLabel;

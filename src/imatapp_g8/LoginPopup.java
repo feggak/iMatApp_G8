@@ -6,7 +6,6 @@
 package imatapp_g8;
 
 import java.awt.Color;
-import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.User;
 
 /**
@@ -17,7 +16,6 @@ public class LoginPopup extends javax.swing.JPanel {
     
     Controller controller;
     User user;
-    IMatDataHandler handler;
     char c = 0;
 
     /**
@@ -26,7 +24,6 @@ public class LoginPopup extends javax.swing.JPanel {
     public LoginPopup() {
         initComponents();
         controller = Controller.getInstance();
-        handler = IMatDataHandler.getInstance();
         passWtxt.setEchoChar(c);
         loginErrorLabel.setVisible(false);
     }
@@ -143,7 +140,7 @@ public class LoginPopup extends javax.swing.JPanel {
 
     private void usernameTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameTxtMouseClicked
         //trycker på användarnamn txt:t
-        if(usernameTxt.getText().equals("Användarnamn..")){
+        if (usernameTxt.getText().equals("Användarnamn..")){
             usernameTxt.setText("");
             usernameTxt.setForeground(Color.black);
         }
@@ -151,25 +148,24 @@ public class LoginPopup extends javax.swing.JPanel {
 
     private void usernameTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameTxtFocusLost
         // förlorar focus på användarnamn
-        if(usernameTxt.getText().equals("")){
+        if (usernameTxt.getText().equals("")){
            usernameTxt.setForeground(Color.lightGray);
            usernameTxt.setText("Användarnamn..");
         }
     }//GEN-LAST:event_usernameTxtFocusLost
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        user = handler.getUser();
-        if(user.getUserName().equals(usernameTxt.getText())&&user.getPassword().equals(String.valueOf(passWtxt.getPassword()))){
-        //logga in :)
+        user = Controller.db.getUser();
+        // Successfull login
+        if (user.getUserName().equals(usernameTxt.getText())&&user.getPassword().equals(String.valueOf(passWtxt.getPassword()))){
             loginErrorLabel.setVisible(false);
-            controller.toggleLoginOrNameBtn(true);
-            controller.showFeatured();
-        } else{
+            controller.toggleLoginBtn(true);
+            MainWindow.loginPopup.setVisible(false);
+        } 
+        // Failed login
+        else {
             loginErrorLabel.setVisible(true);
-        
         }
-        
-        
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
@@ -183,7 +179,7 @@ public class LoginPopup extends javax.swing.JPanel {
 
     private void passWtxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passWtxtFocusLost
         // focus lost password
-        if(String.valueOf(passWtxt.getPassword()).equals("")){
+        if (String.valueOf(passWtxt.getPassword()).equals("")){
             c=0;
             passWtxt.setEchoChar(c);
             passWtxt.setForeground(Color.lightGray);
@@ -193,7 +189,7 @@ public class LoginPopup extends javax.swing.JPanel {
 
     private void passWtxtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passWtxtFocusGained
         // focus gained password
-        if(String.valueOf(passWtxt.getPassword()).equals("Lösenord..")){
+        if (String.valueOf(passWtxt.getPassword()).equals("Lösenord..")){
             c='*';
             passWtxt.setEchoChar(c);
             passWtxt.setText("");

@@ -82,25 +82,15 @@ public class CartPanelItem extends javax.swing.JPanel {
         iconLabel.setIcon(icon);
         iconLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         iconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        iconLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                iconLabelMouseClicked(evt);
-            }
-        });
         add(iconLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 9, 107, 80));
 
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         totalPriceValueLabel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        totalPriceValueLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        totalPriceValueLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         totalPriceValueLabel.setText(Double.toString(totalPrice) + " kr");
-        totalPriceValueLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                totalPriceValueLabelMouseClicked(evt);
-            }
-        });
-        jPanel1.add(totalPriceValueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 30, 60, -1));
+        jPanel1.add(totalPriceValueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 30, 80, -1));
         jPanel1.add(separator, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 340, 10));
 
         amountLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -160,16 +150,8 @@ public class CartPanelItem extends javax.swing.JPanel {
                 removeBtnActionPerformed(evt);
             }
         });
-        add(removeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(591, 60, 30, 30));
+        add(removeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 60, 30, 30));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void iconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLabelMouseClicked
-        
-    }//GEN-LAST:event_iconLabelMouseClicked
-
-    private void totalPriceValueLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_totalPriceValueLabelMouseClicked
-        controller.showDetails(product);
-    }//GEN-LAST:event_totalPriceValueLabelMouseClicked
 
     private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
         Controller.cart.removeItem(currentItem);
@@ -179,9 +161,9 @@ public class CartPanelItem extends javax.swing.JPanel {
 
     private void changeAmountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeAmountBtnActionPerformed
         currentItem.setAmount((double)spinner.getValue());
-        totalPrice = currentItem.getTotal();
-        totalPriceValueLabel.setText(Double.toString(totalPrice) + " kr");
-        CartPanel.totalPriceLabel.setText("Totalsumma: " + Double.toString(Controller.cart.getTotal()) + " kr");
+        totalPrice = (Math.round(currentItem.getTotal()*100.0)/100.0);
+        CartPanel.update();
+        controller.updateCartHeader();
     }//GEN-LAST:event_changeAmountBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

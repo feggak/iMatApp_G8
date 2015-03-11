@@ -5,6 +5,7 @@
  */
 package imatapp_g8;
 
+import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.ait.dat215.project.*;
@@ -19,16 +20,27 @@ public class Controller {
     private static Controller instance = null;
     protected static IMatDataHandler db;
     protected static ShoppingCart cart;
-    private List<Product> currentCategory;
-    private boolean showAllActive = false;
-    private boolean featuredActive = false;
+    protected static int shippingType = 1;
     protected static boolean searchPanelVisible = false;
+    private static List<Product> currentCategory;
+    private static boolean showAllActive = false;
+    private static boolean featuredActive = false;
+    // Temporary user
+    protected static String tempID;
+    protected static String tempFirstName;
+    protected static String tempLastName;
+    protected static String tempEmail;
+    protected static String tempAdress;
+    protected static String tempZIP;
+    protected static String tempCity;
+    protected static String tempCountry;
+    protected static String tempProtectedCCNumber;
     
+    // Constructor
     private Controller() {
         db = IMatDataHandler.getInstance();
         cart = db.getShoppingCart();
     }
-    
     public static synchronized Controller getInstance() {
         if (instance == null) {
             instance = new Controller();
@@ -36,22 +48,24 @@ public class Controller {
         return instance;
     }
     
-    public void toggleLoginOrNameBtn(boolean b){//false = login, true = name
-        MainWindow.setIfloggedIn(b);
-        MainWindow.set_toggleLoginBtn();
+    public void clearTemporaryCustomerData() {
+        tempID = "";
+        tempFirstName = "";
+        tempLastName = "";
+        tempEmail = "";
+        tempAdress = "";
+        tempZIP = "";
+        tempCity = "";
+        tempCountry = "";
+        tempProtectedCCNumber = "";
     }
     
-    public void showForgottenPW(){
-        MainWindow.contentPanel.removeAll();
-        MainWindow.loginPopup.setVisible(false);
-        MainWindow.contentPanel.add(new ForgottenPasswordPanel());
-        MainWindow.contentPanel.revalidate();
+    public void changeCategoryView(String view) {
+        CardLayout cardLayout = (CardLayout)MainWindow.categoryPanel.getLayout();
+        cardLayout.show(MainWindow.categoryPanel,view);
     }
     
-    public void setIfLoggedIn(boolean b){
-        MainWindow.setIfloggedIn(b);
-    }
-    
+    // Shopping cart
     public void updateCartHeader() {
         if (cart.getItems().isEmpty()) {
             MainWindow.cartLabel.setText("Inga varor");
@@ -61,7 +75,6 @@ public class Controller {
             MainWindow.cartTotalLabel.setText((Math.round(cart.getTotal()*100.0)/100.0) + " kr");
         }
     }
-    
     public void addToCart(Product product,double amount) {
         boolean different = true;
         List<ShoppingItem> contents = new ArrayList<>();
@@ -78,13 +91,27 @@ public class Controller {
         CartDropdown.update();
         updateCartHeader();
     }
-    
-    public void hideBreadcrumbs() {
-        MainWindow.breadcrumbs.setVisible(false);
+    public void setShippingType(int type) {
+        if (type > 0 && type < 4) {
+            shippingType = type;
+        } else {}
+    }
+    public double getShippingPrice() {
+        if (shippingType == 1) {
+            return 0.0;
+        }
+        if (shippingType == 2) {
+            return 49.0;
+        }
+        else {
+            return 89.0;
+        }
     }
     
     // Breadcrumbs
-    
+    public void hideBreadcrumbs() {
+        MainWindow.breadcrumbs.setVisible(false);
+    }
     public void updateBreadcrumbs(String one, String two, String three) {
         MainWindow.breadcrumbs.updateLabels(one, two, three);
         MainWindow.breadcrumbs.repaint();
@@ -93,12 +120,11 @@ public class Controller {
     }
     
     // Store views
-    
     public void showFeatured() {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new FeaturedPanel());
         MainWindow.contentPanel.revalidate();
-        MainWindow.categoryPanel.changeContent("store");
+        changeCategoryView("store");
         showAllActive = false;
         featuredActive = true;
         searchPanelVisible = false;
@@ -107,7 +133,7 @@ public class Controller {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new ShopPanel(0));
         MainWindow.contentPanel.revalidate();
-        MainWindow.categoryPanel.changeContent("store");
+        changeCategoryView("store");
         showAllActive = true;
         featuredActive = false;
         searchPanelVisible = false;
@@ -116,7 +142,7 @@ public class Controller {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new ShopPanel(category));
         MainWindow.contentPanel.revalidate();
-        MainWindow.categoryPanel.changeContent("store");
+        changeCategoryView("store");
         currentCategory = category;
         showAllActive = false;
         featuredActive = false;
@@ -146,7 +172,7 @@ public class Controller {
             featuredActive = false;
             searchPanelVisible = false;
         }
-        MainWindow.categoryPanel.changeContent("store");
+        changeCategoryView("store");
     }
     public void showDetails(Product product) {
         MainWindow.contentPanel.removeAll();
@@ -154,7 +180,7 @@ public class Controller {
         MainWindow.contentPanel.repaint();
         MainWindow.contentPanel.revalidate();
         searchPanelVisible = false;
-        MainWindow.categoryPanel.changeContent("store");
+        changeCategoryView("store");
     }
     public void showShopSearch(String search) {
         List<Product> result = new ArrayList<>();
@@ -165,11 +191,36 @@ public class Controller {
         showAllActive = false;
         featuredActive = false;
         searchPanelVisible = true;
-        MainWindow.categoryPanel.changeContent("search");
+        changeCategoryView("search");
     }
     
     // Account views
-    
+    public void showAccount() {
+        MainWindow.contentPanel.removeAll();
+        MainWindow.contentPanel.add(new AccountPanel());
+        MainWindow.contentPanel.revalidate();
+        MainWindow.categoryPanel.resetAllAccountFontsExceptSettings();
+        changeCategoryView("account");
+    }
+    public void showFavorites() {
+        MainWindow.contentPanel.removeAll();
+        MainWindow.contentPanel.add(new FavoritesPanel());
+        MainWindow.contentPanel.revalidate();
+        changeCategoryView("account");
+    }
+    public void toggleLoginBtn(boolean b){//false = login, true = name
+        MainWindow.setIsLoggedIn(b);
+        MainWindow.setLoginBtnLabel();
+    }
+    public void showForgottenPW(){
+        MainWindow.contentPanel.removeAll();
+        MainWindow.loginPopup.setVisible(false);
+        MainWindow.contentPanel.add(new ForgottenPasswordPanel());
+        MainWindow.contentPanel.revalidate();
+    }
+    public void setIsLoggedIn(boolean b){
+        MainWindow.setIsLoggedIn(b);
+    }
     public void showRegister() {
         MainWindow.contentPanel.removeAll();
         MainWindow.loginPopup.setVisible(false);
@@ -177,12 +228,21 @@ public class Controller {
         MainWindow.contentPanel.repaint();
     }
     
-    // Cart & Buy views
-        
+    // Cart & Buy views 
     public void showShoppingCartPanel() {
         MainWindow.contentPanel.removeAll();
         MainWindow.cartDropdown.setVisible(false);
         MainWindow.contentPanel.add(new CartPanel());
         MainWindow.contentPanel.repaint();
+        MainWindow.contentPanel.revalidate();
+        changeCategoryView("store");
+    }
+    public void showBuyPanel() {
+        MainWindow.contentPanel.removeAll();
+        MainWindow.cartDropdown.setVisible(false);
+        MainWindow.contentPanel.add(new BuyPanel());
+        MainWindow.contentPanel.repaint();
+        MainWindow.contentPanel.revalidate();
+        changeCategoryView("buy");
     }
 }
