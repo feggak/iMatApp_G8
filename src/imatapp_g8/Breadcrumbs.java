@@ -5,17 +5,48 @@
  */
 package imatapp_g8;
 
+import javax.swing.JLabel;
+import se.chalmers.ait.dat215.project.ProductCategory;
+
 /**
  *
  * @author frellAn
  */
 public class Breadcrumbs extends javax.swing.JPanel {
 
+    Controller controller;
+    
     /**
      * Creates new form Breadcrumbs
      */
     public Breadcrumbs() {
         initComponents();
+        controller = Controller.getInstance();
+    }
+    
+    public void updateLabels(String one, String two, String three) {
+        // Update FIRST set
+        if (one == null) {
+            first.setText("");
+        } else {
+            first.setText(" " + one);
+        }
+        // Update SECOND set
+        if (two == null) {
+            arrow1.setText("");
+            second.setText("");
+        } else if (!two.equals("KEEP")) {
+            arrow1.setText(">");
+            second.setText(two);
+        } else {}
+        // Update THIRD set
+        if (three == null) {
+            arrow2.setText("");
+            third.setText("");
+        } else {
+            arrow2.setText(">");
+            third.setText(three);
+        }
     }
 
     /**
@@ -27,23 +58,73 @@ public class Breadcrumbs extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        first = new javax.swing.JLabel();
+        arrow1 = new javax.swing.JLabel();
+        second = new javax.swing.JLabel();
+        arrow2 = new javax.swing.JLabel();
+        third = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(930, 32767));
         setMinimumSize(new java.awt.Dimension(930, 0));
         setPreferredSize(new java.awt.Dimension(930, 30));
-        setLayout(null);
+        setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jLabel1.setFont(new java.awt.Font("Myriad Pro", 0, 18)); // NOI18N
-        jLabel1.setText("Butik > Exotiska frukter > Banan");
-        add(jLabel1);
-        jLabel1.setBounds(10, 6, 244, 19);
+        first.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
+        first.setText("first");
+        first.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        first.setMaximumSize(new java.awt.Dimension(100, 20));
+        first.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                firstMouseClicked(evt);
+            }
+        });
+        add(first);
+
+        arrow1.setFont(new java.awt.Font("Myriad Pro", 1, 19)); // NOI18N
+        arrow1.setText(">");
+        add(arrow1);
+
+        second.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
+        second.setText("second");
+        second.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        second.setMaximumSize(new java.awt.Dimension(200, 20));
+        second.setMinimumSize(new java.awt.Dimension(90, 20));
+        second.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                secondMouseClicked(evt);
+            }
+        });
+        add(second);
+
+        arrow2.setFont(new java.awt.Font("Myriad Pro", 1, 19)); // NOI18N
+        arrow2.setText(">");
+        add(arrow2);
+
+        third.setFont(new java.awt.Font("Myriad Pro", 0, 19)); // NOI18N
+        third.setText("third");
+        third.setMaximumSize(new java.awt.Dimension(200, 20));
+        add(third);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void secondMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_secondMouseClicked
+        if (!Controller.searchPanelVisible) {
+            controller.updateBreadcrumbs("Butik","KEEP",null);
+            controller.showPreviousShopCategory();
+        } else {}
+    }//GEN-LAST:event_secondMouseClicked
+
+    private void firstMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_firstMouseClicked
+        // null
+    }//GEN-LAST:event_firstMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel arrow1;
+    private javax.swing.JLabel arrow2;
+    private javax.swing.JLabel first;
+    private javax.swing.JLabel second;
+    private javax.swing.JLabel third;
     // End of variables declaration//GEN-END:variables
 }

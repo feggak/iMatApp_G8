@@ -5,6 +5,9 @@
  */
 package imatapp_g8;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import se.chalmers.ait.dat215.project.*;
 
 /**
@@ -12,25 +15,37 @@ import se.chalmers.ait.dat215.project.*;
  * @author frellAn
  */
 public class MainWindow extends javax.swing.JFrame {
-    
-    // Custom variable declaration
-    protected static IMatDataHandler db;
-    private static boolean ifloggedIn;
-    static IMatDataHandler handler;
 
+    Controller controller;
+    private static boolean ifloggedIn;
+    
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
-        db = IMatDataHandler.getInstance();
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/appicon.png")).getImage());
+        controller = Controller.getInstance();
         initComponents();
         loginPopup.setVisible(false);
-        handler = IMatDataHandler.getInstance();
-        contentPanel.removeAll();
-        contentPanel.add(new FeaturedPanel());
-        contentPanel.revalidate();
-        System.out.println("username: " + handler.getUser().getUserName() + " password: " + handler.getUser().getPassword());
+        breadcrumbs.setVisible(false);
+        cartDropdown.setVisible(false);
+        logoutBtn.setVisible(false);
+        categoryPanel.changeContent("store");
+    }
+    
+    public static void set_toggleLoginBtn(){
+        if (getIfloggedIn()){
+            loginAndUserBtn.setText(Controller.db.getCustomer().getFirstName());
+        } else {
+            loginAndUserBtn.setText("Logga in");
+        }
+    }
+    public static void setIfloggedIn(boolean b){
+        ifloggedIn = b;
+    }
+    
+    public static boolean getIfloggedIn(){
+        return ifloggedIn;
     }
 
     /**
@@ -42,25 +57,30 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cartDropdown = new imatapp_g8.CartDropdown();
         loginPopup = new imatapp_g8.LoginPopup();
         topPanel = new javax.swing.JPanel();
         storeBtn = new javax.swing.JButton();
         recipeBtn = new javax.swing.JButton();
-        searchIcon = new javax.swing.JLabel();
+        searchButton = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
         cartIcon = new javax.swing.JLabel();
         cartLabel = new javax.swing.JLabel();
-        cartInfoLabel = new javax.swing.JLabel();
+        cartTotalLabel = new javax.swing.JLabel();
         arrowIcon = new javax.swing.JLabel();
         checkoutBtn = new javax.swing.JButton();
         cartBtn = new javax.swing.JButton();
         loginAndUserBtn = new javax.swing.JButton();
-        breadcrumbs = new imatapp_g8.Breadcrumbs();
+        registerBtn = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
         categoryPanel = new imatapp_g8.CategoryPanel();
+        breadcrumbs = new imatapp_g8.Breadcrumbs();
         contentPanel = new javax.swing.JPanel();
+        welcomePanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        forgottenPasswordPanel = new imatapp_g8.ForgottenPasswordPanel();
         featuredPanel = new imatapp_g8.FeaturedPanel();
         shopPanel = new imatapp_g8.ShopPanel();
-        forgottenPasswordPanel1 = new imatapp_g8.ForgottenPasswordPanel();
         detailedPanel = new imatapp_g8.DetailedPanel();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -69,9 +89,8 @@ public class MainWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iMat");
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(1156, 1000));
         setMinimumSize(new java.awt.Dimension(1156, 720));
-        setPreferredSize(new java.awt.Dimension(1156, 720));
+        setPreferredSize(new java.awt.Dimension(1150, 720));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -79,8 +98,10 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(null);
+        getContentPane().add(cartDropdown);
+        cartDropdown.setBounds(874, 47, 276, 460);
         getContentPane().add(loginPopup);
-        loginPopup.setBounds(669, 31, 290, 260);
+        loginPopup.setBounds(545, 12, 290, 260);
 
         topPanel.setBackground(new java.awt.Color(226, 87, 76));
         topPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -132,13 +153,45 @@ public class MainWindow extends javax.swing.JFrame {
         recipeBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/red_icon_selected.png"))); // NOI18N
         topPanel.add(recipeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 110, 46));
 
-        searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
-        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        topPanel.add(searchIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 7, 32, 32));
+        searchButton.setFont(new java.awt.Font("Myriad Pro Light", 0, 17)); // NOI18N
+        searchButton.setForeground(new java.awt.Color(255, 255, 255));
+        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
+        searchButton.setAlignmentY(0.0F);
+        searchButton.setBorder(null);
+        searchButton.setBorderPainted(false);
+        searchButton.setContentAreaFilled(false);
+        searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        searchButton.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        searchButton.setDefaultCapable(false);
+        searchButton.setFocusPainted(false);
+        searchButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        searchButton.setIconTextGap(0);
+        searchButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        searchButton.setName(""); // NOI18N
+        searchButton.setRequestFocusEnabled(false);
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+        topPanel.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 32, 32));
 
         searchField.setText("Sök...");
         searchField.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10)));
-        topPanel.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 7, 520, 32));
+        searchField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                searchFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                searchFieldFocusLost(evt);
+            }
+        });
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchFieldKeyPressed(evt);
+            }
+        });
+        topPanel.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 360, 32));
 
         cartIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cart2.png"))); // NOI18N
         cartIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -146,17 +199,17 @@ public class MainWindow extends javax.swing.JFrame {
 
         cartLabel.setFont(new java.awt.Font("Myriad Pro", 0, 15)); // NOI18N
         cartLabel.setForeground(new java.awt.Color(255, 255, 255));
-        cartLabel.setText("12 varor");
+        cartLabel.setText("Inga varor");
         cartLabel.setAlignmentY(0.0F);
         cartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        topPanel.add(cartLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(924, 7, 60, -1));
+        topPanel.add(cartLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(922, 7, 70, -1));
 
-        cartInfoLabel.setFont(new java.awt.Font("Myriad Pro", 0, 15)); // NOI18N
-        cartInfoLabel.setForeground(new java.awt.Color(255, 255, 255));
-        cartInfoLabel.setText("123 kr");
-        cartInfoLabel.setAlignmentY(0.0F);
-        cartInfoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        topPanel.add(cartInfoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(924, 25, 60, -1));
+        cartTotalLabel.setFont(new java.awt.Font("Myriad Pro", 0, 15)); // NOI18N
+        cartTotalLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cartTotalLabel.setText(" ");
+        cartTotalLabel.setAlignmentY(0.0F);
+        cartTotalLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        topPanel.add(cartTotalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(922, 25, 60, -1));
 
         arrowIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         arrowIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -183,6 +236,11 @@ public class MainWindow extends javax.swing.JFrame {
         checkoutBtn.setRequestFocusEnabled(false);
         checkoutBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_rollover.png"))); // NOI18N
         checkoutBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_selected.png"))); // NOI18N
+        checkoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkoutBtnActionPerformed(evt);
+            }
+        });
         topPanel.add(checkoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1028, 6, 118, 36));
 
         cartBtn.setFont(new java.awt.Font("Open Sans Semibold", 0, 20)); // NOI18N
@@ -203,14 +261,18 @@ public class MainWindow extends javax.swing.JFrame {
         cartBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/red2_icon_rollover.png"))); // NOI18N
         cartBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/red2_icon_selected.png"))); // NOI18N
         cartBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        cartBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cartBtnActionPerformed(evt);
+            }
+        });
         topPanel.add(cartBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(874, 0, 276, 46));
 
-        loginAndUserBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 17)); // NOI18N
+        loginAndUserBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 12)); // NOI18N
         loginAndUserBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginAndUserBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon.png"))); // NOI18N
         loginAndUserBtn.setText("Logga in");
         loginAndUserBtn.setAlignmentY(0.0F);
-        loginAndUserBtn.setBorder(null);
         loginAndUserBtn.setBorderPainted(false);
         loginAndUserBtn.setContentAreaFilled(false);
         loginAndUserBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -231,37 +293,94 @@ public class MainWindow extends javax.swing.JFrame {
                 loginAndUserBtnActionPerformed(evt);
             }
         });
-        topPanel.add(loginAndUserBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(752, 6, 118, 36));
+        topPanel.add(loginAndUserBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 2, 110, 20));
+
+        registerBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 12)); // NOI18N
+        registerBtn.setForeground(new java.awt.Color(255, 255, 255));
+        registerBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon.png"))); // NOI18N
+        registerBtn.setText("Registrera");
+        registerBtn.setAlignmentY(0.0F);
+        registerBtn.setBorderPainted(false);
+        registerBtn.setContentAreaFilled(false);
+        registerBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        registerBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        registerBtn.setDefaultCapable(false);
+        registerBtn.setFocusPainted(false);
+        registerBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        registerBtn.setIconTextGap(0);
+        registerBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        registerBtn.setMaximumSize(new java.awt.Dimension(110, 46));
+        registerBtn.setMinimumSize(new java.awt.Dimension(110, 46));
+        registerBtn.setPreferredSize(new java.awt.Dimension(110, 46));
+        registerBtn.setRequestFocusEnabled(false);
+        registerBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_rollover.png"))); // NOI18N
+        registerBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_selected.png"))); // NOI18N
+        registerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerBtnActionPerformed(evt);
+            }
+        });
+        topPanel.add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 25, 110, 20));
+
+        logoutBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 12)); // NOI18N
+        logoutBtn.setForeground(new java.awt.Color(255, 255, 255));
+        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon.png"))); // NOI18N
+        logoutBtn.setText("Logga ut");
+        logoutBtn.setAlignmentY(0.0F);
+        logoutBtn.setBorderPainted(false);
+        logoutBtn.setContentAreaFilled(false);
+        logoutBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        logoutBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        logoutBtn.setDefaultCapable(false);
+        logoutBtn.setFocusPainted(false);
+        logoutBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        logoutBtn.setIconTextGap(0);
+        logoutBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        logoutBtn.setMaximumSize(new java.awt.Dimension(110, 46));
+        logoutBtn.setMinimumSize(new java.awt.Dimension(110, 46));
+        logoutBtn.setPreferredSize(new java.awt.Dimension(110, 46));
+        logoutBtn.setRequestFocusEnabled(false);
+        logoutBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_rollover.png"))); // NOI18N
+        logoutBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/green_icon_selected.png"))); // NOI18N
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
+        topPanel.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(776, 14, 80, 20));
 
         getContentPane().add(topPanel);
         topPanel.setBounds(0, 0, 1150, 47);
 
-        javax.swing.GroupLayout breadcrumbsLayout = new javax.swing.GroupLayout(breadcrumbs);
-        breadcrumbs.setLayout(breadcrumbsLayout);
-        breadcrumbsLayout.setHorizontalGroup(
-            breadcrumbsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 930, Short.MAX_VALUE)
-        );
-        breadcrumbsLayout.setVerticalGroup(
-            breadcrumbsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 29, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(breadcrumbs);
-        breadcrumbs.setBounds(220, 47, 930, 30);
-
         categoryPanel.setPreferredSize(new java.awt.Dimension(220, 550));
         getContentPane().add(categoryPanel);
         categoryPanel.setBounds(0, 47, 220, 681);
+        getContentPane().add(breadcrumbs);
+        breadcrumbs.setBounds(220, 47, 930, 30);
 
         contentPanel.setLayout(new java.awt.BorderLayout());
+
+        welcomePanel.setPreferredSize(new java.awt.Dimension(930, 630));
+        welcomePanel.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Myriad Pro", 0, 48)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Välkommen till iMat");
+        jLabel1.setFocusable(false);
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        welcomePanel.add(jLabel1);
+        jLabel1.setBounds(180, 230, 570, 130);
+
+        contentPanel.add(welcomePanel, java.awt.BorderLayout.PAGE_START);
+        contentPanel.add(forgottenPasswordPanel, java.awt.BorderLayout.CENTER);
         contentPanel.add(featuredPanel, java.awt.BorderLayout.CENTER);
         contentPanel.add(shopPanel, java.awt.BorderLayout.CENTER);
-        contentPanel.add(forgottenPasswordPanel1, java.awt.BorderLayout.PAGE_START);
         contentPanel.add(detailedPanel, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(contentPanel);
         contentPanel.setBounds(220, 47, 930, 680);
+
+        menuBar.setBorder(null);
 
         jMenu1.setText("File");
         menuBar.add(jMenu1);
@@ -275,54 +394,86 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void storeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeBtnActionPerformed
-        contentPanel.removeAll();
-        contentPanel.add(new FeaturedPanel());
-        contentPanel.revalidate();
+        controller.showFeatured();
+        categoryPanel.resetAllFontsExceptStart();
         storeBtn.setSelected(true);
         recipeBtn.setSelected(false);
     }//GEN-LAST:event_storeBtnActionPerformed
 
     private void loginAndUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginAndUserBtnActionPerformed
-
         if(!getIfloggedIn()){
             if (!loginPopup.isVisible()) {
                 loginPopup.setVisible(true);
+
+                System.out.println(loginPopup.getComponentCount());
             } else {
                 loginPopup.setVisible(false);
             }
-        } else{
-            //gå till dina sidor!
-            
+        } else {
             contentPanel.removeAll();
             contentPanel.add(new MyPagePanel());
             contentPanel.revalidate();
         
-       
         }
     }//GEN-LAST:event_loginAndUserBtnActionPerformed
 
-    
-    //spara saker då fönstret stängs..
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        handler.shutDown();
-    }//GEN-LAST:event_formWindowClosing
-    
-    public static void set_toggleLoginBtn(){
-        
-        if(getIfloggedIn()){
-            loginAndUserBtn.setText(handler.getCustomer().getFirstName());
-        }else {
-            loginAndUserBtn.setText("Logga in");
+    private void cartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartBtnActionPerformed
+        if (!cartDropdown.isVisible()) {
+            cartDropdown.setVisible(true);
+        } else {
+            cartDropdown.setVisible(false);
         }
-    }
-    public static void setIfloggedIn(boolean b){
-        ifloggedIn = b;
-    }
-    
-    public static boolean getIfloggedIn(){
-        return ifloggedIn;
-    }
+    }//GEN-LAST:event_cartBtnActionPerformed
 
+    private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
+        searchField.setText("");
+    }//GEN-LAST:event_searchFieldFocusGained
+
+    private void searchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusLost
+        searchField.setText("Sök...");
+    }//GEN-LAST:event_searchFieldFocusLost
+
+    private void searchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            categoryPanel.resetAllFonts();
+            controller.showShopSearch(searchField.getText());
+            controller.updateBreadcrumbs("Sök",searchField.getText(),null);   
+            
+        }
+    }//GEN-LAST:event_searchFieldKeyPressed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        categoryPanel.resetAllFonts();
+        controller.showShopSearch(searchField.getText());
+        controller.updateBreadcrumbs("Sök",searchField.getText(),null);
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
+        categoryPanel.resetAllFonts();
+        controller.showShoppingCartPanel();
+    }//GEN-LAST:event_checkoutBtnActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        Controller.db.shutDown();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
+        // TODO add your handling code here:
+        controller.showRegister();
+        contentPanel.revalidate();
+    }//GEN-LAST:event_registerBtnActionPerformed
+
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        // TODO add your handling code here:
+        Controller.db.shutDown();
+        setIfloggedIn(false);
+        set_toggleLoginBtn();
+        controller.showFeatured();
+        
+    }//GEN-LAST:event_logoutBtnActionPerformed
+
+
+    
     /**
      * @param args the command line arguments
      */
@@ -334,7 +485,7 @@ public class MainWindow extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -360,27 +511,33 @@ public class MainWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel arrowIcon;
-    private imatapp_g8.Breadcrumbs breadcrumbs;
+    protected static imatapp_g8.Breadcrumbs breadcrumbs;
     private javax.swing.JButton cartBtn;
+    protected static imatapp_g8.CartDropdown cartDropdown;
     private javax.swing.JLabel cartIcon;
-    private javax.swing.JLabel cartInfoLabel;
-    private javax.swing.JLabel cartLabel;
-    private imatapp_g8.CategoryPanel categoryPanel;
+    protected static javax.swing.JLabel cartLabel;
+    protected static javax.swing.JLabel cartTotalLabel;
+    protected static imatapp_g8.CategoryPanel categoryPanel;
     private javax.swing.JButton checkoutBtn;
     protected static javax.swing.JPanel contentPanel;
     private imatapp_g8.DetailedPanel detailedPanel;
     private imatapp_g8.FeaturedPanel featuredPanel;
-    private imatapp_g8.ForgottenPasswordPanel forgottenPasswordPanel1;
+    private imatapp_g8.ForgottenPasswordPanel forgottenPasswordPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private static javax.swing.JButton loginAndUserBtn;
     protected static imatapp_g8.LoginPopup loginPopup;
+    public static javax.swing.JButton logoutBtn;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JButton recipeBtn;
+    private static javax.swing.JButton registerBtn;
+    private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
-    private javax.swing.JLabel searchIcon;
     private imatapp_g8.ShopPanel shopPanel;
     private javax.swing.JButton storeBtn;
     private javax.swing.JPanel topPanel;
+    private javax.swing.JPanel welcomePanel;
     // End of variables declaration//GEN-END:variables
+
 }

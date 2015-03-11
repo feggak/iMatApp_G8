@@ -5,6 +5,7 @@
  */
 package imatapp_g8;
 
+import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.ait.dat215.project.*;
 
@@ -13,8 +14,6 @@ import se.chalmers.ait.dat215.project.*;
  * @author frellAn
  */
 public class ShopPanel extends javax.swing.JPanel {
-    
-    // Custom variable declaration
 
     /**
      * Creates new form ShopPanel
@@ -23,18 +22,18 @@ public class ShopPanel extends javax.swing.JPanel {
         initComponents();
     }
     
-    public ShopPanel(String all) {
+    public ShopPanel(int all) {
         initComponents();
-        fillGrid(MainWindow.db.getProducts());
+        fillGrid(Controller.db.getProducts());
     }
     
-    public ShopPanel(ProductCategory category) {
+    public ShopPanel(List<Product> items) {
         initComponents();
-        fillGrid(MainWindow.db.getProducts(category));
+        fillGrid(items);
     }
     
     public void fillGrid(List<Product> items) {
-        for (int i = 1; i < items.size(); i++) {
+        for (int i = 0; i < items.size(); i++) {
             productGrid.add(new ShopItem(items.get(i)));
         }
     }
@@ -49,6 +48,7 @@ public class ShopPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         productGridScrollPane = new javax.swing.JScrollPane();
+        productGridScrollPane.getVerticalScrollBar().setUnitIncrement(20);
         productGrid = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -69,7 +69,7 @@ public class ShopPanel extends javax.swing.JPanel {
         productGrid.setLayout(new java.awt.GridLayout(0, 5));
         productGridScrollPane.setViewportView(productGrid);
 
-        add(productGridScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 920, 590));
+        add(productGridScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 40, 920, 581));
     }// </editor-fold>//GEN-END:initComponents
 
 

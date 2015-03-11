@@ -10,22 +10,20 @@ package imatapp_g8;
  * @author rasmusdavidsson
  */
 import se.chalmers.ait.dat215.project.*;
-public class MyPagePanel extends javax.swing.JPanel implements java.beans.Customizer {
+public class MyPagePanel extends javax.swing.JPanel {
     
-    private Object bean;
     Controller controller;
     Customer customer;
     User user;
-    IMatDataHandler handler;
     /**
      * Creates new customizer MyPagePanel
      */
     public MyPagePanel() {
         initComponents();
         controller = Controller.getInstance();
-        handler = IMatDataHandler.getInstance();
-        customer = handler.getCustomer();
-        user = handler.getUser();
+        Controller.db = IMatDataHandler.getInstance();
+        customer = Controller.db.getCustomer();
+        user = Controller.db.getUser();
         myPagenameLabel.setText(customer.getFirstName());
         myPageaddressLabel.setText(customer.getAddress());
         myPagemailLabel.setText(customer.getEmail());
@@ -36,10 +34,6 @@ public class MyPagePanel extends javax.swing.JPanel implements java.beans.Custom
         myPagepostalcodeLabel.setText(customer.getPostCode());
         myPageusernameLabel.setText(user.getUserName());
         
-    }
-    
-    public void setObject(Object bean) {
-        this.bean = bean;
     }
 
     /**
@@ -70,7 +64,8 @@ public class MyPagePanel extends javax.swing.JPanel implements java.beans.Custom
         myPageusernameLabel = new javax.swing.JLabel();
         myPageortLabel = new javax.swing.JLabel();
         myPagepostalcodeLabel = new javax.swing.JLabel();
-        logOutBtn = new javax.swing.JToggleButton();
+        modifyBtn = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(930, 630));
@@ -78,88 +73,110 @@ public class MyPagePanel extends javax.swing.JPanel implements java.beans.Custom
         setPreferredSize(new java.awt.Dimension(930, 630));
         setLayout(null);
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Namn:");
         add(jLabel1);
-        jLabel1.setBounds(202, 115, 41, 16);
+        jLabel1.setBounds(250, 115, 70, 16);
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Efternamn:");
         add(jLabel2);
-        jLabel2.setBounds(175, 149, 68, 16);
+        jLabel2.setBounds(240, 149, 80, 16);
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Address:");
         add(jLabel3);
-        jLabel3.setBounds(188, 183, 55, 16);
+        jLabel3.setBounds(270, 183, 50, 16);
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("E-post:");
         add(jLabel4);
-        jLabel4.setBounds(196, 217, 47, 16);
+        jLabel4.setBounds(120, 217, 200, 16);
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Mobil Nummer:");
         add(jLabel5);
-        jLabel5.setBounds(146, 251, 97, 16);
+        jLabel5.setBounds(120, 251, 200, 16);
 
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Telefon Nummer:");
         add(jLabel6);
-        jLabel6.setBounds(134, 285, 109, 16);
+        jLabel6.setBounds(120, 285, 200, 16);
 
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Post Kod:");
         add(jLabel7);
-        jLabel7.setBounds(184, 387, 59, 16);
+        jLabel7.setBounds(120, 387, 200, 16);
 
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Ort:");
         add(jLabel8);
-        jLabel8.setBounds(219, 353, 24, 16);
+        jLabel8.setBounds(120, 353, 200, 16);
 
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Användarnamn:");
         add(jLabel9);
-        jLabel9.setBounds(145, 319, 98, 16);
+        jLabel9.setBounds(120, 319, 200, 16);
 
         jLabel10.setFont(new java.awt.Font("Helvetica", 0, 24)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Mina Uppgifter");
         add(jLabel10);
         jLabel10.setBounds(387, 18, 154, 25);
         add(jSeparator1);
-        jSeparator1.setBounds(202, 49, 486, 10);
+        jSeparator1.setBounds(222, 49, 486, 12);
         add(myPagenameLabel);
-        myPagenameLabel.setBounds(378, 115, 180, 20);
+        myPagenameLabel.setBounds(330, 115, 200, 20);
         add(myPagelastnameLabel);
-        myPagelastnameLabel.setBounds(378, 149, 180, 20);
+        myPagelastnameLabel.setBounds(330, 149, 200, 20);
         add(myPageaddressLabel);
-        myPageaddressLabel.setBounds(378, 183, 180, 20);
+        myPageaddressLabel.setBounds(330, 183, 200, 20);
         add(myPagemailLabel);
-        myPagemailLabel.setBounds(378, 217, 190, 20);
+        myPagemailLabel.setBounds(330, 217, 200, 20);
         add(myPagemobileLabel);
-        myPagemobileLabel.setBounds(378, 251, 190, 20);
+        myPagemobileLabel.setBounds(330, 251, 200, 20);
         add(myPagephoneLabel);
-        myPagephoneLabel.setBounds(378, 285, 190, 20);
+        myPagephoneLabel.setBounds(330, 285, 200, 20);
         add(myPageusernameLabel);
-        myPageusernameLabel.setBounds(378, 319, 190, 20);
+        myPageusernameLabel.setBounds(330, 319, 200, 20);
         add(myPageortLabel);
-        myPageortLabel.setBounds(378, 353, 190, 20);
+        myPageortLabel.setBounds(330, 353, 200, 20);
         add(myPagepostalcodeLabel);
-        myPagepostalcodeLabel.setBounds(378, 387, 190, 20);
+        myPagepostalcodeLabel.setBounds(330, 387, 200, 20);
 
-        logOutBtn.setText("Logga ut");
-        logOutBtn.addActionListener(new java.awt.event.ActionListener() {
+        modifyBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        modifyBtn.setText("Redigera");
+        modifyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logOutBtnActionPerformed(evt);
+                modifyBtnActionPerformed(evt);
             }
         });
-        add(logOutBtn);
-        logOutBtn.setBounds(10, 590, 99, 29);
+        add(modifyBtn);
+        modifyBtn.setBounds(800, 573, 110, 40);
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1);
+        jButton1.setBounds(100, 110, 97, 29);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
-        handler.shutDown();
-        controller.setIfLoggedIn(false);
-        controller.toggleLoginOrNameBtn(false);
-        controller.showFeatured();
+    private void modifyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyBtnActionPerformed
+        controller.showEditUser();
+    }//GEN-LAST:event_modifyBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        controller.showFavoPanel();
         
-        
-    }//GEN-LAST:event_logOutBtnActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -171,7 +188,7 @@ public class MyPagePanel extends javax.swing.JPanel implements java.beans.Custom
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JToggleButton logOutBtn;
+    private javax.swing.JToggleButton modifyBtn;
     private javax.swing.JLabel myPageaddressLabel;
     private javax.swing.JLabel myPagelastnameLabel;
     private javax.swing.JLabel myPagemailLabel;

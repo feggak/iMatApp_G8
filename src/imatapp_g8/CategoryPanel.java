@@ -5,7 +5,11 @@
  */
 package imatapp_g8;
 
-import se.chalmers.ait.dat215.project.ProductCategory;
+import java.awt.Font;
+import java.awt.font.TextAttribute;
+import java.util.*;
+import javax.swing.JButton;
+import se.chalmers.ait.dat215.project.*;
 
 /**
  *
@@ -20,7 +24,94 @@ public class CategoryPanel extends javax.swing.JPanel {
      */
     public CategoryPanel() {
         initComponents();
+        resetAllFonts();
         controller = Controller.getInstance();
+    }
+    
+    public void changeContent(String view) {
+        if (view.equals("store")) {
+            // search
+            searchResultLabel.setVisible(false);
+            // store view
+            kampanjBtn.setVisible(true);
+            showAllBtn.setVisible(true);
+            fruitVegetablesBtn.setVisible(true);
+            breadBtn.setVisible(true);
+            meatBtn.setVisible(true);
+            dairyEggBtn.setVisible(true);
+            drinksBtn.setVisible(true);
+            pantryBtn.setVisible(true);
+            sweetsBtn.setVisible(true);
+            // SEPARATOR
+            separator.setVisible(true);
+        }
+        if (view.equals("buy")) {
+            // search
+            searchResultLabel.setVisible(false);
+            // store view
+            kampanjBtn.setVisible(false);
+            showAllBtn.setVisible(false);
+            fruitVegetablesBtn.setVisible(false);
+            breadBtn.setVisible(false);
+            meatBtn.setVisible(false);
+            dairyEggBtn.setVisible(false);
+            drinksBtn.setVisible(false);
+            pantryBtn.setVisible(false);
+            sweetsBtn.setVisible(false);
+            // SEPARATOR
+            separator.setVisible(false);
+        }
+        if (view.equals("search")) {
+            // search
+            searchResultLabel.setVisible(true);
+            // store view
+            kampanjBtn.setVisible(false);
+            showAllBtn.setVisible(false);
+            fruitVegetablesBtn.setVisible(false);
+            breadBtn.setVisible(false);
+            meatBtn.setVisible(false);
+            dairyEggBtn.setVisible(false);
+            drinksBtn.setVisible(false);
+            pantryBtn.setVisible(false);
+            sweetsBtn.setVisible(false);
+            // SEPARATOR
+            separator.setVisible(false);
+        }
+        repaint();
+    }
+    
+    public void makeBoldAndUnderlined(JButton label) {
+        Font font = label.getFont();
+        Map attributes = font.getAttributes();
+        attributes.put(TextAttribute.WEIGHT,TextAttribute.WEIGHT_BOLD);
+        attributes.put(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE_ON);
+        label.setFont(font.deriveFont(attributes));
+    }
+    
+    public void resetAllFontsExceptStart() {
+        makeBoldAndUnderlined(kampanjBtn);
+        fruitVegetablesBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        meatBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        breadBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        dairyEggBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        drinksBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        pantryBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        sweetsBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        meatBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        showAllBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+    }
+    
+    public void resetAllFonts() {
+        fruitVegetablesBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        meatBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        breadBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        dairyEggBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        drinksBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        pantryBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        sweetsBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        kampanjBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        meatBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        showAllBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
     }
 
     /**
@@ -33,35 +124,27 @@ public class CategoryPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup = new javax.swing.ButtonGroup();
+        searchResultLabel = new javax.swing.JLabel();
         kampanjBtn = new javax.swing.JButton();
         showAllBtn = new javax.swing.JButton();
-        jSeparator = new javax.swing.JSeparator();
-        baljvaxtBtn = new javax.swing.JButton();
+        separator = new javax.swing.JSeparator();
+        fruitVegetablesBtn = new javax.swing.JButton();
         breadBtn = new javax.swing.JButton();
-        berryBtn = new javax.swing.JButton();
-        citrusBtn = new javax.swing.JButton();
-        drinkHotBtn = new javax.swing.JButton();
-        drinkColdBtn = new javax.swing.JButton();
-        exoticFruitBtn = new javax.swing.JButton();
-        fishBtn = new javax.swing.JButton();
-        vegetableBtn = new javax.swing.JButton();
-        cabbageBtn = new javax.swing.JButton();
         meatBtn = new javax.swing.JButton();
-        dairytBtn = new javax.swing.JButton();
-        melonBtn = new javax.swing.JButton();
-        flourSugarSaltBtn = new javax.swing.JButton();
-        nutsSeedsBtn = new javax.swing.JButton();
-        pastaBtn = new javax.swing.JButton();
-        potatoRiceBtn = new javax.swing.JButton();
-        rootBtn = new javax.swing.JButton();
-        stoneFruitBtn = new javax.swing.JButton();
-        sweetBtn = new javax.swing.JButton();
-        herbBtn = new javax.swing.JButton();
+        dairyEggBtn = new javax.swing.JButton();
+        pantryBtn = new javax.swing.JButton();
+        drinksBtn = new javax.swing.JButton();
+        sweetsBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(50, 77, 91));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(0, 0, 0)));
         setMinimumSize(new java.awt.Dimension(220, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        searchResultLabel.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
+        searchResultLabel.setForeground(new java.awt.Color(255, 255, 255));
+        searchResultLabel.setText("Sökresultat");
+        add(searchResultLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 14, 120, -1));
 
         kampanjBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
         kampanjBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,28 +183,28 @@ public class CategoryPanel extends javax.swing.JPanel {
         });
         add(showAllBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 38, -1, -1));
 
-        jSeparator.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator.setForeground(new java.awt.Color(255, 255, 255));
-        add(jSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 64, 200, 10));
+        separator.setBackground(new java.awt.Color(0, 0, 0));
+        separator.setForeground(new java.awt.Color(255, 255, 255));
+        add(separator, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 64, 200, 10));
 
-        baljvaxtBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        baljvaxtBtn.setForeground(new java.awt.Color(255, 255, 255));
-        baljvaxtBtn.setText("Baljväxter");
-        baljvaxtBtn.setAlignmentY(0.0F);
-        baljvaxtBtn.setBorder(null);
-        baljvaxtBtn.setBorderPainted(false);
-        buttonGroup.add(baljvaxtBtn);
-        baljvaxtBtn.setContentAreaFilled(false);
-        baljvaxtBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        baljvaxtBtn.setFocusPainted(false);
-        baljvaxtBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        baljvaxtBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        baljvaxtBtn.addActionListener(new java.awt.event.ActionListener() {
+        fruitVegetablesBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
+        fruitVegetablesBtn.setForeground(new java.awt.Color(255, 255, 255));
+        fruitVegetablesBtn.setText("Frukt & Grönt");
+        fruitVegetablesBtn.setAlignmentY(0.0F);
+        fruitVegetablesBtn.setBorder(null);
+        fruitVegetablesBtn.setBorderPainted(false);
+        buttonGroup.add(fruitVegetablesBtn);
+        fruitVegetablesBtn.setContentAreaFilled(false);
+        fruitVegetablesBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fruitVegetablesBtn.setFocusPainted(false);
+        fruitVegetablesBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        fruitVegetablesBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        fruitVegetablesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                baljvaxtBtnActionPerformed(evt);
+                fruitVegetablesBtnActionPerformed(evt);
             }
         });
-        add(baljvaxtBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 78, -1, -1));
+        add(fruitVegetablesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 78, -1, -1));
 
         breadBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
         breadBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -131,114 +214,16 @@ public class CategoryPanel extends javax.swing.JPanel {
         breadBtn.setBorderPainted(false);
         buttonGroup.add(breadBtn);
         breadBtn.setContentAreaFilled(false);
+        breadBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         breadBtn.setFocusPainted(false);
         breadBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         breadBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        breadBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                breadBtnActionPerformed(evt);
+            }
+        });
         add(breadBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 100, -1, -1));
-
-        berryBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        berryBtn.setForeground(new java.awt.Color(255, 255, 255));
-        berryBtn.setText("Bär");
-        berryBtn.setAlignmentY(0.0F);
-        berryBtn.setBorder(null);
-        berryBtn.setBorderPainted(false);
-        buttonGroup.add(berryBtn);
-        berryBtn.setContentAreaFilled(false);
-        berryBtn.setFocusPainted(false);
-        berryBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        berryBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(berryBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 122, -1, -1));
-
-        citrusBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        citrusBtn.setForeground(new java.awt.Color(255, 255, 255));
-        citrusBtn.setText("Citrusfrukter");
-        citrusBtn.setAlignmentY(0.0F);
-        citrusBtn.setBorder(null);
-        citrusBtn.setBorderPainted(false);
-        buttonGroup.add(citrusBtn);
-        citrusBtn.setContentAreaFilled(false);
-        citrusBtn.setFocusPainted(false);
-        citrusBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        citrusBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(citrusBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 144, -1, -1));
-
-        drinkHotBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        drinkHotBtn.setForeground(new java.awt.Color(255, 255, 255));
-        drinkHotBtn.setText("Drycker varma");
-        drinkHotBtn.setAlignmentY(0.0F);
-        drinkHotBtn.setBorder(null);
-        drinkHotBtn.setBorderPainted(false);
-        buttonGroup.add(drinkHotBtn);
-        drinkHotBtn.setContentAreaFilled(false);
-        drinkHotBtn.setFocusPainted(false);
-        drinkHotBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        drinkHotBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(drinkHotBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 166, -1, -1));
-
-        drinkColdBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        drinkColdBtn.setForeground(new java.awt.Color(255, 255, 255));
-        drinkColdBtn.setText("Drycker kalla");
-        drinkColdBtn.setAlignmentY(0.0F);
-        drinkColdBtn.setBorder(null);
-        drinkColdBtn.setBorderPainted(false);
-        buttonGroup.add(drinkColdBtn);
-        drinkColdBtn.setContentAreaFilled(false);
-        drinkColdBtn.setFocusPainted(false);
-        drinkColdBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        drinkColdBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(drinkColdBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 188, -1, -1));
-
-        exoticFruitBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        exoticFruitBtn.setForeground(new java.awt.Color(255, 255, 255));
-        exoticFruitBtn.setText("Exotiska frukter");
-        exoticFruitBtn.setAlignmentY(0.0F);
-        exoticFruitBtn.setBorder(null);
-        exoticFruitBtn.setBorderPainted(false);
-        buttonGroup.add(exoticFruitBtn);
-        exoticFruitBtn.setContentAreaFilled(false);
-        exoticFruitBtn.setFocusPainted(false);
-        exoticFruitBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        exoticFruitBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(exoticFruitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 210, -1, -1));
-
-        fishBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        fishBtn.setForeground(new java.awt.Color(255, 255, 255));
-        fishBtn.setText("Fisk");
-        fishBtn.setAlignmentY(0.0F);
-        fishBtn.setBorder(null);
-        fishBtn.setBorderPainted(false);
-        buttonGroup.add(fishBtn);
-        fishBtn.setContentAreaFilled(false);
-        fishBtn.setFocusPainted(false);
-        fishBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        fishBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(fishBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 232, -1, -1));
-
-        vegetableBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        vegetableBtn.setForeground(new java.awt.Color(255, 255, 255));
-        vegetableBtn.setText("Grönsaksfrukter");
-        vegetableBtn.setAlignmentY(0.0F);
-        vegetableBtn.setBorder(null);
-        vegetableBtn.setBorderPainted(false);
-        buttonGroup.add(vegetableBtn);
-        vegetableBtn.setContentAreaFilled(false);
-        vegetableBtn.setFocusPainted(false);
-        vegetableBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        vegetableBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(vegetableBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 254, -1, -1));
-
-        cabbageBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        cabbageBtn.setForeground(new java.awt.Color(255, 255, 255));
-        cabbageBtn.setText("Kål");
-        cabbageBtn.setAlignmentY(0.0F);
-        cabbageBtn.setBorder(null);
-        cabbageBtn.setBorderPainted(false);
-        buttonGroup.add(cabbageBtn);
-        cabbageBtn.setContentAreaFilled(false);
-        cabbageBtn.setFocusPainted(false);
-        cabbageBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        cabbageBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(cabbageBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 276, -1, -1));
 
         meatBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
         meatBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -248,182 +233,197 @@ public class CategoryPanel extends javax.swing.JPanel {
         meatBtn.setBorderPainted(false);
         buttonGroup.add(meatBtn);
         meatBtn.setContentAreaFilled(false);
+        meatBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         meatBtn.setFocusPainted(false);
         meatBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         meatBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(meatBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 298, -1, -1));
+        meatBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                meatBtnActionPerformed(evt);
+            }
+        });
+        add(meatBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 122, -1, -1));
 
-        dairytBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        dairytBtn.setForeground(new java.awt.Color(255, 255, 255));
-        dairytBtn.setText("Mejeriprodukter");
-        dairytBtn.setAlignmentY(0.0F);
-        dairytBtn.setBorder(null);
-        dairytBtn.setBorderPainted(false);
-        buttonGroup.add(dairytBtn);
-        dairytBtn.setContentAreaFilled(false);
-        dairytBtn.setFocusPainted(false);
-        dairytBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        dairytBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(dairytBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 320, -1, -1));
+        dairyEggBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
+        dairyEggBtn.setForeground(new java.awt.Color(255, 255, 255));
+        dairyEggBtn.setText("Mejeri & Ägg");
+        dairyEggBtn.setAlignmentY(0.0F);
+        dairyEggBtn.setBorder(null);
+        dairyEggBtn.setBorderPainted(false);
+        buttonGroup.add(dairyEggBtn);
+        dairyEggBtn.setContentAreaFilled(false);
+        dairyEggBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dairyEggBtn.setFocusPainted(false);
+        dairyEggBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        dairyEggBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        dairyEggBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dairyEggBtnActionPerformed(evt);
+            }
+        });
+        add(dairyEggBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 144, -1, -1));
 
-        melonBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        melonBtn.setForeground(new java.awt.Color(255, 255, 255));
-        melonBtn.setText("Meloner");
-        melonBtn.setAlignmentY(0.0F);
-        melonBtn.setBorder(null);
-        melonBtn.setBorderPainted(false);
-        buttonGroup.add(melonBtn);
-        melonBtn.setContentAreaFilled(false);
-        melonBtn.setFocusPainted(false);
-        melonBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        melonBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(melonBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 342, -1, -1));
+        pantryBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
+        pantryBtn.setForeground(new java.awt.Color(255, 255, 255));
+        pantryBtn.setText("Skafferi");
+        pantryBtn.setAlignmentY(0.0F);
+        pantryBtn.setBorder(null);
+        pantryBtn.setBorderPainted(false);
+        buttonGroup.add(pantryBtn);
+        pantryBtn.setContentAreaFilled(false);
+        pantryBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pantryBtn.setFocusPainted(false);
+        pantryBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        pantryBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        pantryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pantryBtnActionPerformed(evt);
+            }
+        });
+        add(pantryBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 166, -1, -1));
 
-        flourSugarSaltBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        flourSugarSaltBtn.setForeground(new java.awt.Color(255, 255, 255));
-        flourSugarSaltBtn.setText("Mjöl, socker, salt");
-        flourSugarSaltBtn.setAlignmentY(0.0F);
-        flourSugarSaltBtn.setBorder(null);
-        flourSugarSaltBtn.setBorderPainted(false);
-        buttonGroup.add(flourSugarSaltBtn);
-        flourSugarSaltBtn.setContentAreaFilled(false);
-        flourSugarSaltBtn.setFocusPainted(false);
-        flourSugarSaltBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        flourSugarSaltBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(flourSugarSaltBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 364, -1, -1));
+        drinksBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
+        drinksBtn.setForeground(new java.awt.Color(255, 255, 255));
+        drinksBtn.setText("Drycker");
+        drinksBtn.setAlignmentY(0.0F);
+        drinksBtn.setBorder(null);
+        drinksBtn.setBorderPainted(false);
+        buttonGroup.add(drinksBtn);
+        drinksBtn.setContentAreaFilled(false);
+        drinksBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        drinksBtn.setFocusPainted(false);
+        drinksBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        drinksBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        drinksBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                drinksBtnActionPerformed(evt);
+            }
+        });
+        add(drinksBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 188, -1, -1));
 
-        nutsSeedsBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        nutsSeedsBtn.setForeground(new java.awt.Color(255, 255, 255));
-        nutsSeedsBtn.setText("Nötter och frön");
-        nutsSeedsBtn.setAlignmentY(0.0F);
-        nutsSeedsBtn.setBorder(null);
-        nutsSeedsBtn.setBorderPainted(false);
-        buttonGroup.add(nutsSeedsBtn);
-        nutsSeedsBtn.setContentAreaFilled(false);
-        nutsSeedsBtn.setFocusPainted(false);
-        nutsSeedsBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        nutsSeedsBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(nutsSeedsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 386, -1, -1));
-
-        pastaBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        pastaBtn.setForeground(new java.awt.Color(255, 255, 255));
-        pastaBtn.setText("Pasta");
-        pastaBtn.setAlignmentY(0.0F);
-        pastaBtn.setBorder(null);
-        pastaBtn.setBorderPainted(false);
-        buttonGroup.add(pastaBtn);
-        pastaBtn.setContentAreaFilled(false);
-        pastaBtn.setFocusPainted(false);
-        pastaBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        pastaBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(pastaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 408, -1, -1));
-
-        potatoRiceBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        potatoRiceBtn.setForeground(new java.awt.Color(255, 255, 255));
-        potatoRiceBtn.setText("Potatis, ris");
-        potatoRiceBtn.setAlignmentY(0.0F);
-        potatoRiceBtn.setBorder(null);
-        potatoRiceBtn.setBorderPainted(false);
-        buttonGroup.add(potatoRiceBtn);
-        potatoRiceBtn.setContentAreaFilled(false);
-        potatoRiceBtn.setFocusPainted(false);
-        potatoRiceBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        potatoRiceBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(potatoRiceBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 430, -1, -1));
-
-        rootBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        rootBtn.setForeground(new java.awt.Color(255, 255, 255));
-        rootBtn.setText("Rotfrukter");
-        rootBtn.setAlignmentY(0.0F);
-        rootBtn.setBorder(null);
-        rootBtn.setBorderPainted(false);
-        buttonGroup.add(rootBtn);
-        rootBtn.setContentAreaFilled(false);
-        rootBtn.setFocusPainted(false);
-        rootBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        rootBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(rootBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 452, -1, -1));
-
-        stoneFruitBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        stoneFruitBtn.setForeground(new java.awt.Color(255, 255, 255));
-        stoneFruitBtn.setText("Stenfrukter");
-        stoneFruitBtn.setAlignmentY(0.0F);
-        stoneFruitBtn.setBorder(null);
-        stoneFruitBtn.setBorderPainted(false);
-        buttonGroup.add(stoneFruitBtn);
-        stoneFruitBtn.setContentAreaFilled(false);
-        stoneFruitBtn.setFocusPainted(false);
-        stoneFruitBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        stoneFruitBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(stoneFruitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 474, -1, -1));
-
-        sweetBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        sweetBtn.setForeground(new java.awt.Color(255, 255, 255));
-        sweetBtn.setText("Sötsaker");
-        sweetBtn.setAlignmentY(0.0F);
-        sweetBtn.setBorder(null);
-        sweetBtn.setBorderPainted(false);
-        buttonGroup.add(sweetBtn);
-        sweetBtn.setContentAreaFilled(false);
-        sweetBtn.setFocusPainted(false);
-        sweetBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        sweetBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(sweetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 496, -1, -1));
-
-        herbBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
-        herbBtn.setForeground(new java.awt.Color(255, 255, 255));
-        herbBtn.setText("Örtkryddor");
-        herbBtn.setAlignmentY(0.0F);
-        herbBtn.setBorder(null);
-        herbBtn.setBorderPainted(false);
-        buttonGroup.add(herbBtn);
-        herbBtn.setContentAreaFilled(false);
-        herbBtn.setFocusPainted(false);
-        herbBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        herbBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        add(herbBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 518, -1, -1));
+        sweetsBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
+        sweetsBtn.setForeground(new java.awt.Color(255, 255, 255));
+        sweetsBtn.setText("Sötsaker");
+        sweetsBtn.setAlignmentY(0.0F);
+        sweetsBtn.setBorder(null);
+        sweetsBtn.setBorderPainted(false);
+        buttonGroup.add(sweetsBtn);
+        sweetsBtn.setContentAreaFilled(false);
+        sweetsBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sweetsBtn.setFocusPainted(false);
+        sweetsBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        sweetsBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        sweetsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sweetsBtnActionPerformed(evt);
+            }
+        });
+        add(sweetsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 210, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void baljvaxtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baljvaxtBtnActionPerformed
-        controller.showShopCategory(ProductCategory.POD);
-        baljvaxtBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
-    }//GEN-LAST:event_baljvaxtBtnActionPerformed
+    private void fruitVegetablesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fruitVegetablesBtnActionPerformed
+        resetAllFonts();
+        List<Product> list = new ArrayList<>();
+        list.addAll(Controller.db.getProducts(ProductCategory.CITRUS_FRUIT));
+        list.addAll(Controller.db.getProducts(ProductCategory.EXOTIC_FRUIT));
+        list.addAll(Controller.db.getProducts(ProductCategory.VEGETABLE_FRUIT));
+        list.addAll(Controller.db.getProducts(ProductCategory.CABBAGE));
+        list.addAll(Controller.db.getProducts(ProductCategory.MELONS));
+        list.addAll(Controller.db.getProducts(ProductCategory.ROOT_VEGETABLE));
+        list.addAll(Controller.db.getProducts(ProductCategory.FRUIT));
+        list.addAll(Controller.db.getProducts(ProductCategory.HERB));
+        controller.showShopCategory(list);
+        makeBoldAndUnderlined(fruitVegetablesBtn);
+        controller.updateBreadcrumbs("Butik","Frukt & Grönt",null);
+    }//GEN-LAST:event_fruitVegetablesBtnActionPerformed
 
     private void showAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAllBtnActionPerformed
+        resetAllFonts();
         controller.showShopAllProducts();
-        showAllBtn.setFont(new java.awt.Font("Myriad Pro", 1, 16));
+        makeBoldAndUnderlined(showAllBtn);
+        controller.updateBreadcrumbs("Butik","Alla produkter",null);
     }//GEN-LAST:event_showAllBtnActionPerformed
 
     private void kampanjBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kampanjBtnActionPerformed
+        resetAllFonts();
+        controller.hideBreadcrumbs();
         controller.showFeatured();
+        makeBoldAndUnderlined(kampanjBtn);
     }//GEN-LAST:event_kampanjBtnActionPerformed
+
+    private void breadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_breadBtnActionPerformed
+        resetAllFonts();
+        List<Product> list = new ArrayList<>();
+        list.addAll(Controller.db.getProducts(ProductCategory.BREAD));
+        controller.showShopCategory(list);
+        makeBoldAndUnderlined(breadBtn);
+        controller.updateBreadcrumbs("Butik","Bröd",null);
+    }//GEN-LAST:event_breadBtnActionPerformed
+
+    private void meatBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meatBtnActionPerformed
+        resetAllFonts();
+        List<Product> list = new ArrayList<>();
+        list.addAll(Controller.db.getProducts(ProductCategory.MEAT));
+        list.addAll(Controller.db.getProducts(ProductCategory.FISH));
+        controller.showShopCategory(list);
+        makeBoldAndUnderlined(meatBtn);
+        controller.updateBreadcrumbs("Butik","Kött",null);
+    }//GEN-LAST:event_meatBtnActionPerformed
+
+    private void dairyEggBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dairyEggBtnActionPerformed
+        resetAllFonts();
+        List<Product> list = new ArrayList<>();
+        list.addAll(Controller.db.getProducts(ProductCategory.DAIRIES));
+        controller.showShopCategory(list);
+        makeBoldAndUnderlined(dairyEggBtn);
+        controller.updateBreadcrumbs("Butik","Mejeri & Ägg",null);
+    }//GEN-LAST:event_dairyEggBtnActionPerformed
+
+    private void pantryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pantryBtnActionPerformed
+        resetAllFonts();
+        List<Product> list = new ArrayList<>();
+        list.addAll(Controller.db.getProducts(ProductCategory.FLOUR_SUGAR_SALT));
+        list.addAll(Controller.db.getProducts(ProductCategory.PASTA));
+        list.addAll(Controller.db.getProducts(ProductCategory.POTATO_RICE));
+        list.addAll(Controller.db.getProducts(ProductCategory.NUTS_AND_SEEDS));
+        list.addAll(Controller.db.getProducts(ProductCategory.POD));
+        controller.showShopCategory(list);
+        makeBoldAndUnderlined(pantryBtn);
+        controller.updateBreadcrumbs("Butik","Skafferi",null);
+    }//GEN-LAST:event_pantryBtnActionPerformed
+
+    private void drinksBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drinksBtnActionPerformed
+        resetAllFonts();
+        List<Product> list = new ArrayList<>();
+        list.addAll(Controller.db.getProducts(ProductCategory.COLD_DRINKS));
+        list.addAll(Controller.db.getProducts(ProductCategory.HOT_DRINKS));
+        controller.showShopCategory(list);
+        makeBoldAndUnderlined(drinksBtn);
+        controller.updateBreadcrumbs("Butik","Drycker",null);
+    }//GEN-LAST:event_drinksBtnActionPerformed
+
+    private void sweetsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sweetsBtnActionPerformed
+        resetAllFonts();
+        List<Product> list = new ArrayList<>();
+        list.addAll(Controller.db.getProducts(ProductCategory.SWEET));
+        controller.showShopCategory(list);
+        makeBoldAndUnderlined(sweetsBtn);
+        controller.updateBreadcrumbs("Butik","Sötsaker",null);
+    }//GEN-LAST:event_sweetsBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton baljvaxtBtn;
-    private javax.swing.JButton berryBtn;
     private javax.swing.JButton breadBtn;
     private javax.swing.ButtonGroup buttonGroup;
-    private javax.swing.JButton cabbageBtn;
-    private javax.swing.JButton citrusBtn;
-    private javax.swing.JButton dairytBtn;
-    private javax.swing.JButton drinkColdBtn;
-    private javax.swing.JButton drinkHotBtn;
-    private javax.swing.JButton exoticFruitBtn;
-    private javax.swing.JButton fishBtn;
-    private javax.swing.JButton flourSugarSaltBtn;
-    private javax.swing.JButton herbBtn;
-    private javax.swing.JSeparator jSeparator;
+    private javax.swing.JButton dairyEggBtn;
+    private javax.swing.JButton drinksBtn;
+    private javax.swing.JButton fruitVegetablesBtn;
     private javax.swing.JButton kampanjBtn;
     private javax.swing.JButton meatBtn;
-    private javax.swing.JButton melonBtn;
-    private javax.swing.JButton nutsSeedsBtn;
-    private javax.swing.JButton pastaBtn;
-    private javax.swing.JButton potatoRiceBtn;
-    private javax.swing.JButton rootBtn;
+    private javax.swing.JButton pantryBtn;
+    private javax.swing.JLabel searchResultLabel;
+    private javax.swing.JSeparator separator;
     private javax.swing.JButton showAllBtn;
-    private javax.swing.JButton stoneFruitBtn;
-    private javax.swing.JButton sweetBtn;
-    private javax.swing.JButton vegetableBtn;
+    private javax.swing.JButton sweetsBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -37,7 +37,6 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="c8" id="orange" palette="1" red="ff" type="palette"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="BILD"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
@@ -90,7 +89,7 @@
                 <Property name="columns" type="int" value="20"/>
                 <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="Bananer fr&#xe5;n Brasilien................................................................................................................................................................................................................................................"/>
+                <Property name="text" type="java.lang.String" value="..."/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -106,7 +105,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Myriad Pro Light" size="36" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Banan"/>
+            <Property name="text" type="java.lang.String" value="&lt;Varunamn&gt;"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Constraints>
@@ -118,7 +117,7 @@
         <Component class="javax.swing.JLabel" name="infoHeaderLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Myriad Pro Light" size="18" style="0"/>
+              <Font name="Myriad Pro" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Produktinformation:"/>
           </Properties>
@@ -163,14 +162,14 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jSpinner1" min="-2" pref="46" max="-2" attributes="0"/>
+                          <Component id="spinner" min="-2" pref="46" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="201" max="-2" attributes="0"/>
+                          <Component id="addToCartBtn" min="-2" pref="201" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="priceLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="altPriceLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -180,14 +179,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="priceLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                  <Component id="altPriceLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spinner" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="addToCartBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -195,40 +194,43 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JSpinner" name="jSpinner1">
+        <Component class="javax.swing.JSpinner" name="spinner">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+              <SpinnerModel initial="1.0" minimum="0.1" numberType="java.lang.Double" stepSize="0.1" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="addToCartBtn">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Myriad Pro Light" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="L&#xe4;gg till"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addToCartBtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="text" type="java.lang.String" value="st"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="priceLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Myriad Pro" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Pris: 30,00 kr"/>
+            <Property name="text" type="java.lang.String" value="Pris: &lt;Pris&gt; kr"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="altPriceLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Myriad Pro" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Jmf pris: 57,00 kr/kg"/>
+            <Property name="text" type="java.lang.String" value="Jmf pris: &lt;Pris&gt; kr/kg"/>
           </Properties>
         </Component>
       </SubComponents>

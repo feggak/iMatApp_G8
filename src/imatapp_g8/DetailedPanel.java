@@ -13,6 +13,9 @@ import se.chalmers.ait.dat215.project.*;
  */
 public class DetailedPanel extends javax.swing.JPanel {
 
+    private Product currentProduct;
+    Controller controller;
+    
     /**
      * Creates new form DetailedPanel
      */
@@ -20,16 +23,17 @@ public class DetailedPanel extends javax.swing.JPanel {
         initComponents();
     }
     
-    public DetailedPanel(Product prod) {
-        
-        /////////////////////////////////FÖR TEST-ÄNDAMÅL
+    public DetailedPanel(Product product) {
+        currentProduct = product;
+        controller = Controller.getInstance();
         initComponents();
-        productIcon.setIcon(MainWindow.db.getImageIcon(prod, 300, 300));
-        productTitleLabel.setText(prod.getName());
-        jTextArea1.setText("Det här är " + prod.getName() + " och tillhör kategorin " + prod.getCategory());
-        jLabel3.setText("Pris: " + prod.getPrice() + " " + prod.getUnit());
-        jLabel6.setText("Jmf pris: " + prod.getPrice() + " " + prod.getUnit());
-        /////////////////////////////////FÖR TEST-ÄNDAMÅL
+        productIcon.setIcon(Controller.db.getImageIcon(product, 300, 225));
+        productTitleLabel.setText(product.getName());
+        priceLabel.setText("Pris: " + product.getPrice() + " " + product.getUnit());
+        altPriceLabel.setText("Jmf pris: " + product.getPrice() + " " + product.getUnit());
+        if (product.getUnitSuffix().equals("förp") || product.getUnitSuffix().equals("st")) {
+            spinner.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(1.0d), 1.0, null, Double.valueOf(1.0d)));
+        }
     }
 
     /**
@@ -49,11 +53,11 @@ public class DetailedPanel extends javax.swing.JPanel {
         infoHeaderLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         buyPanel = new javax.swing.JPanel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
+        spinner = new javax.swing.JSpinner();
+        addToCartBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        priceLabel = new javax.swing.JLabel();
+        altPriceLabel = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
@@ -65,7 +69,6 @@ public class DetailedPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         productIcon.setBackground(java.awt.Color.orange);
-        productIcon.setText("BILD");
         productIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         productIcon.setOpaque(true);
         add(productIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 300, 225));
@@ -79,7 +82,7 @@ public class DetailedPanel extends javax.swing.JPanel {
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Bananer från Brasilien................................................................................................................................................................................................................................................");
+        jTextArea1.setText("...");
         jTextArea1.setBorder(null);
         infoScrollPane.setViewportView(jTextArea1);
 
@@ -87,11 +90,11 @@ public class DetailedPanel extends javax.swing.JPanel {
 
         productTitleLabel.setBackground(new java.awt.Color(255, 255, 255));
         productTitleLabel.setFont(new java.awt.Font("Myriad Pro Light", 0, 36)); // NOI18N
-        productTitleLabel.setText("Banan");
+        productTitleLabel.setText("<Varunamn>");
         productTitleLabel.setOpaque(true);
         mainInfoPanel.add(productTitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 293, -1));
 
-        infoHeaderLabel.setFont(new java.awt.Font("Myriad Pro Light", 0, 18)); // NOI18N
+        infoHeaderLabel.setFont(new java.awt.Font("Myriad Pro", 0, 18)); // NOI18N
         infoHeaderLabel.setText("Produktinformation:");
         mainInfoPanel.add(infoHeaderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 70, -1, -1));
 
@@ -102,18 +105,23 @@ public class DetailedPanel extends javax.swing.JPanel {
 
         buyPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        spinner.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(1.0d), Double.valueOf(0.1d), null, Double.valueOf(0.1d)));
 
-        jButton1.setFont(new java.awt.Font("Myriad Pro Light", 0, 18)); // NOI18N
-        jButton1.setText("Lägg till");
+        addToCartBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 18)); // NOI18N
+        addToCartBtn.setText("Lägg till");
+        addToCartBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addToCartBtnActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("st");
 
-        jLabel3.setFont(new java.awt.Font("Myriad Pro", 1, 18)); // NOI18N
-        jLabel3.setText("Pris: 30,00 kr");
+        priceLabel.setFont(new java.awt.Font("Myriad Pro", 1, 18)); // NOI18N
+        priceLabel.setText("Pris: <Pris> kr");
 
-        jLabel6.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
-        jLabel6.setText("Jmf pris: 57,00 kr/kg");
+        altPriceLabel.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
+        altPriceLabel.setText("Jmf pris: <Pris> kr/kg");
 
         javax.swing.GroupLayout buyPanelLayout = new javax.swing.GroupLayout(buyPanel);
         buyPanel.setLayout(buyPanelLayout);
@@ -123,27 +131,27 @@ public class DetailedPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(buyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(buyPanelLayout.createSequentialGroup()
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6))
+                        .addComponent(addToCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(priceLabel)
+                    .addComponent(altPriceLabel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         buyPanelLayout.setVerticalGroup(
             buyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buyPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addComponent(priceLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addComponent(altPriceLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(buyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jButton1))
+                    .addComponent(addToCartBtn))
                 .addContainerGap())
         );
 
@@ -172,23 +180,29 @@ public class DetailedPanel extends javax.swing.JPanel {
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 477, 835, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addToCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartBtnActionPerformed
+        controller.cart.addItem(new ShoppingItem(currentProduct,(double)spinner.getValue()));
+        CartDropdown.update();
+        controller.updateCartHeader();
+    }//GEN-LAST:event_addToCartBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addToCartBtn;
+    private javax.swing.JLabel altPriceLabel;
     private javax.swing.JPanel buyPanel;
     private javax.swing.JLabel infoHeaderLabel;
     private javax.swing.JScrollPane infoScrollPane;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JPanel mainInfoPanel;
+    private javax.swing.JLabel priceLabel;
     private javax.swing.JLabel productIcon;
     private javax.swing.JLabel productTitleLabel;
+    private javax.swing.JSpinner spinner;
     // End of variables declaration//GEN-END:variables
 }
