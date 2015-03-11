@@ -6,6 +6,8 @@
 package imatapp_g8;
 
 import static imatapp_g8.MainWindow.contentPanel;
+import java.awt.Color;
+import java.util.Arrays;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.User;
 
@@ -66,6 +68,15 @@ public class EditUserPanel extends javax.swing.JPanel implements java.beans.Cust
         editMobileNbrField = new javax.swing.JTextField();
         editOrtField = new javax.swing.JTextField();
         modifyBtn = new javax.swing.JToggleButton();
+        errorLabel = new javax.swing.JLabel();
+        errorPostalCodeLabel = new javax.swing.JLabel();
+        errorAddressLabel = new javax.swing.JLabel();
+        errorVerifyPWLabel = new javax.swing.JLabel();
+        errorPassWLabel = new javax.swing.JLabel();
+        errorUserNameLabel = new javax.swing.JLabel();
+        errorEmailLabel = new javax.swing.JLabel();
+        errorLastNameLabel = new javax.swing.JLabel();
+        errorNameLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(930, 630));
         setMinimumSize(new java.awt.Dimension(930, 630));
@@ -166,6 +177,68 @@ public class EditUserPanel extends javax.swing.JPanel implements java.beans.Cust
         });
         add(modifyBtn);
         modifyBtn.setBounds(740, 550, 110, 40);
+
+        errorLabel.setForeground(new java.awt.Color(255, 0, 51));
+        errorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorLabel.setText("Fyll i där det är rödmarkerat");
+        add(errorLabel);
+        errorLabel.setBounds(430, 80, 175, 16);
+
+        errorPostalCodeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorPostalCodeLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorPostalCodeLabel.setText("Skriv in din postkod här");
+        errorPostalCodeLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorPostalCodeLabel);
+        errorPostalCodeLabel.setBounds(620, 330, 151, 16);
+
+        errorAddressLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorAddressLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorAddressLabel.setText("Skriv in din address här");
+        errorAddressLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorAddressLabel);
+        errorAddressLabel.setBounds(620, 300, 148, 16);
+
+        errorVerifyPWLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorVerifyPWLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorVerifyPWLabel.setText("Lösenorden måste matcha ");
+        errorVerifyPWLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorVerifyPWLabel);
+        errorVerifyPWLabel.setBounds(620, 270, 169, 16);
+
+        errorPassWLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorPassWLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorPassWLabel.setText("Skriv in ditt lösenord här");
+        errorPassWLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorPassWLabel);
+        errorPassWLabel.setBounds(620, 240, 156, 16);
+
+        errorUserNameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorUserNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorUserNameLabel.setText("Skriv in ditt användarnamn här");
+        errorUserNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorUserNameLabel);
+        errorUserNameLabel.setBounds(620, 210, 193, 16);
+
+        errorEmailLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorEmailLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorEmailLabel.setText("Skriv in din epost här");
+        errorEmailLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorEmailLabel);
+        errorEmailLabel.setBounds(620, 180, 134, 16);
+
+        errorLastNameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorLastNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorLastNameLabel.setText("Skriv in ditt efternamn här");
+        errorLastNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorLastNameLabel);
+        errorLastNameLabel.setBounds(620, 150, 165, 16);
+
+        errorNameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorNameLabel.setText("Skriv in ditt namn här");
+        errorNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorNameLabel);
+        errorNameLabel.setBounds(620, 120, 136, 16);
     }// </editor-fold>//GEN-END:initComponents
 
     private void setAllValues(){
@@ -182,7 +255,7 @@ public class EditUserPanel extends javax.swing.JPanel implements java.beans.Cust
         editOrtField.setText(customer.getPostAddress());
     }
     private void modifyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyBtnActionPerformed
-
+        if(checkRequiredFields()){
             customer.setAddress(editAddressField.getText());
             customer.setEmail(editEmailField.getText());
             customer.setFirstName(editNameField.getText());
@@ -198,9 +271,101 @@ public class EditUserPanel extends javax.swing.JPanel implements java.beans.Cust
             contentPanel.revalidate();
             controller.toggleLoginOrNameBtn(true);
             controller.toggleLogoutBtn();
-        
+        }else{
+            errorLabel.setVisible(true);
+        }
     }//GEN-LAST:event_modifyBtnActionPerformed
 
+    
+    private boolean checkRequiredFields(){
+        checkName();
+        checkLastName();
+        checkEmail();
+        checkUserName();
+        checkPasswordnVerify();
+        checkAddress();
+        checkPostalCode();
+        boolean ifTrue = checkName() && checkLastName()&&checkEmail()&&checkUserName()&&checkPasswordnVerify()&&checkAddress()&&checkPostalCode();
+        return ifTrue;
+    }
+    
+    private boolean checkName(){
+        if (editNameField.getText().equals("")){
+            errorNameLabel.setForeground(Color.red);
+            return false;
+        }
+        errorNameLabel.setForeground(Color.white);
+        return true;
+    }
+    
+    private boolean checkLastName(){
+        if (editLastNameField.getText().equals("")){
+            errorLastNameLabel.setForeground(Color.red);
+            return false;
+        }
+        errorLastNameLabel.setForeground(Color.white);
+        return true;
+    }
+    
+    private boolean checkEmail(){
+        if (editEmailField.getText().equals("")){
+            errorEmailLabel.setForeground(Color.red);
+            return false;
+        }
+        errorEmailLabel.setForeground(Color.white);
+        return true;
+    }
+    
+    private boolean checkUserName(){
+        if (editUsernameField.getText().equals("")){
+            errorUserNameLabel.setForeground(Color.red);
+            return false;
+        }
+        errorUserNameLabel.setForeground(Color.white);
+        return true;
+    }
+
+    private boolean checkPasswordnVerify(){ 
+        char [] input = editPwField.getPassword();
+        if (!isPasswordCorrect(input) || input.length < 2){
+            
+                errorPassWLabel.setForeground(Color.red);
+                errorVerifyPWLabel.setForeground(Color.red);
+                return false;
+        } 
+        errorPassWLabel.setForeground(Color.white);
+        errorVerifyPWLabel.setForeground(Color.white);
+        return true;
+    }
+    
+    private boolean isPasswordCorrect(char[] input){
+        boolean isCorrect = true;
+        char [] correctPassword = editVerifyPwField.getPassword();
+        if(input.length != correctPassword.length){
+            isCorrect = false;
+        } else {
+            isCorrect = Arrays.equals(input,correctPassword);
+        }
+        return isCorrect;
+    } 
+        
+    private boolean checkAddress(){
+        if (editAddressField.getText().equals("")){
+            errorAddressLabel.setForeground(Color.red);
+            return false;
+        }
+        errorAddressLabel.setForeground(Color.white);
+        return true;
+    }
+    
+    private boolean checkPostalCode(){
+        if (editPostalCodeField.getText().equals("")){
+            errorPostalCodeLabel.setForeground(Color.red);
+            return false;
+        }
+        errorPostalCodeLabel.setForeground(Color.white);
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField editAddressField;
@@ -225,6 +390,15 @@ public class EditUserPanel extends javax.swing.JPanel implements java.beans.Cust
     private javax.swing.JLabel editUsernameLabel;
     private javax.swing.JLabel editVerifyPWLabel;
     private javax.swing.JPasswordField editVerifyPwField;
+    private javax.swing.JLabel errorAddressLabel;
+    private javax.swing.JLabel errorEmailLabel;
+    private javax.swing.JLabel errorLabel;
+    private javax.swing.JLabel errorLastNameLabel;
+    private javax.swing.JLabel errorNameLabel;
+    private javax.swing.JLabel errorPassWLabel;
+    private javax.swing.JLabel errorPostalCodeLabel;
+    private javax.swing.JLabel errorUserNameLabel;
+    private javax.swing.JLabel errorVerifyPWLabel;
     private javax.swing.JToggleButton modifyBtn;
     // End of variables declaration//GEN-END:variables
 }

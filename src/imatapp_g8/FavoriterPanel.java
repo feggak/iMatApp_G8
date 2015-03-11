@@ -64,7 +64,7 @@ public class FavoriterPanel extends javax.swing.JPanel implements java.beans.Cus
         progrid.setAlignmentY(0.0F);
         progrid.setAutoscrolls(true);
         progrid.setOpaque(false);
-        progrid.setLayout(new java.awt.GridLayout());
+        progrid.setLayout(new java.awt.GridLayout(1, 0));
         add(progrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 930, 520));
 
         jLabel1.setFont(new java.awt.Font("Helvetica", 0, 24)); // NOI18N
