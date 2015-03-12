@@ -29,8 +29,9 @@ public class DetailedPanel extends javax.swing.JPanel {
         initComponents();
         productIcon.setIcon(Controller.db.getImageIcon(product, 300, 225));
         productTitleLabel.setText(product.getName());
-        priceLabel.setText("Pris: " + product.getPrice() + " " + product.getUnit());
+        priceLabel.setText("Pris: " + product.getPrice() + " kr");
         altPriceLabel.setText("Jmf pris: " + product.getPrice() + " " + product.getUnit());
+        unitLabel.setText(product.getUnitSuffix());
         if (product.getUnitSuffix().equals("förp") || product.getUnitSuffix().equals("st")) {
             spinner.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(1.0d), 1.0, null, Double.valueOf(1.0d)));
         }
@@ -54,10 +55,10 @@ public class DetailedPanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         buyPanel = new javax.swing.JPanel();
         spinner = new javax.swing.JSpinner();
-        addToCartBtn = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
         altPriceLabel = new javax.swing.JLabel();
+        addToCartBtn = new javax.swing.JButton();
+        unitLabel = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
@@ -103,59 +104,59 @@ public class DetailedPanel extends javax.swing.JPanel {
 
         add(mainInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 45, -1, -1));
 
+        buyPanel.setBackground(new java.awt.Color(255, 255, 255));
         buyPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        buyPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         spinner.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(1.0d), Double.valueOf(0.1d), null, Double.valueOf(0.1d)));
+        spinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spinnerStateChanged(evt);
+            }
+        });
+        buyPanel.add(spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 68, 50, 27));
 
-        addToCartBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 18)); // NOI18N
+        priceLabel.setFont(new java.awt.Font("Myriad Pro", 1, 24)); // NOI18N
+        priceLabel.setText("Pris: <Pris> kr");
+        buyPanel.add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 12, -1, -1));
+
+        altPriceLabel.setFont(new java.awt.Font("Myriad Pro", 0, 18)); // NOI18N
+        altPriceLabel.setText("Jmf pris: <Pris> kr/kg");
+        buyPanel.add(altPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 43, -1, -1));
+
+        addToCartBtn.setFont(new java.awt.Font("Myriad Pro Light", 0, 16)); // NOI18N
+        addToCartBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addToCartBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buy_icon.png"))); // NOI18N
         addToCartBtn.setText("Lägg till");
+        addToCartBtn.setAlignmentY(0.0F);
+        addToCartBtn.setBorder(null);
+        addToCartBtn.setBorderPainted(false);
+        addToCartBtn.setContentAreaFilled(false);
+        addToCartBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addToCartBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        addToCartBtn.setDefaultCapable(false);
+        addToCartBtn.setFocusPainted(false);
+        addToCartBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        addToCartBtn.setIconTextGap(0);
+        addToCartBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        addToCartBtn.setMaximumSize(new java.awt.Dimension(110, 46));
+        addToCartBtn.setMinimumSize(new java.awt.Dimension(110, 46));
+        addToCartBtn.setPreferredSize(new java.awt.Dimension(110, 46));
+        addToCartBtn.setRequestFocusEnabled(false);
+        addToCartBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/buy_icon_rollover.png"))); // NOI18N
+        addToCartBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/buy_icon_selected.png"))); // NOI18N
         addToCartBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addToCartBtnActionPerformed(evt);
             }
         });
+        buyPanel.add(addToCartBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 66, 80, 32));
 
-        jLabel5.setText("st");
+        unitLabel.setFont(new java.awt.Font("Myriad Pro", 1, 24)); // NOI18N
+        unitLabel.setText("<Unit>");
+        buyPanel.add(unitLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 70, -1, -1));
 
-        priceLabel.setFont(new java.awt.Font("Myriad Pro", 1, 18)); // NOI18N
-        priceLabel.setText("Pris: <Pris> kr");
-
-        altPriceLabel.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
-        altPriceLabel.setText("Jmf pris: <Pris> kr/kg");
-
-        javax.swing.GroupLayout buyPanelLayout = new javax.swing.GroupLayout(buyPanel);
-        buyPanel.setLayout(buyPanelLayout);
-        buyPanelLayout.setHorizontalGroup(
-            buyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(buyPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(buyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(buyPanelLayout.createSequentialGroup()
-                        .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(addToCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(priceLabel)
-                    .addComponent(altPriceLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        buyPanelLayout.setVerticalGroup(
-            buyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(buyPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(priceLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(altPriceLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(buyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(addToCartBtn))
-                .addContainerGap())
-        );
-
-        add(buyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+        add(buyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 300, 110));
 
         jLabel14.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
         jLabel14.setText("Ingår i dessa recept:");
@@ -181,10 +182,12 @@ public class DetailedPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addToCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartBtnActionPerformed
-        controller.cart.addItem(new ShoppingItem(currentProduct,(double)spinner.getValue()));
-        CartDropdown.update();
-        controller.updateCartHeader();
+        controller.addToCart(currentProduct,(double)spinner.getValue());
     }//GEN-LAST:event_addToCartBtnActionPerformed
+
+    private void spinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinnerStateChanged
+        priceLabel.setText("Pris: " + (Math.round(currentProduct.getPrice()*(double)spinner.getValue()*100.0)/100.0) + " kr");
+    }//GEN-LAST:event_spinnerStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -194,7 +197,6 @@ public class DetailedPanel extends javax.swing.JPanel {
     private javax.swing.JLabel infoHeaderLabel;
     private javax.swing.JScrollPane infoScrollPane;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
@@ -204,5 +206,6 @@ public class DetailedPanel extends javax.swing.JPanel {
     private javax.swing.JLabel productIcon;
     private javax.swing.JLabel productTitleLabel;
     private javax.swing.JSpinner spinner;
+    private javax.swing.JLabel unitLabel;
     // End of variables declaration//GEN-END:variables
 }
