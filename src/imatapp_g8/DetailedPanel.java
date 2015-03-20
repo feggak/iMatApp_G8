@@ -154,7 +154,7 @@ public class DetailedPanel extends javax.swing.JPanel {
 
         unitLabel.setFont(new java.awt.Font("Myriad Pro", 1, 24)); // NOI18N
         unitLabel.setText("<Unit>");
-        buyPanel.add(unitLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 70, -1, -1));
+        buyPanel.add(unitLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 67, -1, -1));
 
         add(buyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 300, 110));
 

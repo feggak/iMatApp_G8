@@ -169,7 +169,7 @@ public class Register extends javax.swing.JPanel {
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         //trycker på registrera knappen..
-        if (checkRequiredFields() && Controller.db.isCustomerComplete()){
+        if (checkRequiredFields()){
             Controller.db.reset();
             errorLabel.setVisible(false);
             customer = Controller.db.getCustomer();

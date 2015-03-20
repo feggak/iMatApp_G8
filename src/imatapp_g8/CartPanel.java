@@ -57,6 +57,7 @@ public class CartPanel extends javax.swing.JPanel {
 
         buttonGroup = new javax.swing.ButtonGroup();
         itemGridScrollPane = new javax.swing.JScrollPane();
+        itemGridScrollPane.getVerticalScrollBar().setUnitIncrement(20);
         itemsGrid = new javax.swing.JPanel();
         checkoutBtn = new javax.swing.JButton();
         shippingPriceLabel = new javax.swing.JLabel();
@@ -144,7 +145,6 @@ public class CartPanel extends javax.swing.JPanel {
         buttonGroup.add(shippingOption1Button);
         shippingOption1Button.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         shippingOption1Button.setAlignmentY(0.0F);
-        shippingOption1Button.setBorder(null);
         shippingOption1Button.setContentAreaFilled(false);
         shippingOption1Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         shippingOption1Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shipping1_icon.png"))); // NOI18N
@@ -164,7 +164,6 @@ public class CartPanel extends javax.swing.JPanel {
         buttonGroup.add(shippingOption2Button);
         shippingOption2Button.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         shippingOption2Button.setAlignmentY(0.0F);
-        shippingOption2Button.setBorder(null);
         shippingOption2Button.setContentAreaFilled(false);
         shippingOption2Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         shippingOption2Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shipping2_icon.png"))); // NOI18N
@@ -184,7 +183,6 @@ public class CartPanel extends javax.swing.JPanel {
         buttonGroup.add(shippingOption3Button);
         shippingOption3Button.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         shippingOption3Button.setAlignmentY(0.0F);
-        shippingOption3Button.setBorder(null);
         shippingOption3Button.setContentAreaFilled(false);
         shippingOption3Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         shippingOption3Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shipping3_icon.png"))); // NOI18N

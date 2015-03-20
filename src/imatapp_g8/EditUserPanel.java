@@ -8,8 +8,7 @@ package imatapp_g8;
 import static imatapp_g8.MainWindow.contentPanel;
 import java.awt.Color;
 import java.util.Arrays;
-import se.chalmers.ait.dat215.project.Customer;
-import se.chalmers.ait.dat215.project.User;
+import se.chalmers.ait.dat215.project.*;
 
 /**
  *
@@ -19,6 +18,7 @@ public class EditUserPanel extends javax.swing.JPanel {
 
     Controller controller;
     Customer customer;
+    CreditCard creditCard;
     User user;
 
     /**
@@ -29,6 +29,7 @@ public class EditUserPanel extends javax.swing.JPanel {
         controller = Controller.getInstance();
         customer = Controller.db.getCustomer();
         user = Controller.db.getUser();
+        creditCard = Controller.db.getCreditCard();
         setAllValues();
     }
 
@@ -63,7 +64,6 @@ public class EditUserPanel extends javax.swing.JPanel {
         editMobileNbrField = new javax.swing.JTextField();
         editOrtField = new javax.swing.JTextField();
         modifyBtn = new javax.swing.JToggleButton();
-        errorLabel = new javax.swing.JLabel();
         errorPostalCodeLabel = new javax.swing.JLabel();
         errorAddressLabel = new javax.swing.JLabel();
         errorVerifyPWLabel = new javax.swing.JLabel();
@@ -72,10 +72,24 @@ public class EditUserPanel extends javax.swing.JPanel {
         errorEmailLabel = new javax.swing.JLabel();
         errorLastNameLabel = new javax.swing.JLabel();
         errorNameLabel = new javax.swing.JLabel();
+        editCCTypeLabel = new javax.swing.JLabel();
+        editCCNameLabel = new javax.swing.JLabel();
+        editCCNbrLabel = new javax.swing.JLabel();
+        editCCMonthField = new javax.swing.JTextField();
+        editCCNameField = new javax.swing.JTextField();
+        editCCNbrLabel1 = new javax.swing.JLabel();
+        editCCNumberField = new javax.swing.JTextField();
+        editCCNbrLabel2 = new javax.swing.JLabel();
+        editCCYearField = new javax.swing.JTextField();
+        editCCNbrLabel3 = new javax.swing.JLabel();
+        editCCCVCField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        editCCTypeComboBox = new javax.swing.JComboBox();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(930, 630));
         setMinimumSize(new java.awt.Dimension(930, 630));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(930, 630));
         setLayout(null);
 
@@ -83,85 +97,85 @@ public class EditUserPanel extends javax.swing.JPanel {
         editNameLabel.setText("Namn: *");
         editNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(editNameLabel);
-        editNameLabel.setBounds(335, 125, 80, 16);
+        editNameLabel.setBounds(210, 70, 80, 16);
 
         editLastNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         editLastNameLabel.setText("Efternamn: *");
         add(editLastNameLabel);
-        editLastNameLabel.setBounds(305, 155, 110, 16);
+        editLastNameLabel.setBounds(180, 100, 110, 16);
 
         editEmailLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         editEmailLabel.setText("E-post: *");
         editEmailLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(editEmailLabel);
-        editEmailLabel.setBounds(335, 185, 80, 16);
+        editEmailLabel.setBounds(210, 130, 80, 16);
 
         editUsernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         editUsernameLabel.setText("Användarnamn: *");
         add(editUsernameLabel);
-        editUsernameLabel.setBounds(305, 215, 110, 16);
+        editUsernameLabel.setBounds(180, 160, 110, 16);
 
         editPassWLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         editPassWLabel.setText("Lösenord: *");
         editPassWLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(editPassWLabel);
-        editPassWLabel.setBounds(335, 245, 80, 16);
+        editPassWLabel.setBounds(210, 190, 80, 16);
 
         editAddressLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         editAddressLabel.setText("Address: *");
         editAddressLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(editAddressLabel);
-        editAddressLabel.setBounds(335, 305, 80, 16);
+        editAddressLabel.setBounds(210, 250, 80, 16);
 
         editVerifyPWLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         editVerifyPWLabel.setText("Bekräfta Lösenord: *");
         add(editVerifyPWLabel);
-        editVerifyPWLabel.setBounds(275, 275, 140, 16);
+        editVerifyPWLabel.setBounds(150, 220, 140, 16);
 
         editPostalCodeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         editPostalCodeLabel.setText("Postkod: *");
         add(editPostalCodeLabel);
-        editPostalCodeLabel.setBounds(305, 335, 110, 16);
+        editPostalCodeLabel.setBounds(180, 280, 110, 16);
 
         editOrtLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         editOrtLabel.setText("Ort:");
         editOrtLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(editOrtLabel);
-        editOrtLabel.setBounds(335, 373, 80, 16);
+        editOrtLabel.setBounds(210, 310, 80, 16);
 
         editMobilePhoneNbr.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         editMobilePhoneNbr.setText("Mobilnummer:");
         editMobilePhoneNbr.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(editMobilePhoneNbr);
-        editMobilePhoneNbr.setBounds(305, 407, 110, 16);
+        editMobilePhoneNbr.setBounds(180, 340, 110, 16);
 
         editPhoneNbr.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         editPhoneNbr.setText("Telefonummer:");
         editPhoneNbr.setToolTipText("");
         add(editPhoneNbr);
-        editPhoneNbr.setBounds(305, 441, 110, 16);
+        editPhoneNbr.setBounds(180, 370, 110, 16);
         add(editPwField);
-        editPwField.setBounds(425, 235, 180, 28);
+        editPwField.setBounds(290, 180, 290, 28);
         add(editVerifyPwField);
-        editVerifyPwField.setBounds(425, 265, 180, 28);
+        editVerifyPwField.setBounds(290, 210, 290, 28);
         add(editUsernameField);
-        editUsernameField.setBounds(425, 205, 180, 28);
+        editUsernameField.setBounds(290, 150, 290, 28);
         add(editEmailField);
-        editEmailField.setBounds(425, 175, 180, 28);
+        editEmailField.setBounds(290, 120, 290, 28);
         add(editNameField);
-        editNameField.setBounds(425, 115, 180, 28);
+        editNameField.setBounds(290, 60, 290, 28);
         add(editLastNameField);
-        editLastNameField.setBounds(425, 145, 180, 28);
+        editLastNameField.setBounds(290, 90, 290, 28);
         add(editPostalCodeField);
-        editPostalCodeField.setBounds(425, 325, 180, 28);
+        editPostalCodeField.setBounds(290, 270, 290, 28);
         add(editPhoneNbrField);
-        editPhoneNbrField.setBounds(425, 431, 180, 28);
+        editPhoneNbrField.setBounds(290, 360, 290, 28);
         add(editAddressField);
-        editAddressField.setBounds(425, 295, 180, 28);
+        editAddressField.setBounds(290, 240, 290, 28);
         add(editMobileNbrField);
-        editMobileNbrField.setBounds(425, 397, 180, 28);
+        editMobileNbrField.setBounds(290, 330, 290, 28);
         add(editOrtField);
-        editOrtField.setBounds(425, 363, 180, 28);
+        editOrtField.setBounds(290, 300, 290, 28);
 
         modifyBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         modifyBtn.setText("Spara");
@@ -171,69 +185,125 @@ public class EditUserPanel extends javax.swing.JPanel {
             }
         });
         add(modifyBtn);
-        modifyBtn.setBounds(740, 550, 110, 40);
-
-        errorLabel.setForeground(new java.awt.Color(255, 0, 51));
-        errorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorLabel.setText("Fyll i där det är rödmarkerat");
-        add(errorLabel);
-        errorLabel.setBounds(430, 80, 175, 16);
+        modifyBtn.setBounds(790, 570, 110, 40);
 
         errorPostalCodeLabel.setForeground(new java.awt.Color(255, 255, 255));
         errorPostalCodeLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         errorPostalCodeLabel.setText("Skriv in din postkod här");
         errorPostalCodeLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(errorPostalCodeLabel);
-        errorPostalCodeLabel.setBounds(620, 330, 151, 16);
+        errorPostalCodeLabel.setBounds(600, 280, 151, 16);
 
         errorAddressLabel.setForeground(new java.awt.Color(255, 255, 255));
         errorAddressLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         errorAddressLabel.setText("Skriv in din address här");
         errorAddressLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(errorAddressLabel);
-        errorAddressLabel.setBounds(620, 300, 148, 16);
+        errorAddressLabel.setBounds(600, 250, 148, 16);
 
         errorVerifyPWLabel.setForeground(new java.awt.Color(255, 255, 255));
         errorVerifyPWLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         errorVerifyPWLabel.setText("Lösenorden måste matcha ");
         errorVerifyPWLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(errorVerifyPWLabel);
-        errorVerifyPWLabel.setBounds(620, 270, 169, 16);
+        errorVerifyPWLabel.setBounds(600, 220, 169, 16);
 
         errorPassWLabel.setForeground(new java.awt.Color(255, 255, 255));
         errorPassWLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         errorPassWLabel.setText("Skriv in ditt lösenord här");
         errorPassWLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(errorPassWLabel);
-        errorPassWLabel.setBounds(620, 240, 156, 16);
+        errorPassWLabel.setBounds(600, 190, 156, 16);
 
         errorUserNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         errorUserNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         errorUserNameLabel.setText("Skriv in ditt användarnamn här");
         errorUserNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(errorUserNameLabel);
-        errorUserNameLabel.setBounds(620, 210, 193, 16);
+        errorUserNameLabel.setBounds(600, 160, 193, 16);
 
         errorEmailLabel.setForeground(new java.awt.Color(255, 255, 255));
         errorEmailLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         errorEmailLabel.setText("Skriv in din epost här");
         errorEmailLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(errorEmailLabel);
-        errorEmailLabel.setBounds(620, 180, 134, 16);
+        errorEmailLabel.setBounds(600, 130, 134, 16);
 
         errorLastNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         errorLastNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         errorLastNameLabel.setText("Skriv in ditt efternamn här");
         errorLastNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(errorLastNameLabel);
-        errorLastNameLabel.setBounds(620, 150, 165, 16);
+        errorLastNameLabel.setBounds(600, 100, 165, 16);
 
         errorNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         errorNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         errorNameLabel.setText("Skriv in ditt namn här");
         errorNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(errorNameLabel);
-        errorNameLabel.setBounds(620, 120, 136, 16);
+        errorNameLabel.setBounds(600, 70, 136, 16);
+
+        editCCTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        editCCTypeLabel.setText("Korttyp:");
+        editCCTypeLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(editCCTypeLabel);
+        editCCTypeLabel.setBounds(210, 460, 80, 16);
+
+        editCCNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        editCCNameLabel.setText("Namn:");
+        editCCNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(editCCNameLabel);
+        editCCNameLabel.setBounds(180, 490, 110, 16);
+
+        editCCNbrLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        editCCNbrLabel.setText("Månad:");
+        editCCNbrLabel.setToolTipText("");
+        add(editCCNbrLabel);
+        editCCNbrLabel.setBounds(180, 550, 110, 16);
+        add(editCCMonthField);
+        editCCMonthField.setBounds(290, 540, 120, 28);
+        add(editCCNameField);
+        editCCNameField.setBounds(290, 480, 290, 28);
+
+        editCCNbrLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        editCCNbrLabel1.setText("Kortnummer:");
+        editCCNbrLabel1.setToolTipText("");
+        add(editCCNbrLabel1);
+        editCCNbrLabel1.setBounds(180, 520, 110, 16);
+        add(editCCNumberField);
+        editCCNumberField.setBounds(290, 510, 290, 28);
+
+        editCCNbrLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        editCCNbrLabel2.setText("År:");
+        editCCNbrLabel2.setToolTipText("");
+        add(editCCNbrLabel2);
+        editCCNbrLabel2.setBounds(340, 550, 110, 16);
+        add(editCCYearField);
+        editCCYearField.setBounds(450, 540, 130, 28);
+
+        editCCNbrLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        editCCNbrLabel3.setText("CVC:");
+        editCCNbrLabel3.setToolTipText("");
+        add(editCCNbrLabel3);
+        editCCNbrLabel3.setBounds(180, 580, 110, 16);
+        add(editCCCVCField);
+        editCCCVCField.setBounds(290, 570, 120, 28);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Kortuppgifter:");
+        add(jLabel1);
+        jLabel1.setBounds(330, 400, 200, 30);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Användaruppgifter:");
+        add(jLabel2);
+        jLabel2.setBounds(330, 20, 200, 30);
+
+        editCCTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VISA", "MasterCard" }));
+        add(editCCTypeComboBox);
+        editCCTypeComboBox.setBounds(290, 450, 290, 27);
     }// </editor-fold>//GEN-END:initComponents
 
     private void setAllValues(){
@@ -248,6 +318,11 @@ public class EditUserPanel extends javax.swing.JPanel {
         editMobileNbrField.setText(customer.getMobilePhoneNumber());
         editPhoneNbrField.setText(customer.getPhoneNumber());
         editOrtField.setText(customer.getPostAddress());
+        editCCNameField.setText(creditCard.getHoldersName());
+        editCCNumberField.setText(creditCard.getCardNumber());
+        editCCMonthField.setText(Integer.toString(creditCard.getValidMonth()));
+        editCCYearField.setText(Integer.toString(creditCard.getValidYear()));
+        editCCCVCField.setText(Integer.toString(creditCard.getVerificationCode()));
     }
     private void modifyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyBtnActionPerformed
         if(checkRequiredFields()){
@@ -261,13 +336,18 @@ public class EditUserPanel extends javax.swing.JPanel {
             customer.setPostCode(editPostalCodeField.getText());
             user.setPassword(String.valueOf(editPwField.getPassword()));
             user.setUserName(editUsernameField.getText());
+            creditCard.setCardType((String)editCCTypeComboBox.getSelectedItem());
+            creditCard.setHoldersName(editCCNameField.getText());
+            creditCard.setCardNumber(editCCNumberField.getText());
+            creditCard.setValidMonth(Integer.parseInt(editCCMonthField.getText()));
+            creditCard.setValidYear(Integer.parseInt(editCCYearField.getText()));
+            creditCard.setVerificationCode(Integer.parseInt(editCCCVCField.getText()));
             contentPanel.removeAll();
-            contentPanel.add(new AccountPanel());
+            contentPanel.add(new EditUserPanel());
             contentPanel.revalidate();
             controller.toggleLoginBtn(true);
             // controller.toggleLogoutBtn();
         }else{
-            errorLabel.setVisible(true);
         }
     }//GEN-LAST:event_modifyBtnActionPerformed
 
@@ -365,6 +445,18 @@ public class EditUserPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField editAddressField;
     private javax.swing.JLabel editAddressLabel;
+    private javax.swing.JTextField editCCCVCField;
+    private javax.swing.JTextField editCCMonthField;
+    private javax.swing.JTextField editCCNameField;
+    private javax.swing.JLabel editCCNameLabel;
+    private javax.swing.JLabel editCCNbrLabel;
+    private javax.swing.JLabel editCCNbrLabel1;
+    private javax.swing.JLabel editCCNbrLabel2;
+    private javax.swing.JLabel editCCNbrLabel3;
+    private javax.swing.JTextField editCCNumberField;
+    private javax.swing.JComboBox editCCTypeComboBox;
+    private javax.swing.JLabel editCCTypeLabel;
+    private javax.swing.JTextField editCCYearField;
     private javax.swing.JTextField editEmailField;
     private javax.swing.JLabel editEmailLabel;
     private javax.swing.JTextField editLastNameField;
@@ -387,13 +479,14 @@ public class EditUserPanel extends javax.swing.JPanel {
     private javax.swing.JPasswordField editVerifyPwField;
     private javax.swing.JLabel errorAddressLabel;
     private javax.swing.JLabel errorEmailLabel;
-    private javax.swing.JLabel errorLabel;
     private javax.swing.JLabel errorLastNameLabel;
     private javax.swing.JLabel errorNameLabel;
     private javax.swing.JLabel errorPassWLabel;
     private javax.swing.JLabel errorPostalCodeLabel;
     private javax.swing.JLabel errorUserNameLabel;
     private javax.swing.JLabel errorVerifyPWLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JToggleButton modifyBtn;
     // End of variables declaration//GEN-END:variables
 }

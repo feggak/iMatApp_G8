@@ -48,6 +48,11 @@ public class LoginPopup extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(350, 300));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(350, 300));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         setLayout(null);
 
         passWtxt.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
@@ -113,7 +118,7 @@ public class LoginPopup extends javax.swing.JPanel {
         loginErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loginErrorLabel.setText("Fel lösenord eller användarnamn");
         add(loginErrorLabel);
-        loginErrorLabel.setBounds(20, 180, 249, 21);
+        loginErrorLabel.setBounds(20, 180, 249, 17);
 
         registerBtn.setText("Registrera");
         registerBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -160,6 +165,9 @@ public class LoginPopup extends javax.swing.JPanel {
         if (user.getUserName().equals(usernameTxt.getText())&&user.getPassword().equals(String.valueOf(passWtxt.getPassword()))){
             loginErrorLabel.setVisible(false);
             controller.toggleLoginBtn(true);
+            MainWindow.accountBtn.setText("Mitt konto");
+            usernameTxt.setText("Användarnamn..");
+            passWtxt.setText("Lösenord..");
             MainWindow.loginPopup.setVisible(false);
         } 
         // Failed login
@@ -196,6 +204,10 @@ public class LoginPopup extends javax.swing.JPanel {
             passWtxt.setForeground(Color.black);
         }
     }//GEN-LAST:event_passWtxtFocusGained
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLabel;

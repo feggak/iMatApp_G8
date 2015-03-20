@@ -34,6 +34,14 @@ public class CartDropdown extends javax.swing.JPanel {
             }
         itemsPanel.revalidate();
         }
+        if (Controller.cart.getItems().size() >= 5) {
+        itemsPanel.removeAll();
+        itemsPanel.repaint();
+            for (int i = Controller.cart.getItems().size()-4; i < Controller.cart.getItems().size(); i++) {
+                itemsPanel.add(new CartDropdownItem(Controller.cart.getItems().get(i)));
+            }
+        itemsPanel.revalidate();
+        }
         totalPriceLabel.setText("Totalt: " + Double.toString(Math.round(Controller.cart.getTotal()*100.0)/100.0) + " kr");
     }
 
@@ -54,6 +62,11 @@ public class CartDropdown extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(276, 400));
         setMinimumSize(new java.awt.Dimension(276, 0));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         itemsPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -147,6 +160,10 @@ public class CartDropdown extends javax.swing.JPanel {
         controller.updateCartHeader();
         update();
     }//GEN-LAST:event_clearCartLabelMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

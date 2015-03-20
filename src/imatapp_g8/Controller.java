@@ -22,6 +22,7 @@ public class Controller {
     protected static ShoppingCart cart;
     protected static int shippingType = 1;
     protected static boolean searchPanelVisible = false;
+    protected static boolean accountPanelVisible = false;
     private static List<Product> currentCategory;
     private static boolean showAllActive = false;
     private static boolean featuredActive = false;
@@ -66,7 +67,7 @@ public class Controller {
     }
     
     // Shopping cart
-    public void updateCartHeader() {
+    public static void updateCartHeader() {
         if (cart.getItems().isEmpty()) {
             MainWindow.cartLabel.setText("Inga varor");
             MainWindow.cartTotalLabel.setText("");
@@ -88,6 +89,11 @@ public class Controller {
         if (different) {
             cart.addItem(new ShoppingItem(product,amount));
         }
+        CartDropdown.update();
+        updateCartHeader();
+    }
+    public void addToCart(ShoppingItem item) {
+        cart.addItem(item);
         CartDropdown.update();
         updateCartHeader();
     }
@@ -124,10 +130,12 @@ public class Controller {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new FeaturedPanel());
         MainWindow.contentPanel.revalidate();
+        MainWindow.categoryPanel.resetAllStoreFontsExceptFeatured();
         changeCategoryView("store");
         showAllActive = false;
         featuredActive = true;
         searchPanelVisible = false;
+        accountPanelVisible = false;
     }
     public void showShopAllProducts() {
         MainWindow.contentPanel.removeAll();
@@ -137,6 +145,7 @@ public class Controller {
         showAllActive = true;
         featuredActive = false;
         searchPanelVisible = false;
+        accountPanelVisible = false;
     }
     public void showShopCategory(List<Product> category) {
         MainWindow.contentPanel.removeAll();
@@ -147,6 +156,7 @@ public class Controller {
         showAllActive = false;
         featuredActive = false;
         searchPanelVisible = false;
+        accountPanelVisible = false;
     }
     public void showPreviousShopCategory() {
         if (showAllActive) {
@@ -172,6 +182,7 @@ public class Controller {
             featuredActive = false;
             searchPanelVisible = false;
         }
+        accountPanelVisible = false;
         changeCategoryView("store");
     }
     public void showDetails(Product product) {
@@ -180,6 +191,7 @@ public class Controller {
         MainWindow.contentPanel.repaint();
         MainWindow.contentPanel.revalidate();
         searchPanelVisible = false;
+        accountPanelVisible = false;
         changeCategoryView("store");
     }
     public void showShopSearch(String search) {
@@ -191,22 +203,32 @@ public class Controller {
         showAllActive = false;
         featuredActive = false;
         searchPanelVisible = true;
+        accountPanelVisible = false;
         changeCategoryView("search");
     }
     
     // Account views
     public void showAccount() {
         MainWindow.contentPanel.removeAll();
-        MainWindow.contentPanel.add(new AccountPanel());
+        MainWindow.contentPanel.add(new EditUserPanel());
         MainWindow.contentPanel.revalidate();
         MainWindow.categoryPanel.resetAllAccountFontsExceptSettings();
         changeCategoryView("account");
+        accountPanelVisible = true;
     }
     public void showFavorites() {
         MainWindow.contentPanel.removeAll();
         MainWindow.contentPanel.add(new FavoritesPanel());
         MainWindow.contentPanel.revalidate();
         changeCategoryView("account");
+        accountPanelVisible = false;
+    }
+    public void showPastOrders() {
+        MainWindow.contentPanel.removeAll();
+        MainWindow.contentPanel.add(new PastOrdersPanel());
+        MainWindow.contentPanel.revalidate();
+        changeCategoryView("account");
+        accountPanelVisible = true;
     }
     public void toggleLoginBtn(boolean b){//false = login, true = name
         MainWindow.setIsLoggedIn(b);
@@ -223,9 +245,9 @@ public class Controller {
     }
     public void showRegister() {
         MainWindow.contentPanel.removeAll();
-        MainWindow.loginPopup.setVisible(false);
         MainWindow.contentPanel.add(new Register());
         MainWindow.contentPanel.repaint();
+        MainWindow.contentPanel.revalidate();
     }
     
     // Cart & Buy views 
@@ -236,6 +258,7 @@ public class Controller {
         MainWindow.contentPanel.repaint();
         MainWindow.contentPanel.revalidate();
         changeCategoryView("store");
+        accountPanelVisible = false;
     }
     public void showBuyPanel() {
         MainWindow.contentPanel.removeAll();
@@ -244,5 +267,6 @@ public class Controller {
         MainWindow.contentPanel.repaint();
         MainWindow.contentPanel.revalidate();
         changeCategoryView("buy");
+        accountPanelVisible = false;
     }
 }

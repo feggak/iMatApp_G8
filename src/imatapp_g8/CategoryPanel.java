@@ -66,11 +66,13 @@ public class CategoryPanel extends javax.swing.JPanel {
     public void resetAllAccountFontsExceptSettings() {
         makeBoldAndUnderlined(accountSettingsBtn);
         favoritesBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        pastOrdersBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
     }
     
     public void resetAllAccountFonts() {
         accountSettingsBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
         favoritesBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
+        pastOrdersBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16));
     }
     
     public void setBuyStage(int stage) {
@@ -133,6 +135,8 @@ public class CategoryPanel extends javax.swing.JPanel {
         accountPanel = new javax.swing.JPanel();
         accountSettingsBtn = new javax.swing.JButton();
         favoritesBtn = new javax.swing.JButton();
+        pastOrdersBtn = new javax.swing.JButton();
+        logOutBtn = new javax.swing.JToggleButton();
 
         setBackground(new java.awt.Color(50, 77, 91));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(0, 0, 0)));
@@ -337,7 +341,7 @@ public class CategoryPanel extends javax.swing.JPanel {
         step1Label.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
         step1Label.setForeground(new java.awt.Color(255, 255, 255));
         step1Label.setText("Adress och betalning");
-        buyView.add(step1Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 14, 150, -1));
+        buyView.add(step1Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 14, 170, -1));
 
         step2Label.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
         step2Label.setForeground(new java.awt.Color(255, 255, 255));
@@ -382,6 +386,7 @@ public class CategoryPanel extends javax.swing.JPanel {
         accountSettingsBtn.setContentAreaFilled(false);
         accountSettingsBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         accountSettingsBtn.setFocusPainted(false);
+        accountSettingsBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         accountSettingsBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         accountSettingsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,7 +401,6 @@ public class CategoryPanel extends javax.swing.JPanel {
         favoritesBtn.setAlignmentY(0.0F);
         favoritesBtn.setBorder(null);
         favoritesBtn.setBorderPainted(false);
-        buttonGroup.add(favoritesBtn);
         favoritesBtn.setContentAreaFilled(false);
         favoritesBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         favoritesBtn.setFocusPainted(false);
@@ -408,6 +412,35 @@ public class CategoryPanel extends javax.swing.JPanel {
             }
         });
         accountPanel.add(favoritesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 38, -1, -1));
+
+        pastOrdersBtn.setFont(new java.awt.Font("Myriad Pro", 0, 16)); // NOI18N
+        pastOrdersBtn.setForeground(new java.awt.Color(255, 255, 255));
+        pastOrdersBtn.setText("Orderhistorik");
+        pastOrdersBtn.setAlignmentY(0.0F);
+        pastOrdersBtn.setBorder(null);
+        pastOrdersBtn.setBorderPainted(false);
+        pastOrdersBtn.setContentAreaFilled(false);
+        pastOrdersBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pastOrdersBtn.setFocusPainted(false);
+        pastOrdersBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        pastOrdersBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        pastOrdersBtn.setIconTextGap(0);
+        pastOrdersBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        pastOrdersBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pastOrdersBtnActionPerformed(evt);
+            }
+        });
+        accountPanel.add(pastOrdersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 62, 140, -1));
+
+        logOutBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        logOutBtn.setText("Logga ut");
+        logOutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logOutBtnActionPerformed(evt);
+            }
+        });
+        accountPanel.add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 120, 40));
 
         add(accountPanel, "account");
     }// </editor-fold>//GEN-END:initComponents
@@ -513,6 +546,19 @@ public class CategoryPanel extends javax.swing.JPanel {
         controller.showFavorites();
     }//GEN-LAST:event_favoritesBtnActionPerformed
 
+    private void pastOrdersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pastOrdersBtnActionPerformed
+        resetAllAccountFonts();
+        makeBoldAndUnderlined(pastOrdersBtn);
+        controller.showPastOrders();
+    }//GEN-LAST:event_pastOrdersBtnActionPerformed
+
+    private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
+        Controller.db.shutDown();
+        controller.setIsLoggedIn(false);
+        controller.toggleLoginBtn(false);
+        controller.showFeatured();
+    }//GEN-LAST:event_logOutBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel accountPanel;
@@ -530,8 +576,10 @@ public class CategoryPanel extends javax.swing.JPanel {
     private javax.swing.JButton favoritesBtn;
     private javax.swing.JButton fruitVegetablesBtn;
     private javax.swing.JButton kampanjBtn;
+    private javax.swing.JToggleButton logOutBtn;
     private javax.swing.JButton meatBtn;
     private javax.swing.JButton pantryBtn;
+    private javax.swing.JButton pastOrdersBtn;
     private javax.swing.JLabel searchResultLabel;
     private javax.swing.JPanel searchView;
     private javax.swing.JButton showAllBtn;
