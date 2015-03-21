@@ -116,14 +116,13 @@ public class Controller {
     
     // Breadcrumbs
     public void hideBreadcrumbs() {
-        MainWindow.breadcrumbsPane.setVisible(false);
+        MainWindow.breadcrumbs.setVisible(false);
     }
     public void updateBreadcrumbs(String one, String two, String three) {
-        MainWindow.breadcrumbsPane.removeAll();
-        MainWindow.breadcrumbsPane.add(new Breadcrumbs(one, two, three));
-        MainWindow.breadcrumbsPane.repaint();
-        MainWindow.breadcrumbsPane.revalidate();
-        MainWindow.breadcrumbsPane.setVisible(true);
+        MainWindow.breadcrumbs.updateLabels(one, two, three);
+        MainWindow.breadcrumbs.repaint();
+        MainWindow.breadcrumbs.revalidate();
+        MainWindow.breadcrumbs.setVisible(true);
     }
     
     // Store views
@@ -132,6 +131,7 @@ public class Controller {
         MainWindow.contentPanel.add(new FeaturedPanel());
         MainWindow.contentPanel.revalidate();
         MainWindow.categoryPanel.resetAllStoreFontsExceptFeatured();
+        hideBreadcrumbs();
         changeCategoryView("store");
         showAllActive = false;
         featuredActive = true;

@@ -136,7 +136,6 @@ public class CategoryPanel extends javax.swing.JPanel {
         accountSettingsBtn = new javax.swing.JButton();
         favoritesBtn = new javax.swing.JButton();
         pastOrdersBtn = new javax.swing.JButton();
-        logOutBtn = new javax.swing.JToggleButton();
 
         setBackground(new java.awt.Color(50, 77, 91));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(0, 0, 0)));
@@ -433,15 +432,6 @@ public class CategoryPanel extends javax.swing.JPanel {
         });
         accountPanel.add(pastOrdersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 62, 140, -1));
 
-        logOutBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        logOutBtn.setText("Logga ut");
-        logOutBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logOutBtnActionPerformed(evt);
-            }
-        });
-        accountPanel.add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 120, 40));
-
         add(accountPanel, "account");
     }// </editor-fold>//GEN-END:initComponents
 
@@ -552,13 +542,6 @@ public class CategoryPanel extends javax.swing.JPanel {
         controller.showPastOrders();
     }//GEN-LAST:event_pastOrdersBtnActionPerformed
 
-    private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
-        Controller.db.shutDown();
-        controller.setIsLoggedIn(false);
-        controller.toggleLoginBtn(false);
-        controller.showFeatured();
-    }//GEN-LAST:event_logOutBtnActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel accountPanel;
@@ -576,7 +559,6 @@ public class CategoryPanel extends javax.swing.JPanel {
     private javax.swing.JButton favoritesBtn;
     private javax.swing.JButton fruitVegetablesBtn;
     private javax.swing.JButton kampanjBtn;
-    private javax.swing.JToggleButton logOutBtn;
     private javax.swing.JButton meatBtn;
     private javax.swing.JButton pantryBtn;
     private javax.swing.JButton pastOrdersBtn;

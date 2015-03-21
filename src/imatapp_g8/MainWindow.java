@@ -22,7 +22,7 @@ public class MainWindow extends javax.swing.JFrame {
         controller = Controller.getInstance();
         initComponents();
         loginPopup.setVisible(false);
-        breadcrumbsPane.setVisible(false);
+        breadcrumbs.setVisible(false);
         controller.updateCartHeader();
         cartDropdown.setVisible(false);
         cartDropdown.update();
@@ -71,7 +71,6 @@ public class MainWindow extends javax.swing.JFrame {
         cartBtn = new javax.swing.JButton();
         loginAndUserBtn = new javax.swing.JButton();
         accountBtn = new javax.swing.JButton();
-        breadcrumbsPane = new javax.swing.JPanel();
         breadcrumbs = new imatapp_g8.Breadcrumbs();
         categoryPanel = new imatapp_g8.CategoryPanel();
         contentPanel = new javax.swing.JPanel();
@@ -89,6 +88,7 @@ public class MainWindow extends javax.swing.JFrame {
         setTitle("iMat");
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMinimumSize(new java.awt.Dimension(1156, 720));
+        setPreferredSize(new java.awt.Dimension(1150, 720));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -323,13 +323,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         getContentPane().add(topPanel);
         topPanel.setBounds(0, 0, 1150, 47);
-
-        breadcrumbsPane.setBackground(new java.awt.Color(255, 255, 255));
-        breadcrumbsPane.setLayout(new java.awt.BorderLayout());
-        breadcrumbsPane.add(breadcrumbs, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(breadcrumbsPane);
-        breadcrumbsPane.setBounds(220, 47, 930, 30);
+        getContentPane().add(breadcrumbs);
+        breadcrumbs.setBounds(220, 47, 930, 30);
 
         categoryPanel.setPreferredSize(new java.awt.Dimension(220, 550));
         getContentPane().add(categoryPanel);
@@ -508,8 +503,7 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected static javax.swing.JButton accountBtn;
     private javax.swing.JLabel arrowIcon;
-    private imatapp_g8.Breadcrumbs breadcrumbs;
-    protected static javax.swing.JPanel breadcrumbsPane;
+    protected static imatapp_g8.Breadcrumbs breadcrumbs;
     private javax.swing.JButton cartBtn;
     protected static imatapp_g8.CartDropdown cartDropdown;
     private javax.swing.JLabel cartIcon;

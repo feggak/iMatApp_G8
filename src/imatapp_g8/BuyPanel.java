@@ -798,7 +798,7 @@ public class BuyPanel extends javax.swing.JPanel {
         jLabel1.setText("Tack för ditt köp!");
         jLabel1.setFocusable(false);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        donePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
+        donePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
 
         add(donePanel, "card3");
     }// </editor-fold>//GEN-END:initComponents

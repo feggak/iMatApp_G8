@@ -39,6 +39,7 @@ public class PastOrdersPanel extends javax.swing.JPanel {
     }
     
     private void fillItemsTable(int nr) {
+        double total = 0;
         for (int i = 0; i < Controller.db.getOrders().size(); i++) {
             if (Controller.db.getOrders().get(i).getOrderNumber() == nr) {
                 items = Controller.db.getOrders().get(i).getItems();
@@ -51,9 +52,11 @@ public class PastOrdersPanel extends javax.swing.JPanel {
             data [i][0] = item.getProduct().getName();
             data [i][1] = Double.toString(Math.round((item.getAmount()*100.0)/100.0)) + " " + item.getProduct().getUnitSuffix();
             data [i][2] = item.getTotal() + " kr";
+            total = total + item.getTotal();
         }
         TableModel model = new DefaultTableModel(data,columnNames);
         itemsTable.setModel(model);
+        totalPriceLabel.setText("Totalsumma: " + Double.toString((Math.round(total*100.0)/100.0)) + " kr");
     }
 
     /**
@@ -72,6 +75,7 @@ public class PastOrdersPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         itemsTable = new javax.swing.JTable();
         addListToCartBtn = new javax.swing.JButton();
+        totalPriceLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(930, 32767));
@@ -168,6 +172,11 @@ public class PastOrdersPanel extends javax.swing.JPanel {
             }
         });
         add(addListToCartBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 580, 118, 36));
+
+        totalPriceLabel.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        totalPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        totalPriceLabel.setText("Totalsumma:");
+        add(totalPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 580, 230, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ordersTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordersTableMouseClicked
@@ -193,5 +202,6 @@ public class PastOrdersPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel mainTitle;
     private javax.swing.JTable ordersTable;
+    protected static javax.swing.JLabel totalPriceLabel;
     // End of variables declaration//GEN-END:variables
 }
