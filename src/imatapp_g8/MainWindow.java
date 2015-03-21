@@ -22,7 +22,7 @@ public class MainWindow extends javax.swing.JFrame {
         controller = Controller.getInstance();
         initComponents();
         loginPopup.setVisible(false);
-        breadcrumbs.setVisible(false);
+        breadcrumbsPane.setVisible(false);
         controller.updateCartHeader();
         cartDropdown.setVisible(false);
         cartDropdown.update();
@@ -32,8 +32,10 @@ public class MainWindow extends javax.swing.JFrame {
     public static void setLoginBtnLabel(){
         if (getIsLoggedIn()){
             loginAndUserBtn.setText("Logga ut");
+            accountBtn.setText("Mitt Konto");
         } else {
             loginAndUserBtn.setText("Logga in");
+            accountBtn.setText("Registrera");
         }
     }
     public static void setIsLoggedIn(boolean b){
@@ -53,6 +55,7 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         cartDropdown = new imatapp_g8.CartDropdown();
         loginPopup = new imatapp_g8.LoginPopup();
         topPanel = new javax.swing.JPanel();
@@ -68,8 +71,9 @@ public class MainWindow extends javax.swing.JFrame {
         cartBtn = new javax.swing.JButton();
         loginAndUserBtn = new javax.swing.JButton();
         accountBtn = new javax.swing.JButton();
-        categoryPanel = new imatapp_g8.CategoryPanel();
+        breadcrumbsPane = new javax.swing.JPanel();
         breadcrumbs = new imatapp_g8.Breadcrumbs();
+        categoryPanel = new imatapp_g8.CategoryPanel();
         contentPanel = new javax.swing.JPanel();
         welcomePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -78,11 +82,13 @@ public class MainWindow extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
 
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iMat");
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMinimumSize(new java.awt.Dimension(1156, 720));
-        setPreferredSize(new java.awt.Dimension(1150, 720));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -318,11 +324,16 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(topPanel);
         topPanel.setBounds(0, 0, 1150, 47);
 
+        breadcrumbsPane.setBackground(new java.awt.Color(255, 255, 255));
+        breadcrumbsPane.setLayout(new java.awt.BorderLayout());
+        breadcrumbsPane.add(breadcrumbs, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(breadcrumbsPane);
+        breadcrumbsPane.setBounds(220, 47, 930, 30);
+
         categoryPanel.setPreferredSize(new java.awt.Dimension(220, 550));
         getContentPane().add(categoryPanel);
         categoryPanel.setBounds(0, 47, 220, 681);
-        getContentPane().add(breadcrumbs);
-        breadcrumbs.setBounds(220, 47, 930, 30);
 
         contentPanel.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
@@ -497,7 +508,8 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected static javax.swing.JButton accountBtn;
     private javax.swing.JLabel arrowIcon;
-    protected static imatapp_g8.Breadcrumbs breadcrumbs;
+    private imatapp_g8.Breadcrumbs breadcrumbs;
+    protected static javax.swing.JPanel breadcrumbsPane;
     private javax.swing.JButton cartBtn;
     protected static imatapp_g8.CartDropdown cartDropdown;
     private javax.swing.JLabel cartIcon;
@@ -510,6 +522,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private static javax.swing.JButton loginAndUserBtn;
     protected static imatapp_g8.LoginPopup loginPopup;
     private javax.swing.JMenuBar menuBar;

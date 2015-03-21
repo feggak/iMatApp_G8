@@ -116,13 +116,14 @@ public class Controller {
     
     // Breadcrumbs
     public void hideBreadcrumbs() {
-        MainWindow.breadcrumbs.setVisible(false);
+        MainWindow.breadcrumbsPane.setVisible(false);
     }
     public void updateBreadcrumbs(String one, String two, String three) {
-        MainWindow.breadcrumbs.updateLabels(one, two, three);
-        MainWindow.breadcrumbs.repaint();
-        MainWindow.breadcrumbs.revalidate();
-        MainWindow.breadcrumbs.setVisible(true);
+        MainWindow.breadcrumbsPane.removeAll();
+        MainWindow.breadcrumbsPane.add(new Breadcrumbs(one, two, three));
+        MainWindow.breadcrumbsPane.repaint();
+        MainWindow.breadcrumbsPane.revalidate();
+        MainWindow.breadcrumbsPane.setVisible(true);
     }
     
     // Store views

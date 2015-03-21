@@ -258,67 +258,67 @@ public class BuyPanel extends javax.swing.JPanel {
         shippingIDLabel.setText("Personnummer:");
         shippingIDLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         shippingAdressPanel.add(shippingIDLabel);
-        shippingIDLabel.setBounds(20, 20, 120, 16);
+        shippingIDLabel.setBounds(20, 20, 120, 14);
 
         shippingIDErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
         shippingIDErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         shippingIDErrorLabel.setText("Bara siffror tillåtna");
         shippingIDErrorLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         shippingAdressPanel.add(shippingIDErrorLabel);
-        shippingIDErrorLabel.setBounds(274, 20, 120, 16);
+        shippingIDErrorLabel.setBounds(274, 20, 120, 14);
         shippingAdressPanel.add(shippingIDField);
-        shippingIDField.setBounds(20, 40, 380, 28);
+        shippingIDField.setBounds(20, 40, 380, 20);
 
         shippingFirstNameLabel.setText("Förnamn:");
         shippingFirstNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         shippingAdressPanel.add(shippingFirstNameLabel);
-        shippingFirstNameLabel.setBounds(20, 80, 120, 16);
+        shippingFirstNameLabel.setBounds(20, 80, 120, 14);
         shippingAdressPanel.add(shippingFirstNameField);
-        shippingFirstNameField.setBounds(20, 100, 380, 28);
+        shippingFirstNameField.setBounds(20, 100, 380, 20);
 
         shippingLastNameLabel.setText("Efternamn:");
         shippingLastNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         shippingAdressPanel.add(shippingLastNameLabel);
-        shippingLastNameLabel.setBounds(20, 140, 120, 16);
+        shippingLastNameLabel.setBounds(20, 140, 120, 14);
         shippingAdressPanel.add(shippingLastNameField);
-        shippingLastNameField.setBounds(20, 160, 380, 28);
+        shippingLastNameField.setBounds(20, 160, 380, 20);
 
         shippingEmailLabel.setText("E-mail:");
         shippingEmailLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         shippingAdressPanel.add(shippingEmailLabel);
-        shippingEmailLabel.setBounds(20, 200, 120, 16);
+        shippingEmailLabel.setBounds(20, 200, 120, 14);
         shippingAdressPanel.add(shippingEmailField);
-        shippingEmailField.setBounds(20, 220, 380, 28);
+        shippingEmailField.setBounds(20, 220, 380, 20);
 
         shippingAdresslLabel.setText("Adress:");
         shippingAdresslLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         shippingAdressPanel.add(shippingAdresslLabel);
-        shippingAdresslLabel.setBounds(20, 260, 120, 16);
+        shippingAdresslLabel.setBounds(20, 260, 120, 14);
         shippingAdressPanel.add(shippingAdressField);
-        shippingAdressField.setBounds(20, 280, 380, 28);
+        shippingAdressField.setBounds(20, 280, 380, 20);
 
         shippingZIPLabel.setText("Postnummer:");
         shippingZIPLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         shippingAdressPanel.add(shippingZIPLabel);
-        shippingZIPLabel.setBounds(20, 320, 90, 16);
+        shippingZIPLabel.setBounds(20, 320, 90, 14);
         shippingAdressPanel.add(shippingZIPField);
-        shippingZIPField.setBounds(20, 340, 90, 28);
+        shippingZIPField.setBounds(20, 340, 90, 20);
 
         shippingCityLabel.setText("Ort:");
         shippingCityLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         shippingAdressPanel.add(shippingCityLabel);
-        shippingCityLabel.setBounds(125, 320, 120, 16);
+        shippingCityLabel.setBounds(125, 320, 120, 14);
         shippingAdressPanel.add(shippingCityField);
-        shippingCityField.setBounds(120, 340, 280, 28);
+        shippingCityField.setBounds(120, 340, 280, 20);
 
         shippingCountryLabel.setText("Land:");
         shippingCountryLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         shippingAdressPanel.add(shippingCountryLabel);
-        shippingCountryLabel.setBounds(20, 380, 80, 16);
+        shippingCountryLabel.setBounds(20, 380, 80, 14);
 
         shippingCountryComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas, The", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia", "Botswana", "Bougainville", "Brazil", "British Indian Ocean", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde Islands", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China, Hong Kong", "China, Macau", "China, People’s Republic", "China, Taiwan", "Colombia", "Comoros", "Congo, Democratic Republic of", "Congo, Republic of", "Cook Islands", "Costa Rica", "Cote d’Ivoire", "Croatia", "Cuba", "Cyprus\tCzech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Faeroe Islands", "Falkland Islands", "Federated States of Micronesia", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "Gabon", "Gambia, The", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See (Vatican City State)", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, Democratic People’s Rep", "Korea, Republic of", "Kosovo", "Kuwait\tKyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Réunion", "Romania", "Russia", "Rwanda\tSaint Barthelemy", "Saint Helena", "Saint Kitts & Nevis", "Saint Lucia", "Saint Martin", "Saint Pierre & Miquelon", "Saint Vincent", "Samoa", "San Marino", "Sao Tomé & Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor Leste", "Togo", "Tokelau Islands", "Tonga", "Trinidad & Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks & Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom of GB & NI", "United States of America", "Uruguay", "US Virgin Islands", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Wallis & Futuna Islands", "Yemen", "Zambia", "Zimbabwe" }));
         shippingAdressPanel.add(shippingCountryComboBox);
-        shippingCountryComboBox.setBounds(20, 400, 380, 27);
+        shippingCountryComboBox.setBounds(20, 400, 380, 20);
 
         saveSettingsCheckBox.setText("Spara leveransuppgifterna till mitt konto");
         shippingAdressPanel.add(saveSettingsCheckBox);
@@ -329,7 +329,7 @@ public class BuyPanel extends javax.swing.JPanel {
         shippingEmailErrorLabel.setText("Måste innehålla \"@\"");
         shippingEmailErrorLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         shippingAdressPanel.add(shippingEmailErrorLabel);
-        shippingEmailErrorLabel.setBounds(234, 200, 160, 16);
+        shippingEmailErrorLabel.setBounds(234, 200, 160, 14);
 
         shippingAndBillingPanel.add(shippingAdressPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 44, 420, 490));
 
@@ -345,99 +345,99 @@ public class BuyPanel extends javax.swing.JPanel {
         disclaimerLabel.setText("För närvarande erbjuder vi bara betalning via bankkort, ledsen för eventuella besvär!");
         disclaimerLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         billingInfoPanel.add(disclaimerLabel);
-        disclaimerLabel.setBounds(20, 240, 430, 16);
+        disclaimerLabel.setBounds(20, 240, 430, 14);
 
         billingMethodLabel.setText("Betalningsmedel:");
         billingMethodLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         billingInfoPanel.add(billingMethodLabel);
-        billingMethodLabel.setBounds(20, 20, 120, 16);
+        billingMethodLabel.setBounds(20, 20, 120, 14);
 
         billingMethodComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bankkort" }));
         billingInfoPanel.add(billingMethodComboBox);
-        billingMethodComboBox.setBounds(20, 40, 205, 27);
+        billingMethodComboBox.setBounds(20, 40, 205, 20);
 
         cardTypeLabel.setText("Korttyp:");
         cardTypeLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         billingInfoPanel.add(cardTypeLabel);
-        cardTypeLabel.setBounds(245, 20, 120, 16);
+        cardTypeLabel.setBounds(245, 20, 120, 14);
 
         cardTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VISA", "MasterCard" }));
         billingInfoPanel.add(cardTypeComboBox);
-        cardTypeComboBox.setBounds(245, 40, 205, 27);
+        cardTypeComboBox.setBounds(245, 40, 205, 20);
 
         cardNameLabel.setText("Namn på kortet:");
         cardNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         billingInfoPanel.add(cardNameLabel);
-        cardNameLabel.setBounds(20, 80, 120, 16);
+        cardNameLabel.setBounds(20, 80, 120, 14);
         billingInfoPanel.add(cardNameField);
-        cardNameField.setBounds(20, 100, 430, 28);
+        cardNameField.setBounds(20, 100, 430, 20);
 
         cardNrLabel.setText("Kortnummer:");
         cardNrLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         billingInfoPanel.add(cardNrLabel);
-        cardNrLabel.setBounds(20, 140, 120, 16);
+        cardNrLabel.setBounds(20, 140, 120, 14);
 
         cardNrField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         cardNrField1.setText("1234");
         billingInfoPanel.add(cardNrField1);
-        cardNrField1.setBounds(20, 160, 50, 28);
+        cardNrField1.setBounds(20, 160, 50, 20);
 
         separator1Label.setText("-");
         separator1Label.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         billingInfoPanel.add(separator1Label);
-        separator1Label.setBounds(69, 165, 10, 16);
+        separator1Label.setBounds(69, 165, 10, 14);
 
         cardNrField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         cardNrField2.setText("5678");
         billingInfoPanel.add(cardNrField2);
-        cardNrField2.setBounds(75, 160, 50, 28);
+        cardNrField2.setBounds(75, 160, 50, 20);
 
         separator2Label.setText("-");
         separator2Label.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         billingInfoPanel.add(separator2Label);
-        separator2Label.setBounds(123, 165, 10, 16);
+        separator2Label.setBounds(123, 165, 10, 14);
 
         cardNrField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         cardNrField3.setText("5678");
         billingInfoPanel.add(cardNrField3);
-        cardNrField3.setBounds(129, 160, 50, 28);
+        cardNrField3.setBounds(129, 160, 50, 20);
 
         separator3Label.setText("-");
         separator3Label.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         billingInfoPanel.add(separator3Label);
-        separator3Label.setBounds(177, 165, 10, 16);
+        separator3Label.setBounds(177, 165, 10, 14);
 
         cardNrField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         cardNrField4.setText("5678");
         billingInfoPanel.add(cardNrField4);
-        cardNrField4.setBounds(183, 160, 50, 28);
+        cardNrField4.setBounds(183, 160, 50, 20);
 
         monthLabel.setText("Månad:");
         monthLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         billingInfoPanel.add(monthLabel);
-        monthLabel.setBounds(245, 140, 50, 16);
+        monthLabel.setBounds(245, 140, 50, 14);
 
         monthComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         billingInfoPanel.add(monthComboBox);
-        monthComboBox.setBounds(235, 160, 70, 27);
+        monthComboBox.setBounds(235, 160, 70, 20);
 
         yearLabel.setText("År:");
         yearLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         billingInfoPanel.add(yearLabel);
-        yearLabel.setBounds(322, 140, 30, 16);
+        yearLabel.setBounds(322, 140, 30, 14);
 
         yearComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15", "16", "17", "18", "19", "20", "21" }));
         billingInfoPanel.add(yearComboBox);
-        yearComboBox.setBounds(312, 160, 70, 27);
+        yearComboBox.setBounds(312, 160, 70, 20);
 
         cvcLabel.setText("CVC:");
         cvcLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         billingInfoPanel.add(cvcLabel);
-        cvcLabel.setBounds(399, 140, 50, 16);
+        cvcLabel.setBounds(399, 140, 50, 14);
 
         cvcField.setText("000");
         billingInfoPanel.add(cvcField);
-        cvcField.setBounds(399, 160, 50, 28);
+        cvcField.setBounds(399, 160, 50, 20);
 
         saveCCCheckBox.setText("Spara kortuppgifterna till mitt konto");
         billingInfoPanel.add(saveCCCheckBox);
@@ -448,14 +448,14 @@ public class BuyPanel extends javax.swing.JPanel {
         cardNameErrorLabel.setText("vänligen fyll i namn");
         cardNameErrorLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         billingInfoPanel.add(cardNameErrorLabel);
-        cardNameErrorLabel.setBounds(280, 80, 160, 16);
+        cardNameErrorLabel.setBounds(280, 80, 160, 14);
 
         cardNrErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
         cardNrErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         cardNrErrorLabel.setText("måste vara 16 siffror");
         cardNrErrorLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         billingInfoPanel.add(cardNrErrorLabel);
-        cardNrErrorLabel.setBounds(70, 140, 160, 16);
+        cardNrErrorLabel.setBounds(70, 140, 160, 14);
 
         shippingAndBillingPanel.add(billingInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 44, 470, 280));
 
@@ -804,12 +804,14 @@ public class BuyPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nex1tBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nex1tBtnActionPerformed
-
+        if (isAllFieldsCorrect()) { 
             saveTemporaryCustomerData();
             updateOverviewInfo();
+            fillOverviewTable();
             MainWindow.categoryPanel.setBuyStage(2);
             CardLayout cardLayout = (CardLayout) this.getLayout();
             cardLayout.show(this,"card2");
+        }
     }//GEN-LAST:event_nex1tBtnActionPerformed
 
     private void back1BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back1BtnActionPerformed

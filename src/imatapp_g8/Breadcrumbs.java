@@ -24,6 +24,33 @@ public class Breadcrumbs extends javax.swing.JPanel {
         controller = Controller.getInstance();
     }
     
+    public Breadcrumbs(String one, String two, String three) {
+        initComponents();
+        controller = Controller.getInstance();
+        // Update FIRST set
+        if (one == null) {
+            first.setText("");
+        } else {
+            first.setText(" " + one);
+        }
+        // Update SECOND set
+        if (two == null) {
+            arrow1.setText("");
+            second.setText("");
+        } else if (!two.equals("KEEP")) {
+            arrow1.setText(">");
+            second.setText(two);
+        } else {}
+        // Update THIRD set
+        if (three == null) {
+            arrow2.setText("");
+            third.setText("");
+        } else {
+            arrow2.setText(">");
+            third.setText(three);
+        }
+    }
+    
     public void updateLabels(String one, String two, String three) {
         // Update FIRST set
         if (one == null) {

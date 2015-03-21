@@ -5,6 +5,7 @@
  */
 package imatapp_g8;
 
+import static imatapp_g8.MainWindow.contentPanel;
 import java.awt.Color;
 import java.util.Arrays;
 import se.chalmers.ait.dat215.project.*;
@@ -37,7 +38,7 @@ public class Register extends javax.swing.JPanel {
     private void initComponents() {
 
         registerTxtLabel = new javax.swing.JLabel();
-        regFirstNameLabel = new javax.swing.JLabel();
+        regNameLabel = new javax.swing.JLabel();
         regLastNameLabel = new javax.swing.JLabel();
         regEmailLabel = new javax.swing.JLabel();
         regUsernameLabel = new javax.swing.JLabel();
@@ -52,7 +53,7 @@ public class Register extends javax.swing.JPanel {
         regVerifyPwField = new javax.swing.JPasswordField();
         regUsernameField = new javax.swing.JTextField();
         regEmailField = new javax.swing.JTextField();
-        regFirstNameField = new javax.swing.JTextField();
+        regNameField = new javax.swing.JTextField();
         regLastNameField = new javax.swing.JTextField();
         regPostalCodeField = new javax.swing.JTextField();
         regPhoneNbrField = new javax.swing.JTextField();
@@ -62,6 +63,14 @@ public class Register extends javax.swing.JPanel {
         regSeparator = new javax.swing.JSeparator();
         registerBtn = new javax.swing.JButton();
         errorLabel = new javax.swing.JLabel();
+        errorPostalCodeLabel = new javax.swing.JLabel();
+        errorAddressLabel = new javax.swing.JLabel();
+        errorVerifyPWLabel = new javax.swing.JLabel();
+        errorPassWLabel = new javax.swing.JLabel();
+        errorUserNameLabel = new javax.swing.JLabel();
+        errorEmailLabel = new javax.swing.JLabel();
+        errorLastNameLabel = new javax.swing.JLabel();
+        errorNameLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(930, 2147483647));
@@ -72,70 +81,70 @@ public class Register extends javax.swing.JPanel {
         registerTxtLabel.setFont(new java.awt.Font("Myriad Pro", 0, 36)); // NOI18N
         registerTxtLabel.setForeground(new java.awt.Color(255, 102, 102));
         registerTxtLabel.setText("Registrering");
-        add(registerTxtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, -1));
+        add(registerTxtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, -1, -1));
 
-        regFirstNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        regFirstNameLabel.setText("Förnamn: *");
-        regFirstNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        add(regFirstNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 154, 80, -1));
+        regNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        regNameLabel.setText("Namn: *");
+        regNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(regNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 80, -1));
 
         regLastNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         regLastNameLabel.setText("Efternamn: *");
-        add(regLastNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 154, 110, -1));
+        add(regLastNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 110, -1));
 
         regEmailLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        regEmailLabel.setText("E-mail: *");
+        regEmailLabel.setText("E-post: *");
         regEmailLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        add(regEmailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 204, 80, -1));
+        add(regEmailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 80, -1));
 
         regUsernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         regUsernameLabel.setText("Användarnamn: *");
-        add(regUsernameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 204, 110, -1));
+        add(regUsernameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 110, -1));
 
         regPassWLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         regPassWLabel.setText("Lösenord: *");
         regPassWLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        add(regPassWLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 264, 80, -1));
+        add(regPassWLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 80, -1));
 
         regAddressLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         regAddressLabel.setText("Address: *");
         regAddressLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        add(regAddressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 324, 80, -1));
+        add(regAddressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 80, -1));
 
         regVerifyPWLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         regVerifyPWLabel.setText("Bekräfta Lösenord: *");
-        add(regVerifyPWLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 264, 140, -1));
+        add(regVerifyPWLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 140, -1));
 
         regPostalCodeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        regPostalCodeLabel.setText("Postnummer: *");
-        add(regPostalCodeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 324, 110, -1));
+        regPostalCodeLabel.setText("Post kod: *");
+        add(regPostalCodeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 110, -1));
 
         regOrtLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         regOrtLabel.setText("Ort:");
         regOrtLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        add(regOrtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 444, 80, -1));
+        add(regOrtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, 80, -1));
 
         regMobilePhoneNbr.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        regMobilePhoneNbr.setText("Mobil:");
+        regMobilePhoneNbr.setText("Mobil Nummer:");
         regMobilePhoneNbr.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        add(regMobilePhoneNbr, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 384, 110, -1));
+        add(regMobilePhoneNbr, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 110, -1));
 
         regPhoneNbr.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        regPhoneNbr.setText("Telefon:");
+        regPhoneNbr.setText("Telefon Nummer:");
         regPhoneNbr.setToolTipText("");
-        add(regPhoneNbr, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 384, 110, -1));
-        add(regPwField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 180, -1));
-        add(regVerifyPwField, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 180, -1));
-        add(regUsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 200, 180, -1));
-        add(regEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 180, -1));
-        add(regFirstNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 180, -1));
-        add(regLastNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, 180, -1));
-        add(regPostalCodeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, 180, -1));
-        add(regPhoneNbrField, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, 180, -1));
-        add(regAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 180, -1));
-        add(regMobileNbrField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 180, -1));
-        add(regOrtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 180, -1));
-        add(regSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 400, 10));
+        add(regPhoneNbr, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 460, 110, -1));
+        add(regPwField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 180, -1));
+        add(regVerifyPwField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 180, -1));
+        add(regUsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 180, -1));
+        add(regEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 180, -1));
+        add(regNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 180, -1));
+        add(regLastNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 180, -1));
+        add(regPostalCodeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 180, -1));
+        add(regPhoneNbrField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 460, 180, -1));
+        add(regAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 180, -1));
+        add(regMobileNbrField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 180, -1));
+        add(regOrtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 430, 180, -1));
+        add(regSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 400, 10));
 
         registerBtn.setFont(new java.awt.Font("Helvetica", 0, 22)); // NOI18N
         registerBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,7 +152,7 @@ public class Register extends javax.swing.JPanel {
         registerBtn.setText("Registrera");
         registerBtn.setAlignmentY(0.0F);
         registerBtn.setContentAreaFilled(false);
-        registerBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registerBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         registerBtn.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         registerBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         registerBtn.setIconTextGap(0);
@@ -159,12 +168,60 @@ public class Register extends javax.swing.JPanel {
                 registerBtnActionPerformed(evt);
             }
         });
-        add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 545, 280, 40));
+        add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 530, 280, 40));
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 51));
         errorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorLabel.setText("Fyll i där det är rödmarkerat");
-        add(errorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 495, 280, 32));
+        add(errorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 280, 32));
+
+        errorPostalCodeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorPostalCodeLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorPostalCodeLabel.setText("Skriv in din postkod här");
+        errorPostalCodeLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorPostalCodeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 370, 160, -1));
+
+        errorAddressLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorAddressLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorAddressLabel.setText("Skriv in din address här");
+        errorAddressLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorAddressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 160, -1));
+
+        errorVerifyPWLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorVerifyPWLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorVerifyPWLabel.setText("Lösenorden måste matcha ");
+        errorVerifyPWLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorVerifyPWLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 310, 180, -1));
+
+        errorPassWLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorPassWLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorPassWLabel.setText("Skriv in ditt lösenord här");
+        errorPassWLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorPassWLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 170, -1));
+
+        errorUserNameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorUserNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorUserNameLabel.setText("Skriv in ditt användarnamn här");
+        errorUserNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorUserNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 200, -1));
+
+        errorEmailLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorEmailLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorEmailLabel.setText("Skriv in din epost här");
+        errorEmailLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorEmailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, 140, -1));
+
+        errorLastNameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorLastNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorLastNameLabel.setText("Skriv in ditt efternamn här");
+        errorLastNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorLastNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 190, 170, -1));
+
+        errorNameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        errorNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        errorNameLabel.setText("Skriv in ditt namn här");
+        errorNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(errorNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 140, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
@@ -176,21 +233,19 @@ public class Register extends javax.swing.JPanel {
             user = Controller.db.getUser();
             customer.setAddress(regAddressField.getText());
             customer.setEmail(regEmailField.getText());
-            customer.setFirstName(regFirstNameField.getText());
+            customer.setFirstName(regNameField.getText());
             customer.setLastName(regLastNameField.getText());
             customer.setMobilePhoneNumber(regMobileNbrField.getText());
             customer.setPhoneNumber(regPhoneNbrField.getText());
             customer.setPostAddress(regOrtField.getText());
             customer.setPostCode(regPostalCodeField.getText());
             user.setPassword(String.valueOf(regPwField.getPassword()));
-            user.setUserName(regUsernameField.getText());
-            controller.showFeatured();
+            user.setUserName(regUsernameField.getText()); 
+            contentPanel.removeAll();
+            contentPanel.add(new EditUserPanel());
+            contentPanel.revalidate();
             controller.toggleLoginBtn(true);
-            
-            //set pw, addres osv.. allt
-            //set if logged in osv...
 
-            //Sida där du har lyckats att registrera dig(till mina sidor)
         } else {
             errorLabel.setVisible(true);
         }
@@ -209,38 +264,38 @@ public class Register extends javax.swing.JPanel {
     }
     
     private boolean checkName(){
-        if (regFirstNameField.getText().equals("")){
-            regFirstNameLabel.setForeground(Color.red);
+        if (regNameField.getText().equals("")){
+            errorNameLabel.setForeground(Color.red);
             return false;
         }
-        regFirstNameLabel.setForeground(Color.black);
+        errorNameLabel.setForeground(Color.white);
         return true;
     }
     
     private boolean checkLastName(){
         if (regLastNameField.getText().equals("")){
-            regLastNameLabel.setForeground(Color.red);
+            errorLastNameLabel.setForeground(Color.red);
             return false;
         }
-        regLastNameLabel.setForeground(Color.black);
+        errorLastNameLabel.setForeground(Color.white);
         return true;
     }
     
     private boolean checkEmail(){
         if (regEmailField.getText().equals("")){
-            regEmailLabel.setForeground(Color.red);
+            errorEmailLabel.setForeground(Color.red);
             return false;
         }
-        regEmailLabel.setForeground(Color.black);
+        errorEmailLabel.setForeground(Color.white);
         return true;
     }
     
     private boolean checkUserName(){
         if (regUsernameField.getText().equals("")){
-            regUsernameLabel.setForeground(Color.red);
+            errorUserNameLabel.setForeground(Color.red);
             return false;
         }
-        regUsernameLabel.setForeground(Color.black);
+        errorUserNameLabel.setForeground(Color.white);
         return true;
     }
 
@@ -248,12 +303,12 @@ public class Register extends javax.swing.JPanel {
         char [] input = regPwField.getPassword();
         if (!isPasswordCorrect(input) || input.length < 2){
             
-                regPassWLabel.setForeground(Color.red);
-                regVerifyPWLabel.setForeground(Color.red);
+                errorPassWLabel.setForeground(Color.red);
+                errorVerifyPWLabel.setForeground(Color.red);
                 return false;
         } 
-        regPassWLabel.setForeground(Color.black);
-        regVerifyPWLabel.setForeground(Color.black);
+        errorPassWLabel.setForeground(Color.white);
+        errorVerifyPWLabel.setForeground(Color.white);
         return true;
     }
     
@@ -270,34 +325,42 @@ public class Register extends javax.swing.JPanel {
         
     private boolean checkAddress(){
         if (regAddressField.getText().equals("")){
-            regAddressLabel.setForeground(Color.red);
+            errorAddressLabel.setForeground(Color.red);
             return false;
         }
-        regAddressLabel.setForeground(Color.black);
+        errorAddressLabel.setForeground(Color.white);
         return true;
     }
     
     private boolean checkPostalCode(){
         if (regPostalCodeField.getText().equals("")){
-            regPostalCodeLabel.setForeground(Color.red);
+            errorPostalCodeLabel.setForeground(Color.red);
             return false;
         }
-        regPostalCodeLabel.setForeground(Color.black);
+        errorPostalCodeLabel.setForeground(Color.white);
         return true;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel errorAddressLabel;
+    private javax.swing.JLabel errorEmailLabel;
     private javax.swing.JLabel errorLabel;
+    private javax.swing.JLabel errorLastNameLabel;
+    private javax.swing.JLabel errorNameLabel;
+    private javax.swing.JLabel errorPassWLabel;
+    private javax.swing.JLabel errorPostalCodeLabel;
+    private javax.swing.JLabel errorUserNameLabel;
+    private javax.swing.JLabel errorVerifyPWLabel;
     private javax.swing.JTextField regAddressField;
     private javax.swing.JLabel regAddressLabel;
     private javax.swing.JTextField regEmailField;
     private javax.swing.JLabel regEmailLabel;
-    private javax.swing.JTextField regFirstNameField;
-    private javax.swing.JLabel regFirstNameLabel;
     private javax.swing.JTextField regLastNameField;
     private javax.swing.JLabel regLastNameLabel;
     private javax.swing.JTextField regMobileNbrField;
     private javax.swing.JLabel regMobilePhoneNbr;
+    private javax.swing.JTextField regNameField;
+    private javax.swing.JLabel regNameLabel;
     private javax.swing.JTextField regOrtField;
     private javax.swing.JLabel regOrtLabel;
     private javax.swing.JLabel regPassWLabel;
